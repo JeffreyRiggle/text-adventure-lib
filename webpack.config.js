@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: './src/textAdventureGamestateManager.js',
+    entry: './src/core/textAdventureGamestateManager.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
