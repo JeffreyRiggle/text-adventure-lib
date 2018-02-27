@@ -1,3 +1,5 @@
+import _ from 'underscore';
+
 class PlayerTrigger {
     constructor(playerName, data) {
         this.playerName = playerName;
@@ -44,7 +46,7 @@ class PlayerTrigger {
     }
 
     _processAttribute() {
-        let attribute = this._find(this.player.attributes, conditionData.id[0]);
+        let attribute = this._find(this.player.attributes, this.conditionData.id[0]);
 
         return this._processSimple(attribute);
     }
@@ -57,16 +59,16 @@ class PlayerTrigger {
 
     _processSimple(value) {
         if (this.conditionData.condition === 'GreaterThan') {
-            return Number(value[this.conditionData.dataMember]) > Number(conditionData.comparisonData);
+            return Number(value[this.conditionData.dataMember]) > Number(this.conditionData.comparisonData);
         }
         if (this.conditionData.condition === 'LessThan') {
-            return Number(value[this.conditionData.dataMember]) < Number(conditionData.comparisonData);
+            return Number(value[this.conditionData.dataMember]) < Number(this.conditionData.comparisonData);
         }
         if (this.conditionData.condition === 'EqualTo') {
-            return value[this.conditionData.dataMember] == conditionData.comparisonData;
+            return value[this.conditionData.dataMember] == this.conditionData.comparisonData;
         }
         if (this.conditionData.condition === 'NotEqual') {
-            return value[this.conditionData.dataMember] != conditionData.comparisonData;
+            return value[this.conditionData.dataMember] != this.conditionData.comparisonData;
         }
         if (this.conditionData.condition === 'Has') {
             return !!value;
@@ -88,10 +90,10 @@ class PlayerTrigger {
 
     _processPlayer() {
         if (this.conditionData.condition === 'EqualTo') {
-            return this.player == conditionData.comparisonData;
+            return _.isEqual(this.player, this.conditionData.comparisonData);
         }
         if (this.conditionData.condition === 'NotEqual') {
-            return this.player != conditionData.comparisonData;
+            return !_.isEqual(this.player, this.conditionData.comparisonData);
         }
 
         return false;
@@ -129,16 +131,16 @@ class PlayerTrigger {
         }
 
         if (this.conditionData.condition === 'GreaterThan') {
-            return Number(subValue[this.conditionData.dataMember]) > Number(conditionData.comparisonData);
+            return Number(subValue[this.conditionData.dataMember]) > Number(this.conditionData.comparisonData);
         }
         if (this.conditionData.condition === 'LessThan') {
-            return Number(subValue[this.conditionData.dataMember]) < Number(conditionData.comparisonData);
+            return Number(subValue[this.conditionData.dataMember]) < Number(this.conditionData.comparisonData);
         }
         if (this.conditionData.condition === 'EqualTo') {
-            return subValue[this.conditionData.dataMember] == conditionData.comparisonData;
+            return subValue[this.conditionData.dataMember] == this.conditionData.comparisonData;
         }
         if (this.conditionData.condition === 'NotEqual') {
-            return subValue[this.conditionData.dataMember] != conditionData.comparisonData;
+            return subValue[this.conditionData.dataMember] != this.conditionData.comparisonData;
         }
 
         return false;

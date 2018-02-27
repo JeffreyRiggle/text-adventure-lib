@@ -11,7 +11,8 @@
   "dependencies": {
     "gamestate-manager": "https://github.com/JeffreyRiggle/gamestate-manager",
     "persist-lib": "https://github.com/JeffreyRiggle/persist-lib",
-    "player-lib": "https://github.com/JeffreyRiggle/player-lib"
+    "player-lib": "https://github.com/JeffreyRiggle/player-lib",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
