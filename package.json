@@ -9,9 +9,12 @@
     "test": "karma start karma.config.js"
   },
   "dependencies": {
+    "babel-preset-react": "^6.24.1",
     "gamestate-manager": "https://github.com/JeffreyRiggle/gamestate-manager",
     "persist-lib": "https://github.com/JeffreyRiggle/persist-lib",
     "player-lib": "https://github.com/JeffreyRiggle/player-lib",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
