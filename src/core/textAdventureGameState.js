@@ -10,6 +10,7 @@ class TextAdventureGameState extends GameState {
         this.macros = macros;
         this.players = [];
         this.sendMessageNoProcessing = this._sendMessageNoProcessing.bind(this);
+        this.completed = this._completed.bind(this);
     }
 
     sendMessage(message) {
@@ -48,6 +49,10 @@ class TextAdventureGameState extends GameState {
             if (option.action.sendMessageEvent) {
                 option.action.on(option.action.sendMessageEvent, this.sendMessageNoProcessing);
             }
+
+            if (option.action.completionEvent) {
+                option.action.on(option.action.completionEvent, this.completed);
+            }
         }
     }
 
@@ -55,6 +60,10 @@ class TextAdventureGameState extends GameState {
         for (let option of this.options) {
             if (option.action.sendMessageEvent) {
                 option.action.off(option.action.sendMessageEvent, this.sendMessageNoProcessing);
+            }
+
+            if (option.action.completionEvent) {
+                option.action.off(option.action.completionEvent, this.completed);
             }
         }
     }
@@ -81,7 +90,7 @@ class TextAdventureGameState extends GameState {
         }
     }
 
-    completed(data) {
+    _completed(data) {
         this.stateCompleted({data: data, textLog: this.textLog});
         this.layout.suspend();
         this.teardownListeners();
