@@ -9,6 +9,7 @@ class TextAdventureGameState extends GameState {
         this.timers = timers;
         this.macros = macros;
         this.players = [];
+        this.sendMessageNoProcessing = this._sendMessageNoProcessing.bind(this);
     }
 
     sendMessage(message) {
@@ -23,7 +24,7 @@ class TextAdventureGameState extends GameState {
         }
     }
 
-    sendMessageNoProcessing(message) {
+    _sendMessageNoProcessing(message) {
         this.textLog = this.layout.textLog + '\n' + message;
     }
 
@@ -44,13 +45,17 @@ class TextAdventureGameState extends GameState {
 
     setupListeners() {
         for (let option of this.options) {
-            //TODO
+            if (option.action.sendMessageEvent) {
+                option.action.on(option.action.sendMessageEvent, this.sendMessageNoProcessing);
+            }
         }
     }
 
     teardownListeners() {
         for (let option of this.options) {
-            //TODO
+            if (option.action.sendMessageEvent) {
+                option.action.off(option.action.sendMessageEvent, this.sendMessageNoProcessing);
+            }
         }
     }
 
