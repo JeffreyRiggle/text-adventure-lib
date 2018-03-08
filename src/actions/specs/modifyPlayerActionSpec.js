@@ -21,7 +21,17 @@ describe('ModifyPlayerAction', function() {
         };
 
         bp = {
-            name: 'FooBP'
+            name: 'FooBP',
+            characteristics: [chr1],
+            addCharacteristic: function(chr) {
+                this.characteristics.push(chr);
+            },
+            removeCharacteristic: function(chr) {
+                var ind = this.characteristics.indexOf(chr);
+                if (ind !== -1) {
+                    this.characteristics.splice(ind, 1);
+                }
+            }
         };
 
         prop = {
@@ -45,8 +55,10 @@ describe('ModifyPlayerAction', function() {
         player1 = new Player(playerName);
         player1.characteristics.push(chr1);
         player1.attributes.push(att1);
+        player1.bodyParts.push(bp);
 
         player1.equipment.equip(bp, item);
+        player1.inventory.addItem(item, 100);
 
         params = {
             players: [player1]
@@ -322,74 +334,187 @@ describe('ModifyPlayerAction', function() {
     });
 
     describe('when modification object is inventory', function() {
-        describe('and modification type is add', function() {
-            it('should add the item', function() {
+        var item1;
 
+        beforeEach(function() {
+            item1 = {
+                name: 'TestItem'
+            };
+
+            modData.args.modificationObject = 'Inventory';
+        });
+
+        describe('and modification type is add', function() {
+            beforeEach(function() {
+                modData.modificationType = 'Add';
+                modData.args.id = item1;
+                modData.args.data = 12;
+                action.execute(params);
+            });
+
+            it('should add the item', function() {
+                expect(player1.inventory.getItemAmount(item1)).toBe(12);
             });
         });
 
         describe('and modification type is remove', function() {
-            it('should remove the item', function() {
+            beforeEach(function() {
+                modData.modificationType = 'Remove';
+                modData.args.id = item;
+                action.execute(params);
+            });
 
+            it('should remove the item', function() {
+                expect(player1.inventory.getItemAmount(item)).toBeUndefined();
             });
         });
 
         describe('and the modification type is change', function() {
+            beforeEach(function() {
+                modData.modificationType = 'Change';
+                modData.args.id = item.name;
+            });
+            
             describe('and the change data is a number', function() {
-                it('should update the item amount', function() {
+                beforeEach(function() {
+                    modData.args.data = 32;
+                    action.execute(params);
+                });
 
+                it('should update the item amount', function() {
+                    expect(player1.inventory.getItemAmount(item)).toBe(32);
                 });
             });
             
             describe('and the change type is assign', function() {
-                it('should update the item', function() {
+                beforeEach(function() {
+                    modData.args.changeType = 'Assign';
+                    modData.args.data = {
+                        name: 'fooitem'
+                    };
+                    action.execute(params);
+                });
 
+                it('should update the item', function() {
+                    var has = false;
+                    for (var itm of player1.inventory.items) {
+                        if (itm.name === modData.args.data.name) {
+                            has = true;
+                        }
+                    }
+
+                    expect(has).toBe(true);
                 });
             });
 
             describe('and the change type is add', function() {
-                it('should add a property to the item', function() {
+                beforeEach(function() {
+                    modData.args.changeType = 'Add';
+                    modData.args.data = {
+                        name: 'fooProp'
+                    };
+                    action.execute(params);
+                });
 
+                it('should add a property to the item', function() {
+                    expect(item.properties).toContain(modData.args.data);
                 });
             });
 
             describe('and the change type is subtract', function() {
-                it('should remove a property from the item', function() {
+                beforeEach(function() {
+                    modData.args.changeType = 'Subtract';
+                    modData.args.data = prop;
+                    action.execute(params);
+                });
 
+                it('should remove a property from the item', function() {
+                    expect(item.properties).not.toContain(prop);
                 });
             });
         });
     });
 
     describe('when modification object is body part', function() {
-        describe('and modification type is add', function() {
-            it('should add the body part', function() {
+        beforeEach(function() {
+            modData.args.modificationObject = 'BodyPart';
+        });
 
+        describe('and modification type is add', function() {
+            beforeEach(function() {
+                modData.modificationType = 'Add';
+                modData.args.data = {
+                    name: 'MyTestBPart'
+                };
+
+                action.execute(params);
+            });
+
+            it('should add the body part', function() {
+                expect(player1.bodyParts).toContain(modData.args.data);
             });
         });
 
         describe('and modification type is remove', function() {
-            it('should remove the body part', function() {
+            beforeEach(function() {
+                modData.modificationType = 'Remove';
+                modData.args.data = bp;
 
+                action.execute(params);
+            });
+
+            it('should remove the body part', function() {
+                expect(player1.bodyParts).not.toContain(bp);
             });
         });
 
         describe('and the modification type is change', function() {
-            describe('and the change type is assign', function() {
-                it('should assign a new value', function() {
+            beforeEach(function() {
+                modData.modificationType = 'Change';
+                modData.args.id = bp.name;
+            });
 
+            describe('and the change type is assign', function() {
+                beforeEach(function() {
+                    modData.args.changeType = 'Assign';
+                    modData.args.data = {
+                        name: "NewBp"
+                    };
+
+                    action.execute(params);
+                });
+
+                it('should assign a new value', function() {
+                    expect(player1.bodyParts).toContain(modData.args.data);
                 });
             });
 
             describe('and the change type is add', function() {
-                it('should add a characteristic to the body part', function() {
+                beforeEach(function() {
+                    modData.args.changeType = 'Add';
+                    modData.args.data = {
+                        name: "SomeCharTest",
+                        value: "Testing"
+                    };
 
+                    action.execute(params);
+                });
+
+                it('should add a characteristic to the body part', function() {
+                    expect(bp.characteristics).toContain(modData.args.data);
                 });
             });
 
             describe('and the change type is subtract', function() {
-                it('should remove a characteristic from the body part', function() {
+                beforeEach(function() {
+                    modData.args.changeType = 'Subtract';
+                    modData.args.data = chr1;
 
+                    action.execute(params);
+                });
+
+                it('should remove a characteristic from the body part', function() {
+                    expect(bp.characteristics).not.toContain(chr1);
                 });
             });
         });

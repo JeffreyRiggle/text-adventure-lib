@@ -90,16 +90,19 @@ class ModifyPlayerAction {
             this.player.inventory.addItem(this.modData.args.id, this.modData.args.data);
         }
         if (this.modData.modificationType === 'Remove') {
-            this.player.inventory.removeItem(this.modData.args.data);
+            this.player.inventory.removeItem(this.modData.args.id);
         }
         if (this.modData.modificationType === 'Change') {
             let item = this._find(this.player.inventory.items, this.modData.args.id);
-            if (isNaN(this.modData.args.data)) {
-                item = this._changeItem(item);
+            if (!isNaN(this.modData.args.data)) {
+                this.player.inventory.setItemAmount(item, this.modData.args.data);
                 return;
             }
 
-            this.player.inventory.setAmount(item, this.modData.args.data);
+            var amount = this.player.inventory.getItemAmount(item);
+            this.player.inventory.removeItem(item);
+            item = this._changeItem(item);
+            this.player.inventory.addItem(item, amount);
         }
     }
 
@@ -134,13 +137,15 @@ class ModifyPlayerAction {
 
     _changeBodyPart(bodyPart) {
         if (this.modData.args.changeType === 'Assign') {
+            this.player.removeBodyPart(bodyPart);
             bodyPart = this.modData.args.data;
+            this.player.addBodyPart(bodyPart);
         }
         if (this.modData.args.changeType === 'Add') {
-            item.addCharacteristic(this.modData.args.data);
+            bodyPart.addCharacteristic(this.modData.args.data);
         }
         if (this.modData.args.changeType === 'Subtract') {
-            item.removeCharacteristic(this.modData.args.data);
+            bodyPart.removeCharacteristic(this.modData.args.data);
         }
     }
 
