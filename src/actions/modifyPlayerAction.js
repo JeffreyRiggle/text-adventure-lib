@@ -77,10 +77,10 @@ class ModifyPlayerAction {
             this.player.equipment.equip(this.modData.args.id, this.modData.args.data);
         }
         if (this.modData.modificationType === 'Remove') {
-            this.player.equipment.unEquip(this.modData.args.id);
+            this.player.equipment.unequip(this.modData.args.id);
         }
         if (this.modData.modificationType === 'Change') {
-            let item = this._changeItem(this.player.equipment.unEquip(this.modData.args.id));
+            let item = this._changeItem(this.player.equipment.unequip(this.modData.args.id));
             this.player.equipment.equip(this.modData.args.id, item);
         }
     }
