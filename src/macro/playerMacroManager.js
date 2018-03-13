@@ -12,17 +12,18 @@ class PlayerMacroManager {
         this.players = [];
 
         this.hasMacro = new RegExp(`(${this.parameters.prefix}.*${this.parameters.suffix})`, 'i');
-        this.suffixMatch = new RexExp(`.*${this.parameters.suffix}.*`, 'i');
-        this.playerTest = new RegEx(`player${this.parameters.prefix}.*`, 'i');
-        this.replaceReg = new RegEx(`(${this.parameters.prefix}.*?)(.+?)${this.parameters.suffix}`, 'i');
+        this.suffixMatch = new RegExp(`.*${this.parameters.parameterSuffix}.*`, 'i');
+        this.playerTest = new RegExp(`player${this.parameters.parameterPrefix}.*`, 'i');
+        this.replaceReg = new RegExp(`(${this.parameters.prefix}.*?)(.+?)${this.parameters.suffix}`, 'i');
     }
 
     substitute(originalText) {
         if (!this.hasMacro.test(originalText)) {
-            return;
+            return originalText;
         }
 
         let subs = this.hasMacro.exec(originalText);
+        subs.splice(0, 1);
         let retList = [];
 
         for (let macro of subs) {
@@ -32,8 +33,8 @@ class PlayerMacroManager {
 
             this._assignPlayer(macro);
             
-            let preLen = this._getUnescapedLength(this.parameters.prefix);
-            let sufLen = this._getUnescapedLength(this.parameters.suffix);
+            let preLen = this._getUnescapedLength(this.parameters.parameterPrefix);
+            let sufLen = this._getUnescapedLength(this.parameters.parameterSuffix);
             let sepLen = this._getUnescapedLength(this.parameters.separator);
 
             macro = macro.substring(6 + this.currentPlayer.name.length + preLen + sufLen + sepLen);
@@ -43,12 +44,13 @@ class PlayerMacroManager {
                 continue;
             }
 
+            macro = macro.replace(this._getUnescapedValue(this.parameters.suffix), '');
             retList.push(this._getSubstitution(macro));
         }
 
         let retVal = originalText;
         for (let str of retList) {
-            retVal.replace(this.replaceReg, str);
+            retVal = retVal.replace(this.replaceReg, str);
         }
 
         return retVal;
@@ -69,7 +71,7 @@ class PlayerMacroManager {
         let playerName = this._getParameter(text);
 
         for (let player of this.players) {
-            if (player.name.toLower() === playerName.toLower()) {
+            if (player.name.toLowerCase() === playerName.toLowerCase()) {
                 this.currentPlayer = player;
             }
         }
@@ -77,7 +79,7 @@ class PlayerMacroManager {
 
     _getParameter(text) {
         let parameter = '';
-        let matches = text.split(this.parameters.prefix);
+        let matches = text.split(this._getUnescapedValue(this.parameters.parameterPrefix));
 
         if (!matches) {
             return parameter;
@@ -85,14 +87,19 @@ class PlayerMacroManager {
 
         for (let match of matches) {
             if (this.suffixMatch.test(match)) {
-                parameter = match.split(this.parameters.suffix)[0];
+                parameter = match.split(this._getUnescapedValue(this.parameters.parameterSuffix))[0];
+                break;
             }
         }
 
         return parameter;
     }
 
-    _getSubsitution(text) {
+    _getUnescapedValue(str) {
+        return str.replace(/\\/g, '');
+    }
+
+    _getSubstitution(text) {
         if (inventoryMacro.test(text)) {
             return this._inventorySubstitution(text);
         }
