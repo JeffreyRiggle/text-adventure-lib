@@ -130,7 +130,7 @@ class PlayerMacroManager {
     _equipmentSubstitution(text) {
         let temp = text.substring(9);
         let param = this._getParameter(temp);
-        let bodypart = this._find(this.currentPlayer.bodyparts, param);
+        let bodypart = this._find(this.currentPlayer.bodyParts, param);
 
         if (!bodypart) {
             return '';
@@ -163,7 +163,7 @@ class PlayerMacroManager {
     _attributeSubstitution(text) {
         let temp = text.substring(9);
         let param = this._getParameter(temp);
-        let attribute = this._find(player.attributes, param);
+        let attribute = this._find(this.currentPlayer.attributes, param);
 
         if (!attribute) {
             return '';
@@ -176,14 +176,14 @@ class PlayerMacroManager {
     _bodyPartSubsitution(text) {
         let temp = text.substring(9);
         let param = this._getParameter(temp);
-        let bodypart = this._find(this.currentPlayer.bodyparts, param);
+        let bodypart = this._find(this.currentPlayer.bodyParts, param);
 
         if (!bodypart) {
             return '';
         }
 
         let chain = temp.split(this.parameters.separator);
-        if (!propertyMacro.test(chain[1])) {
+        if (!characteristicMacro.test(chain[1])) {
             return bodypart[chain[1]];
         }
 
@@ -199,7 +199,7 @@ class PlayerMacroManager {
     _characteristicSubsitution(text) {
         let temp = text.substring(14);
         let param = this._getParameter(temp);
-        let characteristic = this._find(player.characteristics, param);
+        let characteristic = this._find(this.currentPlayer.characteristics, param);
 
         if (!characteristic) {
             return '';
