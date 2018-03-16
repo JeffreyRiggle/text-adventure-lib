@@ -1,4 +1,4 @@
-class Option {
+export class Option {
     constructor(triggers, action) {
         this.triggers = triggers;
         this.action = action;
@@ -14,5 +14,3 @@ class Option {
         return false;
     }
 }
-
-export default Option;

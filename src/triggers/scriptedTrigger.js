@@ -1,4 +1,4 @@
-class ScriptedTrigger {
+export class ScriptedTrigger {
     constructor(script) {
         this.script = eval(script);
     }
@@ -7,5 +7,3 @@ class ScriptedTrigger {
         return this.script.shouldFire(data);
     }
 }
-
-export default ScriptedTrigger;

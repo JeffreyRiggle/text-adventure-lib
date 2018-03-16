@@ -1,4 +1,4 @@
-class MultiPartTrigger {
+export class MultiPartTrigger {
     constructor(triggers) {
         this.triggers = triggers;
     }
@@ -23,5 +23,3 @@ class MultiPartTrigger {
         return retVal;
     }
 }
-
-export default MultiPartTrigger;

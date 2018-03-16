@@ -1,2 +1,5 @@
 /node_modules/
 /dist/
+/testapp/
+webpack.test.config.js
+/testdist/

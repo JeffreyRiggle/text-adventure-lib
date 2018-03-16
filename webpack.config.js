@@ -3,12 +3,11 @@ const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: './src/core/textAdventureGamestateManager.js',
+    entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/',
-        filename: '[name].js',    
-        chunkFilename: '[name].js'
+        filename: './[name].js',
+        libraryTarget: 'umd'
     },
     module: {
         rules: [
@@ -21,8 +20,5 @@ module.exports = {
                 }
             }
         ]
-    },
-    plugins: [
-        new UglifyJsPlugin()
-    ]
+    }
 }

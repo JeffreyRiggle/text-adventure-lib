@@ -1,4 +1,4 @@
-import TextAdventureGameStateManager from '../textAdventureGamestateManager';
+import { TextAdventureGameStateManager } from '../textAdventureGameStateManager';
 
 describe('TextAdventureGameStateManager', function() {
     var manager, 

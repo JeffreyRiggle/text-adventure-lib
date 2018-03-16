@@ -1,4 +1,4 @@
-import TextTrigger from '../textTrigger';
+import { TextTrigger } from '../textTrigger';
 
 describe('TextTrigger', function() {
     var trigger, condition;

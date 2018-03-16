@@ -6,7 +6,7 @@ const characteristicMacro = /characteristic.*/i;
 const propertyMacro = /property.*/i;
 const nameReg = /name.*/i;
 
-class PlayerMacroManager {
+export class PlayerMacroManager {
     constructor(parameters) {
         this.parameters = parameters;
         this.players = [];
@@ -218,4 +218,4 @@ class PlayerMacroManager {
     }
 }
 
-export default PlayerMacroManager;
+//export default PlayerMacroManager;

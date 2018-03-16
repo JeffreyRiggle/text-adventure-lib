@@ -1,6 +1,5 @@
-import PlayerTrigger from "../playerTrigger";
+import { PlayerTrigger } from "../playerTrigger";
 
-// TODO finish this out
 describe('PlayerTrigger', function() {
     var triggerData, runData, trigger, player1, player2, result1, result2;
 

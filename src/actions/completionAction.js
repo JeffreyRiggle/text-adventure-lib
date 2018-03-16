@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 
-class CompletionAction extends EventEmitter {
+export class CompletionAction extends EventEmitter {
     constructor(data) {
         super();
         this.data = data;
@@ -14,5 +14,3 @@ class CompletionAction extends EventEmitter {
         this.emit(this.completionEvent, this.data);
     }
 }
-
-export default CompletionAction;

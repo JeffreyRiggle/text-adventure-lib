@@ -1,4 +1,4 @@
-import CompletionAction from '../completionAction';
+import { CompletionAction } from '../completionAction';
 
 describe('CompletionAction', function() {
     var action, data, dataValue;

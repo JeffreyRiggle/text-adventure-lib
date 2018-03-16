@@ -1,4 +1,4 @@
-class ScriptedAction {
+export class ScriptedAction {
     constructor(script) {
         this.script = eval(script);
     }
@@ -7,5 +7,3 @@ class ScriptedAction {
         this.script.execute(params);
     }
 }
-
-export default ScriptedAction;

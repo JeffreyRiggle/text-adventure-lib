@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 
-class AppendTextAction extends EventEmitter {
+export class AppendTextAction extends EventEmitter {
     constructor(text) {
         super();
         this.appendText = text;
@@ -14,5 +14,3 @@ class AppendTextAction extends EventEmitter {
         this.emit(this.sendMessageEvent, this.appendText);
     }
 }
-
-export default AppendTextAction;

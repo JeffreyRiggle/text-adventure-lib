@@ -1,4 +1,4 @@
-import FinishAction from '../finishAction';
+import { FinishAction } from '../finishAction';
 
 describe('FinishAction', function() {
     var action, callCount;

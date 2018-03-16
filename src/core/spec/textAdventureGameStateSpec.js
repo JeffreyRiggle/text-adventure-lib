@@ -1,4 +1,4 @@
-import TextAdventureGameState from '../textAdventureGameState';
+import { TextAdventureGameState } from '../textAdventureGameState';
 
 describe('TextAdventureGameState', function() {
     var gameState, 

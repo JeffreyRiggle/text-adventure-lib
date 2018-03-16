@@ -1,4 +1,4 @@
-class ModifyPlayerAction {
+export class ModifyPlayerAction {
     constructor(playerName, modData) {
         this.playerName = playerName;
         this.modData = modData;
@@ -169,5 +169,3 @@ class ModifyPlayerAction {
         }
     }
 }
-
-export default ModifyPlayerAction;

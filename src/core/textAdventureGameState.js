@@ -1,6 +1,6 @@
 import GameState from '../../node_modules/gamestate-manager/src/gamestate';
 
-class TextAdventureGameState extends GameState {
+export class TextAdventureGameState extends GameState {
     constructor(layout, options, timers, macros) {
         super();
 
@@ -124,5 +124,3 @@ class TextAdventureGameState extends GameState {
         this.finish();
     }
 }
-
-export default TextAdventureGameState;

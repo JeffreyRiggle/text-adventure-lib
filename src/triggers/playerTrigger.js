@@ -1,6 +1,7 @@
 import _ from 'underscore';
+import '../../node_modules/player-lib/src/player';
 
-class PlayerTrigger {
+export class PlayerTrigger {
     constructor(playerName, data) {
         this.playerName = playerName;
         this.conditionData = data;
@@ -154,5 +155,3 @@ class PlayerTrigger {
         }
     }
 }
-
-export default PlayerTrigger;

@@ -1,4 +1,4 @@
-import PlayerMacroManager from '../playerMacroManager';
+import { PlayerMacroManager } from '../playerMacroManager';
 
 describe('PlayerMacroManager', function() {
     var parameters, 

@@ -1,5 +1,5 @@
-import MultiPartTrigger from '../multiPartTrigger';
-import TextTrigger from '../textTrigger';
+import { MultiPartTrigger } from '../multiPartTrigger';
+import { TextTrigger } from '../textTrigger';
 
 describe('MultiPartTrigger', function() {
     var mpTrigger, trigger1, trigger2;

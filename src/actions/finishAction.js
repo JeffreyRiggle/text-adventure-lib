@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 
-class FinishAction extends EventEmitter {
+export class FinishAction extends EventEmitter {
     constructor() {
         super();
     }
@@ -13,5 +13,3 @@ class FinishAction extends EventEmitter {
         this.emit(this.finishedEvent);
     }
 }
-
-export default FinishAction;

@@ -1,4 +1,4 @@
-class TextTrigger {
+export class TextTrigger {
     constructor(expression) {
         this.condition = expression;
     }
@@ -7,5 +7,3 @@ class TextTrigger {
         return this.condition.test(data.message);
     }
 }
-
-export default TextTrigger;

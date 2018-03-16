@@ -1,4 +1,4 @@
-import AppendTextAction from '../appendTextAction';
+import { AppendTextAction } from '../appendTextAction';
 
 describe('AppendTextAction', function() {
     var action, text, messageValue;

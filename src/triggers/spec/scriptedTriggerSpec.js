@@ -1,4 +1,4 @@
-import ScriptedTrigger from "../scriptedTrigger";
+import { ScriptedTrigger } from "../scriptedTrigger";
 
 describe('ScriptedTrigger', function() {
     var script, trigger, data, result;

@@ -1,4 +1,4 @@
-import ModifyPlayerAction from '../modifyPlayerAction';
+import { ModifyPlayerAction } from '../modifyPlayerAction';
 import Player from '../../../node_modules/player-lib/src/player';
 
 describe('ModifyPlayerAction', function() {

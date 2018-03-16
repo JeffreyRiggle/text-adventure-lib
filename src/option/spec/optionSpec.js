@@ -1,4 +1,4 @@
-import Option from '../option';
+import { Option } from '../option';
 
 describe('Option', function() {
     var option, trigger1, trigger2, t1Pass, t2Pass, action, result;

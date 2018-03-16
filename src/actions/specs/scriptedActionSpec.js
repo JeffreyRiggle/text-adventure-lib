@@ -1,4 +1,4 @@
-import ScriptedAction from '../scriptedAction';
+import { ScriptedAction } from '../scriptedAction';
 
 describe('ScriptedAction', function() {
     var action, script, player1;
