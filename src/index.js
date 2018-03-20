@@ -14,7 +14,7 @@ import { TextTrigger } from './triggers/textTrigger';
 
 module.exports = {
     TextAdventureGameState,
-    TextAdventureGamestateManager,
+    TextAdventureGameStateManager,
     PlayerMacroManager,
     AppendTextAction,
     CompletionAction,
