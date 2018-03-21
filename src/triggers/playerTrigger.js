@@ -1,5 +1,5 @@
 import _ from 'underscore';
-import '../../node_modules/player-lib/src/player';
+import '../../node_modules/player-lib/dist/main';
 
 export class PlayerTrigger {
     constructor(playerName, data) {

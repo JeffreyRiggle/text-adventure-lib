@@ -11,6 +11,7 @@ import { MultiPartTrigger } from './triggers/multiPartTrigger';
 import { PlayerTrigger } from "./triggers/playerTrigger";
 import { ScriptedTrigger } from "./triggers/scriptedTrigger";
 import { TextTrigger } from './triggers/textTrigger';
+import { Layout } from './layout/layout';
 
 module.exports = {
     TextAdventureGameState,
@@ -25,5 +26,6 @@ module.exports = {
     MultiPartTrigger,
     PlayerTrigger,
     ScriptedTrigger,
-    TextTrigger
+    TextTrigger,
+    Layout
 };

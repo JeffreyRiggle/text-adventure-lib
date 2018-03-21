@@ -1,15 +1,25 @@
 import { TextAdventureGameStateManager } from '../textAdventureGameStateManager';
+import * as renderLayout from '../../layout/layoutRenderer.jsx';
 
 describe('TextAdventureGameStateManager', function() {
-    var manager, 
+    var manager,
+        renderer, 
         id, 
         state,
+        root,
         player1,
         players;
 
     beforeEach(function() {
         id = 'test';
+        root = {};
+
+        renderer = spyOn(renderLayout, 'renderLayout');
+
         state = {
+            layout: {
+                template: '<h1>Hello World!</h1>'
+            },
             started: false,
             data: {},
             run: function(runtimeData) {
@@ -21,7 +31,7 @@ describe('TextAdventureGameStateManager', function() {
 
         player1 = {playername: 'tester'};
         players = [player1];
-        manager = new TextAdventureGameStateManager(id, state, players);
+        manager = new TextAdventureGameStateManager(id, state, players, root);
     });
 
     it('should have the correct players', function() {
@@ -39,6 +49,10 @@ describe('TextAdventureGameStateManager', function() {
 
         it('should use the correct runtime data', function() {
             expect(state.data.players).toBe(players);
+        });
+
+        it('should render the layout', function() {
+            expect(renderer).toHaveBeenCalledWith(state.layout.template, root);
         });
     });
 });

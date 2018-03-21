@@ -1,4 +1,4 @@
-import { GameState } from '../../node_modules/gamestate-manager/src/gamestate';
+import { GameState } from '../../node_modules/gamestate-manager/dist/main';
 
 export class TextAdventureGameState extends GameState {
     constructor(layout, options, timers, macros) {
