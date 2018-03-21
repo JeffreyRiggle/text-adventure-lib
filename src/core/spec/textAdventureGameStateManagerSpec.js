@@ -4,14 +4,17 @@ import * as renderLayout from '../../layout/layoutRenderer.jsx';
 describe('TextAdventureGameStateManager', function() {
     var manager,
         renderer, 
-        id, 
+        id,
+        id2,
         state,
+        state2,
         root,
         player1,
         players;
 
     beforeEach(function() {
         id = 'test';
+        id2 = 'test2';
         root = {};
 
         renderer = spyOn(renderLayout, 'renderLayout');
@@ -26,12 +29,28 @@ describe('TextAdventureGameStateManager', function() {
                 this.started = true;
                 this.data = runtimeData;
             },
+            removeListener: function() {},
+            on: function() {}
+        };
+
+        state2 = {
+            layout: {
+                template: '<h1>Hello World version 2!</h1>'
+            },
+            started: false,
+            data: {},
+            run: function(runtimeData) {
+                this.started = true;
+                this.data = runtimeData;
+            },
+            removeListener: function() {},
             on: function() {}
         };
 
         player1 = {playername: 'tester'};
         players = [player1];
         manager = new TextAdventureGameStateManager(id, state, players, root);
+        manager.addGameState(id2, state2);
     });
 
     it('should have the correct players', function() {
@@ -53,6 +72,16 @@ describe('TextAdventureGameStateManager', function() {
 
         it('should render the layout', function() {
             expect(renderer).toHaveBeenCalledWith(state.layout.template, root);
+        });
+
+        describe('when a game state is completed', function() {
+            beforeEach(function() {
+                manager.completed(id2);
+            });
+
+            it('should render the new layout', function() {
+                expect(renderer).toHaveBeenCalledWith(state2.layout.template, root);
+            });
         });
     });
 });

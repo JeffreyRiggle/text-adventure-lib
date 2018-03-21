@@ -2506,7 +2506,7 @@ function-bind@^1.0.2, function-bind@^1.1.1:
 
 "gamestate-manager@https://github.com/JeffreyRiggle/gamestate-manager":
   version "1.0.0"
-  resolved "https://github.com/JeffreyRiggle/gamestate-manager#80eaaa77fc6f5df234eb2867cceeef11b9577332"
+  resolved "https://github.com/JeffreyRiggle/gamestate-manager#788b82342aa3eb7822ada7b0e103688319102e80"
 
 gauge@~2.7.3:
   version "2.7.4"

@@ -15,11 +15,19 @@ export class TextAdventureGameStateManager extends GameStateManager {
     }
 
     start() {
+        this._attemptRender();
+        super.start();
+    }
+
+    completed(data) {
+        super.completed(data);
+        this._attemptRender();
+    }
+
+    _attemptRender() {
         let layout = super.currentGameState.layout.template;
         if (this.root && layout) {
             renderLayout(layout, this.root);
         }
-        
-        super.start();
     }
 }
