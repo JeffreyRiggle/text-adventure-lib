@@ -65,15 +65,15 @@ export class TextAdventureGameState extends GameState {
     teardownListeners() {
         for (let option of this.options) {
             if (option.action.sendMessageEvent) {
-                option.action.off(option.action.sendMessageEvent, this.sendMessageNoProcessing);
+                option.action.removeListener(option.action.sendMessageEvent, this.sendMessageNoProcessing);
             }
 
             if (option.action.completionEvent) {
-                option.action.off(option.action.completionEvent, this.completed);
+                option.action.removeListener(option.action.completionEvent, this.completed);
             }
 
             if (option.action.finishedEvent) {
-                option.action.off(option.action.finishedEvent, this.onFinished);
+                option.action.removeListener(option.action.finishedEvent, this.onFinished);
             }
         }
     }

@@ -13,6 +13,7 @@ import { ScriptedTrigger } from "./triggers/scriptedTrigger";
 import { TextTrigger } from './triggers/textTrigger';
 import { Layout } from './layout/layout';
 import { ButtonInput } from './layout/views/buttonInput.jsx';
+import { TextInput } from './layout/views/textInput.jsx';
 
 module.exports = {
     TextAdventureGameState,
@@ -29,5 +30,6 @@ module.exports = {
     ScriptedTrigger,
     TextTrigger,
     Layout,
-    ButtonInput
+    ButtonInput,
+    TextInput
 };
