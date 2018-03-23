@@ -20,7 +20,7 @@ export class TextAdventureGameStateManager extends GameStateManager {
     }
 
     completed(data) {
-        super.completed(data);
+        super.completed(data.state);
         this._attemptRender();
     }
 

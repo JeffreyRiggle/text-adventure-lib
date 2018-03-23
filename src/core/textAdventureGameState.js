@@ -101,7 +101,7 @@ export class TextAdventureGameState extends GameState {
     }
 
     _completed(data) {
-        this.stateCompleted({data: data, textLog: this.textLog});
+        this.stateCompleted({state: data, textLog: this.textLog});
         this.layout.suspend();
         this.teardownListeners();
         this.stopTimers();

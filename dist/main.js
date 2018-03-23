@@ -1292,6 +1292,8 @@ var _textTrigger = __webpack_require__(44);
 
 var _layout = __webpack_require__(45);
 
+var _buttonInput = __webpack_require__(46);
+
 module.exports = {
     TextAdventureGameState: _textAdventureGameState.TextAdventureGameState,
     TextAdventureGameStateManager: _textAdventureGameStateManager.TextAdventureGameStateManager,
@@ -1306,7 +1308,8 @@ module.exports = {
     PlayerTrigger: _playerTrigger.PlayerTrigger,
     ScriptedTrigger: _scriptedTrigger.ScriptedTrigger,
     TextTrigger: _textTrigger.TextTrigger,
-    Layout: _layout.Layout
+    Layout: _layout.Layout,
+    ButtonInput: _buttonInput.ButtonInput
 };
 
 /***/ }),
@@ -1542,7 +1545,7 @@ var TextAdventureGameState = exports.TextAdventureGameState = function (_GameSta
     }, {
         key: '_completed',
         value: function _completed(data) {
-            this.stateCompleted({ data: data, textLog: this.textLog });
+            this.stateCompleted({ state: data, textLog: this.textLog });
             this.layout.suspend();
             this.teardownListeners();
             this.stopTimers();
@@ -1672,7 +1675,7 @@ var TextAdventureGameStateManager = exports.TextAdventureGameStateManager = func
     }, {
         key: 'completed',
         value: function completed(data) {
-            _get(TextAdventureGameStateManager.prototype.__proto__ || Object.getPrototypeOf(TextAdventureGameStateManager.prototype), 'completed', this).call(this, data);
+            _get(TextAdventureGameStateManager.prototype.__proto__ || Object.getPrototypeOf(TextAdventureGameStateManager.prototype), 'completed', this).call(this, data.state);
             this._attemptRender();
         }
     }, {
@@ -1716,8 +1719,8 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function renderLayout(layout, root) {
-    var rLayout = _react2.default.createElement('div', { dangerouslySetInnerHTML: { __html: layout } });
-    _reactDom2.default.render(rLayout, root);
+    //const rLayout = <div dangerouslySetInnerHTML={{__html: layout}}></div>;
+    _reactDom2.default.render(layout, root);
 }
 
 /***/ }),
@@ -21843,6 +21846,74 @@ var Layout = exports.Layout = function () {
 
     return Layout;
 }();
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.ButtonInput = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ButtonInput = exports.ButtonInput = function (_React$Component) {
+    _inherits(ButtonInput, _React$Component);
+
+    function ButtonInput(props) {
+        _classCallCheck(this, ButtonInput);
+
+        var _this = _possibleConstructorReturn(this, (ButtonInput.__proto__ || Object.getPrototypeOf(ButtonInput)).call(this, props));
+
+        _this.handleInput = _this._handleInput.bind(_this);
+        return _this;
+    }
+
+    _createClass(ButtonInput, [{
+        key: '_handleInput',
+        value: function _handleInput(input) {
+            console.log('Got input ' + input);
+            this.props.gameState.sendMessage(input);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                'div',
+                null,
+                this.props.buttons.map(function (btn, i) {
+                    return _react2.default.createElement(
+                        'button',
+                        { key: i, onClick: function onClick(e) {
+                                return _this2.handleInput(btn);
+                            } },
+                        btn
+                    );
+                })
+            );
+        }
+    }]);
+
+    return ButtonInput;
+}(_react2.default.Component);
 
 /***/ })
 /******/ ]);

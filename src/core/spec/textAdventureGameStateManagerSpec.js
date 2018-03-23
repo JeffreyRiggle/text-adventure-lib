@@ -76,11 +76,15 @@ describe('TextAdventureGameStateManager', function() {
 
         describe('when a game state is completed', function() {
             beforeEach(function() {
-                manager.completed(id2);
+                manager.completed({state: id2, textLog: 'hello world!'});
             });
 
             it('should render the new layout', function() {
                 expect(renderer).toHaveBeenCalledWith(state2.layout.template, root);
+            });
+
+            it('should move to the next game state', function() {
+                expect(manager.currentGameState).toBe(state2);
             });
         });
     });

@@ -12,6 +12,7 @@ import { PlayerTrigger } from "./triggers/playerTrigger";
 import { ScriptedTrigger } from "./triggers/scriptedTrigger";
 import { TextTrigger } from './triggers/textTrigger';
 import { Layout } from './layout/layout';
+import { ButtonInput } from './layout/views/buttonInput.jsx';
 
 module.exports = {
     TextAdventureGameState,
@@ -27,5 +28,6 @@ module.exports = {
     PlayerTrigger,
     ScriptedTrigger,
     TextTrigger,
-    Layout
+    Layout,
+    ButtonInput
 };
