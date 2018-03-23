@@ -1296,6 +1296,8 @@ var _buttonInput = __webpack_require__(46);
 
 var _textInput = __webpack_require__(47);
 
+var _textView = __webpack_require__(48);
+
 module.exports = {
     TextAdventureGameState: _textAdventureGameState.TextAdventureGameState,
     TextAdventureGameStateManager: _textAdventureGameStateManager.TextAdventureGameStateManager,
@@ -1312,7 +1314,8 @@ module.exports = {
     TextTrigger: _textTrigger.TextTrigger,
     Layout: _layout.Layout,
     ButtonInput: _buttonInput.ButtonInput,
-    TextInput: _textInput.TextInput
+    TextInput: _textInput.TextInput,
+    TextView: _textView.TextView
 };
 
 /***/ }),
@@ -21955,6 +21958,10 @@ var TextInput = exports.TextInput = function (_React$Component) {
             text: ''
         };
 
+        _this.style = {
+            width: '100%'
+        };
+
         _this.handleKeyPressed = _this._handleKeyPressed.bind(_this);
         _this.handleChange = _this._handleChange.bind(_this);
         return _this;
@@ -21993,12 +22000,69 @@ var TextInput = exports.TextInput = function (_React$Component) {
                     type: 'text',
                     value: this.state.text,
                     onChange: this.handleChange,
-                    onKeyPress: this.handleKeyPressed })
+                    onKeyPress: this.handleKeyPressed,
+                    style: this.style })
             );
         }
     }]);
 
     return TextInput;
+}(_react2.default.Component);
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.TextView = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TextView = exports.TextView = function (_React$Component) {
+    _inherits(TextView, _React$Component);
+
+    function TextView(props) {
+        _classCallCheck(this, TextView);
+
+        var _this = _possibleConstructorReturn(this, (TextView.__proto__ || Object.getPrototypeOf(TextView)).call(this, props));
+
+        _this.style = {
+            resize: 'none',
+            width: '100%'
+
+        };
+        return _this;
+    }
+
+    _createClass(TextView, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement('textarea', { style: this.style, defaultValue: this.props.initialText, readOnly: true })
+            );
+        }
+    }]);
+
+    return TextView;
 }(_react2.default.Component);
 
 /***/ })

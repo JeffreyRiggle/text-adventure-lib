@@ -8,6 +8,10 @@ export class TextInput extends React.Component {
             text: ''
         };
 
+        this.style = {
+            width: '100%'
+        };
+
         this.handleKeyPressed = this._handleKeyPressed.bind(this);
         this.handleChange = this._handleChange.bind(this);
     }
@@ -39,7 +43,8 @@ export class TextInput extends React.Component {
                     type="text" 
                     value={this.state.text}
                     onChange={this.handleChange}
-                    onKeyPress={this.handleKeyPressed}/>
+                    onKeyPress={this.handleKeyPressed}
+                    style={this.style}/>
             </div>
         );
     }
