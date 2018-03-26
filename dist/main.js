@@ -1298,6 +1298,8 @@ var _textInput = __webpack_require__(47);
 
 var _textView = __webpack_require__(48);
 
+var _contentView = __webpack_require__(49);
+
 module.exports = {
     TextAdventureGameState: _textAdventureGameState.TextAdventureGameState,
     TextAdventureGameStateManager: _textAdventureGameStateManager.TextAdventureGameStateManager,
@@ -1315,7 +1317,8 @@ module.exports = {
     Layout: _layout.Layout,
     ButtonInput: _buttonInput.ButtonInput,
     TextInput: _textInput.TextInput,
-    TextView: _textView.TextView
+    TextView: _textView.TextView,
+    ContentView: _contentView.ContentView
 };
 
 /***/ }),
@@ -22063,6 +22066,67 @@ var TextView = exports.TextView = function (_React$Component) {
     }]);
 
     return TextView;
+}(_react2.default.Component);
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.ContentView = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var IsVideoContent = /\.fxm$|\.flv$|\.m3u8$|\.mp4$|\.m4v$/i;
+var IsAudioContent = /\.aif$|\.aiff$|\.mp3|\.wav$|\.m4a$/i;
+var IsImageContent = /\.svg$|\.tiff$|\.jpeg$|\.jpg$|\.png$|\.gif$|\.bmp$/i;
+
+var ContentView = exports.ContentView = function (_React$Component) {
+    _inherits(ContentView, _React$Component);
+
+    function ContentView(props) {
+        _classCallCheck(this, ContentView);
+
+        return _possibleConstructorReturn(this, (ContentView.__proto__ || Object.getPrototypeOf(ContentView)).call(this, props));
+    }
+
+    _createClass(ContentView, [{
+        key: 'render',
+        value: function render() {
+            if (IsVideoContent.test(this.props.content)) {
+                return _react2.default.createElement('video', { src: this.props.content, autoPlay: true });
+            }
+
+            if (IsAudioContent.test(this.props.content)) {
+                return _react2.default.createElement('audio', { src: this.props.content, autoPlay: true });
+            }
+
+            if (IsImageContent.test(this.props.content)) {
+                return _react2.default.createElement('img', { src: this.props.content });
+            }
+
+            return _react2.default.createElement('iframe', { src: this.props.content, frameBorder: 0, width: 700 });
+        }
+    }]);
+
+    return ContentView;
 }(_react2.default.Component);
 
 /***/ })

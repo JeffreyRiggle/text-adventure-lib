@@ -15,6 +15,7 @@ import { Layout } from './layout/layout';
 import { ButtonInput } from './layout/views/buttonInput.jsx';
 import { TextInput } from './layout/views/textInput.jsx';
 import { TextView } from './layout/views/textView.jsx';
+import { ContentView } from './layout/views/contentView.jsx';
 
 module.exports = {
     TextAdventureGameState,
@@ -33,5 +34,6 @@ module.exports = {
     Layout,
     ButtonInput,
     TextInput,
-    TextView
+    TextView,
+    ContentView
 };
