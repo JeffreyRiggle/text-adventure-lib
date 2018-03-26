@@ -21973,8 +21973,10 @@ var TextInput = exports.TextInput = function (_React$Component) {
     _createClass(TextInput, [{
         key: '_handleInput',
         value: function _handleInput() {
-            console.log('Got input ' + this.state.text);
             this.props.gameState.sendMessage(this.state.text);
+            this.setState({
+                text: ''
+            });
         }
     }, {
         key: '_handleKeyPressed',

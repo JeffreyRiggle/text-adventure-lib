@@ -17,8 +17,10 @@ export class TextInput extends React.Component {
     }
 
     _handleInput() {
-        console.log(`Got input ${this.state.text}`);
         this.props.gameState.sendMessage(this.state.text);
+        this.setState({
+            text: ''
+        });
     }
 
     _handleKeyPressed(event) {
