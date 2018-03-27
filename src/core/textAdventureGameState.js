@@ -60,6 +60,8 @@ export class TextAdventureGameState extends GameState {
                 option.action.on(option.action.finishedEvent, this.onFinished);
             }
         }
+
+        this.layout.messageCallback = this.sendMessage.bind(this);
     }
 
     teardownListeners() {

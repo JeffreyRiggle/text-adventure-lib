@@ -25,9 +25,9 @@ export class TextAdventureGameStateManager extends GameStateManager {
     }
 
     _attemptRender() {
-        let layout = super.currentGameState.layout.template;
+        let layout = super.currentGameState.layout;
         if (this.root && layout) {
-            renderLayout(layout, this.root);
+            layout.render(this.root);
         }
     }
 }

@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -889,6 +889,32 @@ function isUndefined(arg) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.renderLayout = renderLayout;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(23);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function renderLayout(layout, root) {
+    return _reactDom2.default.render(layout, root);
+}
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -952,7 +978,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -991,7 +1017,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1072,7 +1098,7 @@ module.exports = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1114,7 +1140,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1185,7 +1211,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1228,7 +1254,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1258,15 +1284,15 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _textAdventureGameState = __webpack_require__(17);
+var _textAdventureGameState = __webpack_require__(18);
 
-var _textAdventureGameStateManager = __webpack_require__(18);
+var _textAdventureGameStateManager = __webpack_require__(19);
 
 var _playerMacroManager = __webpack_require__(32);
 
@@ -1322,7 +1348,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1467,6 +1493,8 @@ var TextAdventureGameState = exports.TextAdventureGameState = function (_GameSta
                     }
                 }
             }
+
+            this.layout.messageCallback = this.sendMessage.bind(this);
         }
     }, {
         key: 'teardownListeners',
@@ -1636,7 +1664,7 @@ var TextAdventureGameState = exports.TextAdventureGameState = function (_GameSta
 }(_main.GameState);
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1653,7 +1681,7 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _main = __webpack_require__(8);
 
-var _layoutRenderer = __webpack_require__(19);
+var _layoutRenderer = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1690,9 +1718,9 @@ var TextAdventureGameStateManager = exports.TextAdventureGameStateManager = func
     }, {
         key: '_attemptRender',
         value: function _attemptRender() {
-            var layout = _get(TextAdventureGameStateManager.prototype.__proto__ || Object.getPrototypeOf(TextAdventureGameStateManager.prototype), 'currentGameState', this).layout.template;
+            var layout = _get(TextAdventureGameStateManager.prototype.__proto__ || Object.getPrototypeOf(TextAdventureGameStateManager.prototype), 'currentGameState', this).layout;
             if (this.root && layout) {
-                (0, _layoutRenderer.renderLayout)(layout, this.root);
+                layout.render(this.root);
             }
         }
     }, {
@@ -1704,32 +1732,6 @@ var TextAdventureGameStateManager = exports.TextAdventureGameStateManager = func
 
     return TextAdventureGameStateManager;
 }(_main.GameStateManager);
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.renderLayout = renderLayout;
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(23);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function renderLayout(layout, root) {
-    _reactDom2.default.render(layout, root);
-}
 
 /***/ }),
 /* 20 */
@@ -1786,7 +1788,7 @@ var emptyObject = __webpack_require__(4);
 var invariant = __webpack_require__(5);
 var warning = __webpack_require__(6);
 var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(9);
+var checkPropTypes = __webpack_require__(10);
 
 // TODO: this is special because it gets imported during build.
 
@@ -3206,7 +3208,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),l=__webpack_require__(10),B=__webpack_require__(3),C=__webpack_require__(2),ba=__webpack_require__(11),da=__webpack_require__(12),ea=__webpack_require__(13),fa=__webpack_require__(14),ia=__webpack_require__(15),D=__webpack_require__(4);
+var aa=__webpack_require__(1),l=__webpack_require__(11),B=__webpack_require__(3),C=__webpack_require__(2),ba=__webpack_require__(12),da=__webpack_require__(13),ea=__webpack_require__(14),fa=__webpack_require__(15),ia=__webpack_require__(16),D=__webpack_require__(4);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -3506,16 +3508,16 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(1);
 var invariant = __webpack_require__(5);
 var warning = __webpack_require__(6);
-var ExecutionEnvironment = __webpack_require__(10);
+var ExecutionEnvironment = __webpack_require__(11);
 var _assign = __webpack_require__(3);
 var emptyFunction = __webpack_require__(2);
-var EventListener = __webpack_require__(11);
-var getActiveElement = __webpack_require__(12);
-var shallowEqual = __webpack_require__(13);
-var containsNode = __webpack_require__(14);
-var focusNode = __webpack_require__(15);
+var EventListener = __webpack_require__(12);
+var getActiveElement = __webpack_require__(13);
+var shallowEqual = __webpack_require__(14);
+var containsNode = __webpack_require__(15);
+var focusNode = __webpack_require__(16);
 var emptyObject = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(9);
+var checkPropTypes = __webpack_require__(10);
 var hyphenateStyleName = __webpack_require__(28);
 var camelizeStyleName = __webpack_require__(30);
 
@@ -21833,23 +21835,55 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _layoutRenderer = __webpack_require__(9);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Layout = exports.Layout = function () {
-    function Layout(template) {
+    function Layout(templateFactory, initialText) {
         _classCallCheck(this, Layout);
 
-        this.template = template;
+        this.initialText = initialText;
+        this._textLog = initialText;
+        this.template = templateFactory(this);
     }
 
     _createClass(Layout, [{
+        key: 'sendMessage',
+        value: function sendMessage(text) {
+            if (this.messageCallback) {
+                console.log('Got send message request');
+                this.messageCallback(text);
+                this.textLog = this.textLog + '\n' + text;
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render(root) {
+            this.root = root;
+            this.component = (0, _layoutRenderer.renderLayout)(this.template, root);
+        }
+    }, {
         key: 'animate',
-        value: function animate() {}
+        value: function animate() {
+            if (this.component) {
+                this.component.forceUpdate();
+            }
+        }
     }, {
         key: 'suspend',
         value: function suspend() {}
+    }, {
+        key: 'textLog',
+        get: function get() {
+            return this._textLog;
+        },
+        set: function set(text) {
+            this._textLog = text;
+            this.component.forceUpdate();
+        }
     }]);
 
     return Layout;
@@ -21973,7 +22007,7 @@ var TextInput = exports.TextInput = function (_React$Component) {
     _createClass(TextInput, [{
         key: '_handleInput',
         value: function _handleInput() {
-            this.props.gameState.sendMessage(this.state.text);
+            this.props.layout.sendMessage(this.state.text);
             this.setState({
                 text: ''
             });
@@ -22050,8 +22084,8 @@ var TextView = exports.TextView = function (_React$Component) {
 
         _this.style = {
             resize: 'none',
-            width: '100%'
-
+            width: '100%',
+            height: '400px'
         };
         return _this;
     }
@@ -22062,7 +22096,7 @@ var TextView = exports.TextView = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement('textarea', { style: this.style, defaultValue: this.props.initialText, readOnly: true })
+                _react2.default.createElement('textarea', { style: this.style, value: this.props.layout.textLog, readOnly: true })
             );
         }
     }]);

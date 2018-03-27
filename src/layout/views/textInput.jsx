@@ -17,7 +17,7 @@ export class TextInput extends React.Component {
     }
 
     _handleInput() {
-        this.props.gameState.sendMessage(this.state.text);
+        this.props.layout.sendMessage(this.state.text);
         this.setState({
             text: ''
         });

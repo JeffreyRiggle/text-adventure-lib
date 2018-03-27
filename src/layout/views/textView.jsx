@@ -6,14 +6,14 @@ export class TextView extends React.Component {
         this.style = {
             resize: 'none',
             width: '100%',
-
+            height: '400px'
         };
     }
 
     render() {
         return (
             <div>
-                <textarea style={this.style} defaultValue={this.props.initialText} readOnly/>
+                <textarea style={this.style} value={this.props.layout.textLog} readOnly/>
             </div>
         );
     }
