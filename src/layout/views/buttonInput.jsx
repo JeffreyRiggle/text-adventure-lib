@@ -7,8 +7,7 @@ export class ButtonInput extends React.Component {
     }
 
     _handleInput(input) {
-        console.log(`Got input ${input}`);
-        this.props.gameState.sendMessage(input);
+        this.props.layout.sendMessage(input);
     }
 
     render() {

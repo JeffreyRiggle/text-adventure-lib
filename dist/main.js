@@ -21928,8 +21928,7 @@ var ButtonInput = exports.ButtonInput = function (_React$Component) {
     _createClass(ButtonInput, [{
         key: '_handleInput',
         value: function _handleInput(input) {
-            console.log('Got input ' + input);
-            this.props.gameState.sendMessage(input);
+            this.props.layout.sendMessage(input);
         }
     }, {
         key: 'render',
