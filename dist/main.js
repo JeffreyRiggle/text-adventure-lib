@@ -21854,15 +21854,13 @@ var Layout = exports.Layout = function () {
         key: 'sendMessage',
         value: function sendMessage(text) {
             if (this.messageCallback) {
-                console.log('Got send message request');
-                this.messageCallback(text);
                 this.textLog = this.textLog + '\n' + text;
+                this.messageCallback(text);
             }
         }
     }, {
         key: 'render',
         value: function render(root) {
-            this.root = root;
             this.component = (0, _layoutRenderer.renderLayout)(this.template, root);
         }
     }, {
