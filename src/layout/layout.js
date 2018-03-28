@@ -19,14 +19,12 @@ export class Layout {
 
     sendMessage(text) {
         if (this.messageCallback) {
-            console.log('Got send message request');
-            this.messageCallback(text);
             this.textLog = this.textLog + '\n' + text;
+            this.messageCallback(text);
         }
     }
 
     render(root) {
-        this.root = root;
         this.component = renderLayout(this.template, root);
     }
 

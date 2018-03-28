@@ -1,5 +1,4 @@
 import { TextAdventureGameStateManager } from '../textAdventureGameStateManager';
-import * as renderLayout from '../../layout/layoutRenderer.jsx';
 
 describe('TextAdventureGameStateManager', function() {
     var manager,
@@ -17,11 +16,12 @@ describe('TextAdventureGameStateManager', function() {
         id2 = 'test2';
         root = {};
 
-        renderer = spyOn(renderLayout, 'renderLayout');
-
         state = {
             layout: {
-                template: '<h1>Hello World!</h1>'
+                template: '<h1>Hello World!</h1>',
+                render: function(root) {
+                    this.root = root;
+                }
             },
             started: false,
             data: {},
@@ -35,7 +35,10 @@ describe('TextAdventureGameStateManager', function() {
 
         state2 = {
             layout: {
-                template: '<h1>Hello World version 2!</h1>'
+                template: '<h1>Hello World version 2!</h1>',
+                render: function(root) {
+                    this.root = root;
+                }
             },
             started: false,
             data: {},
@@ -71,7 +74,7 @@ describe('TextAdventureGameStateManager', function() {
         });
 
         it('should render the layout', function() {
-            expect(renderer).toHaveBeenCalledWith(state.layout.template, root);
+            expect(state.layout.root).toBe(root);
         });
 
         describe('when a game state is completed', function() {
@@ -80,7 +83,7 @@ describe('TextAdventureGameStateManager', function() {
             });
 
             it('should render the new layout', function() {
-                expect(renderer).toHaveBeenCalledWith(state2.layout.template, root);
+                expect(state2.layout.root).toBe(root);
             });
 
             it('should move to the next game state', function() {
