@@ -1,3 +1,6 @@
+import {convertTrigger} from './convertTrigger';
+import {convertAction} from './convertAction';
+
 export class OptionPersistenceObject {
     constructor() {
         this.triggers = [];
@@ -16,12 +19,11 @@ export class OptionPersistenceObject {
 
     _convertTriggers(persistence) {
         for (let child of persistence.children) {
-            //TODO create trigger creator
             this.triggers.push(convertTrigger(persistence));
         }
     }
 
     _convertAction(persistence) {
-
+        this.action = convertAction(persistence);
     }
 }
