@@ -1,5 +1,7 @@
 import {PlayerPersistenceObject} from './player/playerPersistenceObject';
 import {TransitionPersistenceObject} from './transitionPersistenceObject';
+import {GameStatePersistenceObject} from './gameStatePersistenceObject';
+import {LayoutPersistenceObject} from './layoutPersistenceObject';
 
 const INLINEPLAYERS = '',
  INLINEGAMESTATE = '',

@@ -1,4 +1,4 @@
-import {AppendTextAction} from '../actions/AppendTextAction';
+import {AppendTextAction} from '../actions/appendTextAction';
 
 export class AppendTextPersistenceObject {
     convertFromPersistence(persistence) {

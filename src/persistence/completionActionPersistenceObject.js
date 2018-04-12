@@ -1,4 +1,4 @@
-import {CompletionAction} from '../actions/CompletionAction';
+import {CompletionAction} from '../actions/completionAction';
 
 export class CompletionActionPersistenceObject {
     convertFromPersistence(persistence) {

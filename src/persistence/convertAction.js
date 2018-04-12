@@ -1,5 +1,8 @@
 import {AppendTextPersistenceObject} from './appendTextPersistenceObject';
 import {CompletionActionPersistenceObject} from './completionActionPersistenceObject';
+import {ModifyPlayerPersistenceObject} from './modifyPlayerPersistenceObject';
+import {ScriptedActionPersistenceObject} from './scriptedActionPersistenceObject';
+import {FinishActionPersistenceObject} from './finishActionPersistenceObject';
 
 const convertAction = (peristence) => {
     let action;
