@@ -3,21 +3,21 @@ import {TransitionPersistenceObject} from './transitionPersistenceObject';
 import {GameStatePersistenceObject} from './gameStatePersistenceObject';
 import {LayoutPersistenceObject} from './layoutPersistenceObject';
 
-const INLINEPLAYERS = '',
- INLINEGAMESTATE = '',
- INLINELAYOUT = '',
- PLAYERSLOCATION = '',
- CURRENTGAMESATE ='',
- GAMESTATESLOCATION = '',
- GAMESTATES = '',
- PLAYERS = '',
- TRANSITION = '',
- GAME = '',
- BUFFER = '',
- LAYOUTLOCATION = '',
- LAYOUTS = '',
- LAYOUT = '',
- PLAYER = '';
+const INLINEPLAYERS = 'inlineplayers',
+ INLINEGAMESTATE = 'inlinegamestate',
+ INLINELAYOUT = 'inlineLayouts',
+ PLAYERSLOCATION = 'PlayersLocation',
+ CURRENTGAMESATE ='CurrentGameState',
+ GAMESTATESLOCATION = 'GameStatesLocation',
+ GAMESTATES = 'GameStates',
+ PLAYERS = 'Players',
+ TRANSITION = 'Transition',
+ GAME = 'Name',
+ BUFFER = 'Buffer',
+ LAYOUTLOCATION = 'LayoutLocation',
+ LAYOUTS = 'Layouts',
+ LAYOUT = 'Layout',
+ PLAYER = 'Player';
 
 
 class TextAdventurePersistenceObject {

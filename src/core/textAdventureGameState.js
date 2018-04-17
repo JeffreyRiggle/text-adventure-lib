@@ -61,6 +61,12 @@ export class TextAdventureGameState extends GameState {
             }
         }
 
+        for (let timer of this.timers) {
+            if (timer.action.completionEvent) {
+                timer.action.on(timer.action.completionEvent, this.completed);
+            }
+        }
+
         this.layout.messageCallback = this.sendMessage.bind(this);
     }
 
@@ -76,6 +82,12 @@ export class TextAdventureGameState extends GameState {
 
             if (option.action.finishedEvent) {
                 option.action.removeListener(option.action.finishedEvent, this.onFinished);
+            }
+        }
+
+        for (let timer of this.timers) {
+            if (timer.action.completionEvent) {
+                timer.action.removeListener(timer.action.completionEvent, this.completed);
             }
         }
     }

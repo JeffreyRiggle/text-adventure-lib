@@ -51,6 +51,7 @@ describe('TextAdventureGameState', function() {
 
         timer1 = {
             startCount: 0,
+            action: {},
             start: function() {
                 this.startCount++;
             },
@@ -62,6 +63,7 @@ describe('TextAdventureGameState', function() {
 
         timer2 = {
             startCount: 0,
+            action: {},
             start: function() {
                 this.startCount++;
             },
