@@ -1,3 +1,7 @@
+import {OptionPersistenceObject} from './optionPersistenceObject';
+import {LayoutInfoPersistenceObject} from './layoutInfoPersistenceObject';
+import {convertTimer} from './converTimer';
+
 export class GameStatePersistenceObject {
     constructor() {
         this.options = [];
@@ -34,9 +38,7 @@ export class GameStatePersistenceObject {
 
     convertTimers(persistence) {
         for (let child of persistence.children) {
-            let timer = new TimerPersistenceObject();
-            timer.convertFromPersistence(persistence);
-            this.timers.push(timer);
+            this.timers.push(convertTimer(child));
         }
     }
 
