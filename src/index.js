@@ -11,6 +11,7 @@ import { MultiPartTrigger } from './triggers/multiPartTrigger';
 import { PlayerTrigger } from "./triggers/playerTrigger";
 import { ScriptedTrigger } from "./triggers/scriptedTrigger";
 import { TextTrigger } from './triggers/textTrigger';
+import { TimedAction } from './timers/timedAction';
 import { Layout } from './layout/layout';
 import { ButtonInput } from './layout/views/buttonInput.jsx';
 import { TextInput } from './layout/views/textInput.jsx';
@@ -31,6 +32,7 @@ module.exports = {
     PlayerTrigger,
     ScriptedTrigger,
     TextTrigger,
+    TimedAction,
     Layout,
     ButtonInput,
     TextInput,

@@ -1316,15 +1316,17 @@ var _scriptedTrigger = __webpack_require__(43);
 
 var _textTrigger = __webpack_require__(44);
 
-var _layout = __webpack_require__(45);
+var _timedAction = __webpack_require__(45);
 
-var _buttonInput = __webpack_require__(46);
+var _layout = __webpack_require__(46);
 
-var _textInput = __webpack_require__(47);
+var _buttonInput = __webpack_require__(47);
 
-var _textView = __webpack_require__(48);
+var _textInput = __webpack_require__(48);
 
-var _contentView = __webpack_require__(49);
+var _textView = __webpack_require__(49);
+
+var _contentView = __webpack_require__(50);
 
 module.exports = {
     TextAdventureGameState: _textAdventureGameState.TextAdventureGameState,
@@ -1340,6 +1342,7 @@ module.exports = {
     PlayerTrigger: _playerTrigger.PlayerTrigger,
     ScriptedTrigger: _scriptedTrigger.ScriptedTrigger,
     TextTrigger: _textTrigger.TextTrigger,
+    TimedAction: _timedAction.TimedAction,
     Layout: _layout.Layout,
     ButtonInput: _buttonInput.ButtonInput,
     TextInput: _textInput.TextInput,
@@ -1494,18 +1497,45 @@ var TextAdventureGameState = exports.TextAdventureGameState = function (_GameSta
                 }
             }
 
-            this.layout.messageCallback = this.sendMessage.bind(this);
-        }
-    }, {
-        key: 'teardownListeners',
-        value: function teardownListeners() {
             var _iteratorNormalCompletion4 = true;
             var _didIteratorError4 = false;
             var _iteratorError4 = undefined;
 
             try {
-                for (var _iterator4 = this.options[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                    var option = _step4.value;
+                for (var _iterator4 = this.timers[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var timer = _step4.value;
+
+                    if (timer.action.completionEvent) {
+                        timer.action.on(timer.action.completionEvent, this.completed);
+                    }
+                }
+            } catch (err) {
+                _didIteratorError4 = true;
+                _iteratorError4 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                        _iterator4.return();
+                    }
+                } finally {
+                    if (_didIteratorError4) {
+                        throw _iteratorError4;
+                    }
+                }
+            }
+
+            this.layout.messageCallback = this.sendMessage.bind(this);
+        }
+    }, {
+        key: 'teardownListeners',
+        value: function teardownListeners() {
+            var _iteratorNormalCompletion5 = true;
+            var _didIteratorError5 = false;
+            var _iteratorError5 = undefined;
+
+            try {
+                for (var _iterator5 = this.options[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                    var option = _step5.value;
 
                     if (option.action.sendMessageEvent) {
                         option.action.removeListener(option.action.sendMessageEvent, this.sendMessageNoProcessing);
@@ -1520,16 +1550,43 @@ var TextAdventureGameState = exports.TextAdventureGameState = function (_GameSta
                     }
                 }
             } catch (err) {
-                _didIteratorError4 = true;
-                _iteratorError4 = err;
+                _didIteratorError5 = true;
+                _iteratorError5 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
-                        _iterator4.return();
+                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                        _iterator5.return();
                     }
                 } finally {
-                    if (_didIteratorError4) {
-                        throw _iteratorError4;
+                    if (_didIteratorError5) {
+                        throw _iteratorError5;
+                    }
+                }
+            }
+
+            var _iteratorNormalCompletion6 = true;
+            var _didIteratorError6 = false;
+            var _iteratorError6 = undefined;
+
+            try {
+                for (var _iterator6 = this.timers[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                    var timer = _step6.value;
+
+                    if (timer.action.completionEvent) {
+                        timer.action.removeListener(timer.action.completionEvent, this.completed);
+                    }
+                }
+            } catch (err) {
+                _didIteratorError6 = true;
+                _iteratorError6 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion6 && _iterator6.return) {
+                        _iterator6.return();
+                    }
+                } finally {
+                    if (_didIteratorError6) {
+                        throw _iteratorError6;
                     }
                 }
             }
@@ -1552,29 +1609,29 @@ var TextAdventureGameState = exports.TextAdventureGameState = function (_GameSta
     }, {
         key: 'updateMacros',
         value: function updateMacros() {
-            var _iteratorNormalCompletion5 = true;
-            var _didIteratorError5 = false;
-            var _iteratorError5 = undefined;
+            var _iteratorNormalCompletion7 = true;
+            var _didIteratorError7 = false;
+            var _iteratorError7 = undefined;
 
             try {
-                for (var _iterator5 = this.macros[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                    var macro = _step5.value;
+                for (var _iterator7 = this.macros[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                    var macro = _step7.value;
 
                     if (macro.players) {
                         macro.players = this.players;
                     }
                 }
             } catch (err) {
-                _didIteratorError5 = true;
-                _iteratorError5 = err;
+                _didIteratorError7 = true;
+                _iteratorError7 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
-                        _iterator5.return();
+                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
+                        _iterator7.return();
                     }
                 } finally {
-                    if (_didIteratorError5) {
-                        throw _iteratorError5;
+                    if (_didIteratorError7) {
+                        throw _iteratorError7;
                     }
                 }
             }
@@ -1590,27 +1647,27 @@ var TextAdventureGameState = exports.TextAdventureGameState = function (_GameSta
     }, {
         key: 'startTimers',
         value: function startTimers() {
-            var _iteratorNormalCompletion6 = true;
-            var _didIteratorError6 = false;
-            var _iteratorError6 = undefined;
+            var _iteratorNormalCompletion8 = true;
+            var _didIteratorError8 = false;
+            var _iteratorError8 = undefined;
 
             try {
-                for (var _iterator6 = this.timers[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-                    var timer = _step6.value;
+                for (var _iterator8 = this.timers[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                    var timer = _step8.value;
 
                     timer.start();
                 }
             } catch (err) {
-                _didIteratorError6 = true;
-                _iteratorError6 = err;
+                _didIteratorError8 = true;
+                _iteratorError8 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion6 && _iterator6.return) {
-                        _iterator6.return();
+                    if (!_iteratorNormalCompletion8 && _iterator8.return) {
+                        _iterator8.return();
                     }
                 } finally {
-                    if (_didIteratorError6) {
-                        throw _iteratorError6;
+                    if (_didIteratorError8) {
+                        throw _iteratorError8;
                     }
                 }
             }
@@ -1618,27 +1675,27 @@ var TextAdventureGameState = exports.TextAdventureGameState = function (_GameSta
     }, {
         key: 'stopTimers',
         value: function stopTimers() {
-            var _iteratorNormalCompletion7 = true;
-            var _didIteratorError7 = false;
-            var _iteratorError7 = undefined;
+            var _iteratorNormalCompletion9 = true;
+            var _didIteratorError9 = false;
+            var _iteratorError9 = undefined;
 
             try {
-                for (var _iterator7 = this.timers[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-                    var timer = _step7.value;
+                for (var _iterator9 = this.timers[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+                    var timer = _step9.value;
 
                     timer.stop();
                 }
             } catch (err) {
-                _didIteratorError7 = true;
-                _iteratorError7 = err;
+                _didIteratorError9 = true;
+                _iteratorError9 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
-                        _iterator7.return();
+                    if (!_iteratorNormalCompletion9 && _iterator9.return) {
+                        _iterator9.return();
                     }
                 } finally {
-                    if (_didIteratorError7) {
-                        throw _iteratorError7;
+                    if (_didIteratorError9) {
+                        throw _iteratorError9;
                     }
                 }
             }
@@ -21827,6 +21884,50 @@ var TextTrigger = exports.TextTrigger = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var TimedAction = exports.TimedAction = function () {
+    function TimedAction(action, duration) {
+        _classCallCheck(this, TimedAction);
+
+        this.action = action;
+        this.duration = duration;
+    }
+
+    _createClass(TimedAction, [{
+        key: "start",
+        value: function start() {
+            var _this = this;
+
+            this.timer = setInterval(function () {
+                _this.action.execute();
+            }, this.duration);
+        }
+    }, {
+        key: "stop",
+        value: function stop() {
+            if (this.timer) {
+                clearInterval(this.timer);
+            }
+        }
+    }]);
+
+    return TimedAction;
+}();
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.Layout = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21888,7 +21989,7 @@ var Layout = exports.Layout = function () {
 }();
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21955,7 +22056,7 @@ var ButtonInput = exports.ButtonInput = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22046,7 +22147,7 @@ var TextInput = exports.TextInput = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22102,7 +22203,7 @@ var TextView = exports.TextView = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
