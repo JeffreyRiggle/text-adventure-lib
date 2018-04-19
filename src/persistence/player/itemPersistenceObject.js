@@ -1,4 +1,4 @@
-import {Item} from '../../node_modules/player-lib/dist/main';
+import {Item} from '../../../node_modules/player-lib/dist/main';
 import {PropertyPersistenceObject} from './propertyPersistenceObject';
 
 const NAME = 'Name',

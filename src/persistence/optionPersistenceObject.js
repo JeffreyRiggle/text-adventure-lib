@@ -1,5 +1,6 @@
-import {convertTrigger} from './convertTrigger';
-import {convertAction} from './convertAction';
+import { convertTrigger } from './convertTrigger';
+import { convertAction } from './convertAction';
+import { Option } from '../option/option';
 
 export class OptionPersistenceObject {
     constructor() {
@@ -19,11 +20,21 @@ export class OptionPersistenceObject {
 
     _convertTriggers(persistence) {
         for (let child of persistence.children) {
-            this.triggers.push(convertTrigger(persistence));
+            this.triggers.push(convertTrigger(child));
         }
     }
 
     _convertAction(persistence) {
         this.action = convertAction(persistence);
+    }
+
+    convertToOption() {
+        let triggers = [];
+
+        for (let trigger of this.triggers) {
+            triggers.push(trigger.convertToTrigger());
+        }
+
+        return new Option(triggers, this.action.convertToAction());
     }
 }

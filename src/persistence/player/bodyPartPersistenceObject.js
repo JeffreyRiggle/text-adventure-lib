@@ -1,4 +1,4 @@
-import {BodyPart} from '../../node_modules/player-lib/dist/main';
+import {BodyPart} from '../../../node_modules/player-lib/dist/main';
 import {CharacteristicPersistenceObject} from './characteristicPersistenceObject';
 
 const NAME = 'Name',

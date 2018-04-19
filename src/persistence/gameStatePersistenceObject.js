@@ -1,6 +1,7 @@
 import {OptionPersistenceObject} from './optionPersistenceObject';
 import {LayoutInfoPersistenceObject} from './layoutInfoPersistenceObject';
 import {convertTimer} from './converTimer';
+import { TextAdventureGameState } from '../core/textAdventureGameState';
 
 export class GameStatePersistenceObject {
     constructor() {
@@ -45,5 +46,30 @@ export class GameStatePersistenceObject {
     convertLayoutInfo(persistence) {
         this.layout = new LayoutInfoPersistenceObject();
         this.layout.convertFromPersistence(persistence);
+    }
+
+    convertToGameState() {
+        //todo layout
+        let layout;
+        
+        let options = [];
+        for (let option of this.options) {
+            options.push(option.convertToOption());
+        }
+
+        let timers = [];
+        for (let timer of this.timers) {
+            timers.push(timer.convertToTimer());
+        }
+
+        let macro = new PlayerMacroManager({
+            prefix: '\\{\\[',
+            suffix: '\\]\\}',
+            parameterPrefix: '<<',
+            parameterSuffix: '>>',
+            separator: '@'
+        });
+
+        return new TextAdventureGameState(layout, options, timers, [macro]);
     }
 }

@@ -2,7 +2,7 @@ import {TextTriggerPersistenceObject} from './textTriggerPersistenceObject';
 import {PlayerTriggerPersistenceObject} from './playerTriggerPersistenceObject';
 import {MultiPartTriggerPersistenceObject} from './multiPartTriggerPersistenceObject';
 
-const convertTrigger = (peristence) => {
+const convertTrigger = (persistence) => {
     let trigger;
     let type = persistence.properties.get('type');
 

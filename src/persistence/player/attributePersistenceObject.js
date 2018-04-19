@@ -1,5 +1,5 @@
 import {NamedPersistenceObject} from './namedPersistenceObject';
-import {Attribute} from '../../node_modules/player-lib/dist/main';
+import {Attribute} from '../../../node_modules/player-lib/dist/main';
 
 export class AttributePersistenceObject extends NamedPersistenceObject {
     convertToAttribute() {

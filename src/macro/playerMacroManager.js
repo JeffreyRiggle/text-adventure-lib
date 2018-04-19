@@ -217,5 +217,3 @@ export class PlayerMacroManager {
         }
     }
 }
-
-//export default PlayerMacroManager;

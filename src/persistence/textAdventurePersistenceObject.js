@@ -1,7 +1,8 @@
-import {PlayerPersistenceObject} from './player/playerPersistenceObject';
-import {TransitionPersistenceObject} from './transitionPersistenceObject';
-import {GameStatePersistenceObject} from './gameStatePersistenceObject';
-import {LayoutPersistenceObject} from './layoutPersistenceObject';
+import { PlayerPersistenceObject } from './player/playerPersistenceObject';
+import { TransitionPersistenceObject } from './transitionPersistenceObject';
+import { GameStatePersistenceObject } from './gameStatePersistenceObject';
+import { LayoutPersistenceObject } from './layoutPersistenceObject';
+import { TextAdventureGameStateManager } from '../core/textAdventureGameStateManager';
 
 const INLINEPLAYERS = 'inlineplayers',
  INLINEGAMESTATE = 'inlinegamestate',
@@ -112,7 +113,37 @@ class TextAdventurePersistenceObject {
         });
     }
 
-    convertToGameStateManager() {
+    convertToGameStateManager(root) {
+        let players = [];
 
+        if (this.inlinePlayers) {
+            //TODO
+        } else {
+            for (let player of this.players) {
+                players.push(player.convertToPlayer());
+            }
+        }
+
+        let gameStates = [];
+        let currentGameState;
+
+        if (this.inlineGameState) {
+            //TODO
+        } else {
+            for (let gameState of this.gameStates) {
+                let gs = gameState.convertToGameState();
+
+                if (gs.stateId === this.currentGameState) {
+                    currentGameState = gs;
+                }
+
+                gameStates.push(gs);
+            }
+        }
+
+        //TODO buffer
+
+        let manager = new TextAdventureGameStateManager(gameStates[0].stateId, gameStates[0], players, root);
+        return manager;
     }
 }

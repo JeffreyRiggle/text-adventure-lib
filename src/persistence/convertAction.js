@@ -4,7 +4,7 @@ import {ModifyPlayerPersistenceObject} from './modifyPlayerPersistenceObject';
 import {ScriptedActionPersistenceObject} from './scriptedActionPersistenceObject';
 import {FinishActionPersistenceObject} from './finishActionPersistenceObject';
 
-const convertAction = (peristence) => {
+const convertAction = (persistence) => {
     let action;
     let type = persistence.properties.get('type');
 

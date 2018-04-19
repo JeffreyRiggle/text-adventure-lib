@@ -1,4 +1,4 @@
-import {Equipment} from '../../node_modules/player-lib/dist/main';
+import {Equipment} from '../../../node_modules/player-lib/dist/main';
 import {ItemPersistenceObject} from './itemPersistenceObject';
  
 export class EquipmentPersistenceObject {

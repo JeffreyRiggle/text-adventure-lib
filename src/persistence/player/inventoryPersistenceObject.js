@@ -1,4 +1,4 @@
-import {Inventory} from '../../node_modules/player-lib/dist/main';
+import {Inventory} from '../../../node_modules/player-lib/dist/main';
 import {ItemPersistenceObject} from './itemPersistenceObject';
  
 export class InventoryPersistenceObject {
