@@ -52,7 +52,7 @@ export class PlayerPersistenceObject {
         }
     }
 
-    _convertCharacteristics(peristence) {
+    _convertCharacteristics(persistence) {
         for (let child of persistence.children) {
             let chr = new CharacteristicsPersistenceObject();
             chr.convertFromPersistence(child);
@@ -61,7 +61,7 @@ export class PlayerPersistenceObject {
     }
 
     _convertBodyParts(persistence) {
-        for (let child of peristence.children) {
+        for (let child of persistence.children) {
             let bp = new BodyPartPersistenceObject();
             bp.convertFromPersistence(child);
             this.bodyParts.push(bp);

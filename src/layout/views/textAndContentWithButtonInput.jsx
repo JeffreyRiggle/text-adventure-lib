@@ -9,7 +9,7 @@ export class TextAndContentWithButtonInput extends React.Component {
         return (<div>
                     <ContentView content={this.props.content}/>
                     <TextView layout={this.props.layout}/>
-                    <ButtonInput buttons={this.props.buttons}/>
+                    <ButtonInput layout={this.props.layout} buttons={this.props.buttons}/>
                 </div>);
     }
 }

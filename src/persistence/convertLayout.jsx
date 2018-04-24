@@ -4,6 +4,7 @@ import { TextWithButtonInput } from '../layout/views/textWithButtonInput.jsx';
 import { ContentView } from '../layout/views/contentView.jsx';
 import { TextAndContentWithTextInput } from '../layout/views/textAndContentWithTextInput.jsx';
 import { TextAndContentWithButtonInput } from '../layout/views/textAndContentWithButtonInput.jsx';
+import React from 'react';
 
 const convertLayout = (layout, textLog, buttons) => {
     let content = layout.layoutContent;

@@ -3,6 +3,7 @@ import { LayoutInfoPersistenceObject } from './layoutInfoPersistenceObject';
 import { convertTimer } from './convertTimer';
 import { TextAdventureGameState } from '../core/textAdventureGameState';
 import { convertLayout } from './convertLayout.jsx';
+import { PlayerMacroManager } from '../macro/playerMacroManager';
 
 export class GameStatePersistenceObject {
     constructor() {
@@ -30,21 +31,21 @@ export class GameStatePersistenceObject {
         }
     }
 
-    convertOptions(persistence) {
+    _convertOptions(persistence) {
         for (let child of persistence.children) {
             let option = new OptionPersistenceObject();
-            option.convertFromPersistence(persistence);
+            option.convertFromPersistence(child);
             this.options.push(option);
         }
     }
 
-    convertTimers(persistence) {
+    _convertTimers(persistence) {
         for (let child of persistence.children) {
             this.timers.push(convertTimer(child));
         }
     }
 
-    convertLayoutInfo(persistence) {
+    _convertLayoutInfo(persistence) {
         this.layout = new LayoutInfoPersistenceObject();
         this.layout.convertFromPersistence(persistence);
     }
@@ -53,10 +54,12 @@ export class GameStatePersistenceObject {
         let options = [];
         let buttons = [];
         for (let option of this.options) {
-            if (option.trigger.text) {
-                buttons.push(option.trigger.text);
+            for (let trigger of option.triggers) {
+                if (trigger.text) {
+                    buttons.push(trigger.text);
+                }
             }
-
+            
             options.push(option.convertToOption());
         }
 

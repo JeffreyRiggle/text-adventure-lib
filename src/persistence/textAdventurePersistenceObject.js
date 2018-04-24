@@ -21,7 +21,7 @@ const INLINEPLAYERS = 'inlineplayers',
  PLAYER = 'Player';
 
 
-class TextAdventurePersistenceObject {
+export class TextAdventurePersistenceObject {
     constructor() {
         this.players = [];
         this.gameStates = [];
@@ -124,7 +124,7 @@ class TextAdventurePersistenceObject {
             }
         }
 
-        let gameStates = [];
+        let gameStates = new Map();
         let currentGameState;
 
         if (this.inlineGameState) {
@@ -133,17 +133,21 @@ class TextAdventurePersistenceObject {
             for (let gameState of this.gameStates) {
                 let gs = gameState.convertToGameState();
 
-                if (gs.stateId === this.currentGameState) {
+                if (gameState.stateId === this.currentGameState) {
                     currentGameState = gs;
                 }
 
-                gameStates.push(gs);
+                gameStates.set(gameState.stateId, gs);
             }
         }
 
         //TODO buffer
 
-        let manager = new TextAdventureGameStateManager(gameStates[0].stateId, gameStates[0], players, root);
+        let manager = new TextAdventureGameStateManager(currentGameState.stateId, currentGameState, players, root);
+        gameStates.forEach((value, key, map) => {
+            manager.addGameState(key, value);
+        });
+
         return manager;
     }
 }

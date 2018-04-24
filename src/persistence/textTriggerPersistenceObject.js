@@ -29,13 +29,10 @@ export class TextTriggerPersistenceObject {
 
     _toRegex() {
         let flags;
-        if (this.caseSensitive) {
+        if (!this.caseSensitive) {
             flags = 'i';
         }
 
-        if (this.matchType === 'Exact') {
-            return new RegExp(this.text, flags);
-        }
         if (this.matchType === 'Prefix') {
             return new RegExp(`${this.text}.*`, flags);
         }
@@ -48,5 +45,7 @@ export class TextTriggerPersistenceObject {
         if (this.matchType === 'NotContains') {
             return new RegExp(`^((?!(${this.text})).)*$`, flags);
         }
+
+        return new RegExp(this.text, flags);
     }
 }

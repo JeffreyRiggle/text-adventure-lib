@@ -7,7 +7,7 @@ export class TextWithButtonInput extends React.Component {
     render() {
         return (<div>
                     <TextView layout={this.props.layout}/>
-                    <ButtonInput layout={this.props.buttons}/>
+                    <ButtonInput layout={this.props.layout} buttons={this.props.buttons}/>
                 </div>);
     }
 }

@@ -47,6 +47,7 @@ import { ScriptedTriggerPersistenceObject } from './persistence/scriptedTriggerP
 import { TextAdventurePersistenceObject } from './persistence/textAdventurePersistenceObject';
 import { TextTriggerPersistenceObject } from './persistence/textTriggerPersistenceObject';
 import { TransitionPersistenceObject } from './persistence/transitionPersistenceObject';
+import { TextAdventurePersistenceManager } from './persistence/textAdventurePersistenceManager';
 
 module.exports = {
     TextAdventureGameState,
@@ -97,5 +98,6 @@ module.exports = {
     ScriptedTriggerPersistenceObject,
     TextAdventurePersistenceObject,
     TextTriggerPersistenceObject,
-    TransitionPersistenceObject
+    TransitionPersistenceObject,
+    TextAdventurePersistenceManager
 };
