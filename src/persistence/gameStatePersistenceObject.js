@@ -1,7 +1,8 @@
-import {OptionPersistenceObject} from './optionPersistenceObject';
-import {LayoutInfoPersistenceObject} from './layoutInfoPersistenceObject';
-import {convertTimer} from './converTimer';
+import { OptionPersistenceObject } from './optionPersistenceObject';
+import { LayoutInfoPersistenceObject } from './layoutInfoPersistenceObject';
+import { convertTimer } from './convertTimer';
 import { TextAdventureGameState } from '../core/textAdventureGameState';
+import { convertLayout } from './convertLayout.jsx';
 
 export class GameStatePersistenceObject {
     constructor() {
@@ -49,13 +50,17 @@ export class GameStatePersistenceObject {
     }
 
     convertToGameState() {
-        //todo layout
-        let layout;
-        
         let options = [];
+        let buttons = [];
         for (let option of this.options) {
+            if (option.trigger.text) {
+                buttons.push(option.trigger.text);
+            }
+
             options.push(option.convertToOption());
         }
+
+        let layout = convertLayout(this.layout, this.textLog, buttons);
 
         let timers = [];
         for (let timer of this.timers) {
