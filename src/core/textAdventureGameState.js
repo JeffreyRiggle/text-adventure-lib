@@ -99,6 +99,8 @@ export class TextAdventureGameState extends GameState {
         this.updateMacros();
         if (data.textLog) {
             this.textLog = data.textLog + '\n' + this.textLog;
+        } else {
+            this.preformSubstitution();
         }
 
         this.layout.animate();

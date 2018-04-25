@@ -14,7 +14,10 @@ export class Layout {
 
     set textLog(text) {
         this._textLog = text;
-        this.component.forceUpdate();
+
+        if (this.component) {
+            this.component.forceUpdate();
+        }
     }
 
     sendMessage(text) {

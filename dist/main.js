@@ -2174,6 +2174,8 @@ var TextAdventureGameState = exports.TextAdventureGameState = function (_GameSta
             this.updateMacros();
             if (data.textLog) {
                 this.textLog = data.textLog + '\n' + this.textLog;
+            } else {
+                this.preformSubstitution();
             }
 
             this.layout.animate();
@@ -5625,7 +5627,10 @@ var Layout = exports.Layout = function () {
         },
         set: function set(text) {
             this._textLog = text;
-            this.component.forceUpdate();
+
+            if (this.component) {
+                this.component.forceUpdate();
+            }
         }
     }]);
 
