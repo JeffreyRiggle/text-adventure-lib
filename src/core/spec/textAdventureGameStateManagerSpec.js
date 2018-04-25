@@ -82,6 +82,10 @@ describe('TextAdventureGameStateManager', function() {
                 manager.completed({state: id2, textLog: 'hello world!'});
             });
 
+            it('should send the updated text log', function() {
+                expect(state2.data.textLog).toBe('hello world!');
+            });
+
             it('should render the new layout', function() {
                 expect(state2.layout.root).toBe(root);
             });
