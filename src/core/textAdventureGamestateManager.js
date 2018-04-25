@@ -20,6 +20,7 @@ export class TextAdventureGameStateManager extends GameStateManager {
     }
 
     completed(data) {
+        this._runtimeData.textLog = data.textLog;
         super.completed(data.state);
         this._attemptRender();
     }

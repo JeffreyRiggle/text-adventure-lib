@@ -2351,6 +2351,7 @@ var TextAdventureGameStateManager = exports.TextAdventureGameStateManager = func
     }, {
         key: 'completed',
         value: function completed(data) {
+            this._runtimeData.textLog = data.textLog;
             _get(TextAdventureGameStateManager.prototype.__proto__ || Object.getPrototypeOf(TextAdventureGameStateManager.prototype), 'completed', this).call(this, data.state);
             this._attemptRender();
         }
