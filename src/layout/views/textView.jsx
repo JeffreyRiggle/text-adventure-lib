@@ -6,7 +6,7 @@ export class TextView extends React.Component {
         this.style = {
             resize: 'none',
             width: '100%',
-            height: '400px'
+            height: '100%'
         };
     }
 

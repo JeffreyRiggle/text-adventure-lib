@@ -7,9 +7,15 @@ import React from 'react';
 export class TextAndContentWithButtonInput extends React.Component {
     render() {
         return (<div>
-                    <ContentView content={this.props.content}/>
-                    <TextView layout={this.props.layout}/>
-                    <ButtonInput layout={this.props.layout} buttons={this.props.buttons}/>
+                    <div className="tacwbi-content-area">
+                        <ContentView content={this.props.content}/>
+                    </div>
+                    <div className="tacwbi-text-area">
+                        <TextView layout={this.props.layout}/>
+                    </div>
+                    <div className="tacwbi-btn-input-area">
+                        <ButtonInput layout={this.props.layout} buttons={this.props.buttons}/>
+                    </div>
                 </div>);
     }
 }

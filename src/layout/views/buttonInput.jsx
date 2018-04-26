@@ -1,4 +1,5 @@
 import React from 'react';
+import './viewStyles.css';
 
 export class ButtonInput extends React.Component {
     constructor(props) {
@@ -12,9 +13,9 @@ export class ButtonInput extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="btn-container">
                 {this.props.buttons.map((btn, i) => 
-                    <button key={i} onClick={(e) => this.handleInput(btn)}>{btn}</button>
+                    <button key={i} onClick={(e) => this.handleInput(btn)} className="btn-input-item">{btn}</button>
                 )}
             </div>
         );

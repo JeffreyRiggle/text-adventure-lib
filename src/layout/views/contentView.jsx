@@ -1,3 +1,5 @@
+import './viewStyles.css';
+
 import React from 'react';
 
 const IsVideoContent = /\.fxm$|\.flv$|\.m3u8$|\.mp4$|\.m4v$/i;
@@ -19,7 +21,7 @@ export class ContentView extends React.Component {
         }
 
         if (IsImageContent.test(this.props.content)) {
-            return <img src={this.props.content}/>;
+            return <img src={this.props.content} className="content-image"/>;
         }
 
         return <iframe src={this.props.content} frameBorder={0} width={700}></iframe>;
