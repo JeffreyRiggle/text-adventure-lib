@@ -132,6 +132,7 @@ describe('TextTriggerPersistenceObject', function() {
             describe('and the expression is case sensitive', function() {
                 beforeEach(function() {
                     obj.matchType = 'Contains';
+                    obj.caseSensitive = true;
                     trigger = obj.convertToTrigger();
 
                     data = {
