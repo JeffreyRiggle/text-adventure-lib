@@ -5604,7 +5604,7 @@ var Layout = exports.Layout = function () {
         _classCallCheck(this, Layout);
 
         this.initialText = initialText;
-        this._textLog = initialText;
+        this._textLog = initialText || '';
         this.template = templateFactory(this);
     }
 
@@ -5764,9 +5764,21 @@ var TextAndContentWithTextInput = exports.TextAndContentWithTextInput = function
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(_contentView.ContentView, { content: this.props.content }),
-                _react2.default.createElement(_textView.TextView, { layout: this.props.layout }),
-                _react2.default.createElement(_textInput.TextInput, { layout: this.props.layout })
+                _react2.default.createElement(
+                    'div',
+                    { className: 'tacwti-content-area' },
+                    _react2.default.createElement(_contentView.ContentView, { content: this.props.content })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'tacwti-text-area' },
+                    _react2.default.createElement(_textView.TextView, { layout: this.props.layout })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'tacwti-text-input-area' },
+                    _react2.default.createElement(_textInput.TextInput, { layout: this.props.layout })
+                )
             );
         }
     }]);

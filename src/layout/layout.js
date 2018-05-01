@@ -4,7 +4,7 @@ import { renderLayout } from './layoutRenderer.jsx';
 export class Layout {
     constructor(templateFactory, initialText) {
         this.initialText = initialText;
-        this._textLog = initialText;
+        this._textLog = initialText || '';
         this.template = templateFactory(this);
     }
 

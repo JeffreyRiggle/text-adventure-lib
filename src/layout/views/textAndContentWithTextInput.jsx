@@ -7,9 +7,15 @@ import React from 'react';
 export class TextAndContentWithTextInput extends React.Component {
     render() {
         return (<div>
-                    <ContentView content={this.props.content}/>
-                    <TextView layout={this.props.layout}/>
-                    <TextInput layout={this.props.layout}/>
+                    <div className="tacwti-content-area">
+                        <ContentView content={this.props.content}/>
+                    </div>
+                    <div className="tacwti-text-area">
+                        <TextView layout={this.props.layout}/>
+                    </div>
+                    <div className="tacwti-text-input-area">
+                        <TextInput layout={this.props.layout}/>
+                    </div>
                 </div>);
     }
 }
