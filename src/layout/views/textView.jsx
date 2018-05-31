@@ -12,7 +12,7 @@ export class TextView extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="layout-container">
                 <textarea style={this.style} value={this.props.layout.textLog} readOnly/>
             </div>
         );

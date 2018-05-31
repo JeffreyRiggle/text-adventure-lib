@@ -433,7 +433,7 @@ var TextView = exports.TextView = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'layout-container' },
                 _react2.default.createElement('textarea', { style: this.style, value: this.props.layout.textLog, readOnly: true })
             );
         }
