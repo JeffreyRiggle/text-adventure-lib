@@ -6,7 +6,7 @@ import React from 'react';
 
 export class TextWithButtonInput extends React.Component {
     render() {
-        return (<div>
+        return (<div className="layout-container">
                     <div className="twbi-text-area">
                         <TextView layout={this.props.layout}/>
                     </div>

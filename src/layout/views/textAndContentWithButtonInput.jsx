@@ -6,7 +6,7 @@ import React from 'react';
 
 export class TextAndContentWithButtonInput extends React.Component {
     render() {
-        return (<div>
+        return (<div className="layout-container">
                     <div className="tacwbi-content-area">
                         <ContentView content={this.props.content}/>
                     </div>

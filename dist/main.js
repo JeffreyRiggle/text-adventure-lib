@@ -5694,7 +5694,7 @@ var TextAndContentWithButtonInput = exports.TextAndContentWithButtonInput = func
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'layout-container' },
                 _react2.default.createElement(
                     'div',
                     { className: 'tacwbi-content-area' },
@@ -5763,7 +5763,7 @@ var TextAndContentWithTextInput = exports.TextAndContentWithTextInput = function
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'layout-container' },
                 _react2.default.createElement(
                     'div',
                     { className: 'tacwti-content-area' },
@@ -5832,7 +5832,7 @@ var TextWithButtonInput = exports.TextWithButtonInput = function (_React$Compone
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'layout-container' },
                 _react2.default.createElement(
                     'div',
                     { className: 'twbi-text-area' },
@@ -5896,7 +5896,7 @@ var TextWithTextInput = exports.TextWithTextInput = function (_React$Component) 
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'layout-container' },
                 _react2.default.createElement(
                     'div',
                     { className: 'twti-text-area' },
