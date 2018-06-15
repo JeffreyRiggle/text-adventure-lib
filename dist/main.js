@@ -5606,6 +5606,7 @@ var Layout = exports.Layout = function () {
         this.initialText = initialText;
         this._textLog = initialText || '';
         this.template = templateFactory(this);
+        this._suspended = true;
     }
 
     _createClass(Layout, [{
@@ -5624,13 +5625,17 @@ var Layout = exports.Layout = function () {
     }, {
         key: 'animate',
         value: function animate() {
+            this._suspended = false;
+
             if (this.component) {
                 this.component.forceUpdate();
             }
         }
     }, {
         key: 'suspend',
-        value: function suspend() {}
+        value: function suspend() {
+            this._suspended = true;
+        }
     }, {
         key: 'textLog',
         get: function get() {
@@ -5639,7 +5644,7 @@ var Layout = exports.Layout = function () {
         set: function set(text) {
             this._textLog = text;
 
-            if (this.component) {
+            if (this.component && !this._suspended) {
                 this.component.forceUpdate();
             }
         }

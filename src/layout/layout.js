@@ -6,6 +6,7 @@ export class Layout {
         this.initialText = initialText;
         this._textLog = initialText || '';
         this.template = templateFactory(this);
+        this._suspended = true;
     }
 
     get textLog() {
@@ -15,7 +16,7 @@ export class Layout {
     set textLog(text) {
         this._textLog = text;
 
-        if (this.component) {
+        if (this.component && !this._suspended) {
             this.component.forceUpdate();
         }
     }
@@ -32,12 +33,14 @@ export class Layout {
     }
 
     animate() {
+        this._suspended = false;
+
         if (this.component) {
             this.component.forceUpdate();
         }
     }
 
     suspend() {
-        
+        this._suspended = true;
     }
 }
