@@ -16,7 +16,7 @@ export class Layout {
     set textLog(text) {
         this._textLog = text;
 
-        if (this.component && !this._suspended) {
+        if (this.component && !this._suspended && this.component.isMounted()) {
             this.component.forceUpdate();
         }
     }
@@ -35,7 +35,7 @@ export class Layout {
     animate() {
         this._suspended = false;
 
-        if (this.component) {
+        if (this.component && this.component.isMounted()) {
             this.component.forceUpdate();
         }
     }
