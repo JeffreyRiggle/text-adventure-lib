@@ -5627,7 +5627,7 @@ var Layout = exports.Layout = function () {
         value: function animate() {
             this._suspended = false;
 
-            if (this.component && this.component.isMounted()) {
+            if (this.component) {
                 this.component.forceUpdate();
             }
         }
@@ -5644,7 +5644,7 @@ var Layout = exports.Layout = function () {
         set: function set(text) {
             this._textLog = text;
 
-            if (this.component && !this._suspended && this.component.isMounted()) {
+            if (this.component && !this._suspended) {
                 this.component.forceUpdate();
             }
         }
