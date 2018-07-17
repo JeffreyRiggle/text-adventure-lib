@@ -44,5 +44,27 @@ describe('LayoutInfoPersistenceObject', function() {
         it('should have the correct id', function() {
             expect(obj.layoutId).toBe(id);
         });
+
+        describe('when object is converted to config', function() {
+            var config;
+
+            beforeEach(function() {
+                config = obj.convertToConfig();
+            });
+
+            it('should have the correct name', function() {
+                expect(config.name).toEqual('LayoutInfo');
+            });
+
+            it('should have parameters', function() {
+                expect(config.children.length).toBe(3);
+                expect(config.children[0].name).toEqual('LayoutContent');
+                expect(config.children[0].value).toEqual(content);
+                expect(config.children[1].name).toEqual('LayoutID');
+                expect(config.children[1].value).toEqual(id);
+                expect(config.children[2].name).toEqual('LayoutType');
+                expect(config.children[2].value).toEqual(type);
+            });
+        });
     });
 });

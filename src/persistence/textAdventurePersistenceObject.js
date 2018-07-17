@@ -3,6 +3,7 @@ import { TransitionPersistenceObject } from './transitionPersistenceObject';
 import { GameStatePersistenceObject } from './gameStatePersistenceObject';
 import { LayoutPersistenceObject } from './layoutPersistenceObject';
 import { TextAdventureGameStateManager } from '../core/textAdventureGameStateManager';
+import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
 
 const INLINEPLAYERS = 'inlineplayers',
  INLINEGAMESTATE = 'inlinegamestate',
@@ -63,6 +64,54 @@ export class TextAdventurePersistenceObject {
                 this._convertLayouts(child);
             }
         }
+    }
+
+    convertToConfig() {
+        let retVal = new ConfigurationObject('TextAdventure');
+
+        let inlinePlayers = !!this.playersLocation;
+        let inlineGameStates = !!this.gameStatesLocation;
+        let inlineLayouts = !!this.layoutsLocation;
+
+        retVal.properties.set('inlineplayers', inlinePlayers);
+        retVal.properties.set('inlinegamestate', inlineGameStates);
+        retVal.properties.set('inlineLayouts', inlineLayouts);
+
+        retVal.children.push(new ConfigurationObject('Name', this.gameName));
+        retVal.children.push(new ConfigurationObject('CurrentGameState', this.currentGameState));
+
+        if (this.transition) {
+            retVal.children.push(this.transition.convertToConfig());
+        }
+
+        if (inlinePlayers) {
+            let playersConfig = new ConfigurationObject('Players');
+            this.players.forEach((player) => {
+                playersConfig.children.push(player.convertToConfig());
+            });
+        } else {
+            // TODO
+        }
+
+        if (inlineGameStates) {
+            let gameStateConfig = new ConfigurationObject('GameStates');
+            this.gameStates.forEach((gameState) => {
+                gameStateConfig.children.push(gameState.convertToConfig());
+            });
+        } else {
+            // TODO
+        }
+
+        if (this.inlinelayout) {
+            let layoutConfig = new ConfigurationObject('Layouts');
+            this.layouts.forEach((layout) => {
+                layoutConfig.children.push(layout.convertToConfig());
+            });
+        } else {
+            // TODO
+        }
+
+        return retVal;
     }
 
     _convertGameStates(persistence) {

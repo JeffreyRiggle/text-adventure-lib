@@ -5,6 +5,7 @@ import {AttributePersistenceObject} from './player/attributePersistenceObject';
 import {CharacteristicPersistenceObject} from './player/characteristicPersistenceObject';
 import {PropertyPersistenceObject} from './player/propertyPersistenceObject';
 import {ModifyPlayerAction} from '../actions/modifyPlayerAction';
+import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
 
 export class ModifyPlayerPersistenceObject {
     convertFromPersistence(persistence) {
@@ -13,6 +14,31 @@ export class ModifyPlayerPersistenceObject {
                 this._convert(child);
             }
         }
+    }
+
+    convertToConfig() {
+        let retVal = new ConfigurationObject('Action');
+        retVal.properties.set('type', 'ModifyPlayer');
+
+        let params = new ConfigurationObject('Parameters');
+        params.children.push(new ConfigurationObject('PlayerName', this.playerName));
+        if (this.modificationType) {
+            params.children.push(new ConfigurationObject('ModificationType', this.modificationType));
+        }
+        if (this.modificationObject) {
+            params.children.push(new ConfigurationObject('ModificationObject', this.modificationObject));
+        }
+        params.children.push(new ConfigurationObject('Data', String(this.data)));
+        if (this.originalId) {
+            params.children.push(new ConfigurationObject('ID', this.originalId));
+        }
+        if (this.changeType) {
+            params.children.push(new ConfigurationObject('ChangeType', this.changeType));
+        }
+
+        retVal.children.push(params);
+
+        return retVal;
     }
 
     _convert(persistence) {
@@ -53,13 +79,15 @@ export class ModifyPlayerPersistenceObject {
     }
 
     _convertId(persistence) {
+        this.originalId = persistence.value;
+
         let valueType = persistence.properties.get('ValueType');
 
         if (valueType === 'bool') {
-            this.id = (persistence.value.toLowerCase() === 'true');
+            this.id = (this.originalId.toLowerCase() === 'true');
         }
         else if (valueType === 'int' || valueType === 'float' || valueType === 'double') {
-            this.id = Number(persistence.value);
+            this.id = Number(this.originalId);
         }
         else {
             this.id = this._attemptConversion(persistence);

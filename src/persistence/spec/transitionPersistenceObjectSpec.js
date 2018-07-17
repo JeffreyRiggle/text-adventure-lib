@@ -35,5 +35,23 @@ describe('TransitionPersistenceObject', function() {
         it('should have a media location', function() {
             expect(obj.mediaLocation).toBe(mediaLocation);
         });
+
+        describe('when object is converted to config', function() {
+            var config;
+
+            beforeEach(function() {
+                config = obj.convertToConfig();
+            });
+
+            it('should have the correct name', function() {
+                expect(config.name).toEqual('Transition');
+            });
+
+            it('should have the correct children', function() {
+                expect(config.children.length).toBe(2);
+                expect(config.children[0].value).toBe(displayType);
+                expect(config.children[1].value).toBe(mediaLocation);
+            });
+        });
     });
 });

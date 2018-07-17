@@ -1,4 +1,5 @@
 import {TextTrigger} from '../triggers/textTrigger';
+import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
 
 export class TextTriggerPersistenceObject {
     convertFromPersistence(persistence) {
@@ -7,6 +8,19 @@ export class TextTriggerPersistenceObject {
                 this._convert(child);
             }
         }
+    }
+
+    convertToConfig() {
+        let retVal = new ConfigurationObject('Trigger');
+        retVal.properties.set('type', 'Text');
+
+        let params = new ConfigurationObject('Parameters');
+        params.children.push(new ConfigurationObject('Text', this.text));
+        params.children.push(new ConfigurationObject('MatchType', this.matchType));
+        params.children.push(new ConfigurationObject('CaseSensitive', String(this.caseSensitive)));
+        retVal.children.push(params);
+
+        return retVal;
     }
 
     _convert(persistence) {

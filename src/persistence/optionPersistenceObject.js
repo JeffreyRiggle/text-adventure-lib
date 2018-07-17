@@ -1,6 +1,7 @@
 import { convertTrigger } from './convertTrigger';
 import { convertAction } from './convertAction';
 import { Option } from '../option/option';
+import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
 
 export class OptionPersistenceObject {
     constructor() {
@@ -16,6 +17,19 @@ export class OptionPersistenceObject {
                 this._convertAction(child);
             }
         }
+    }
+
+    convertToConfig() {
+        let retVal = new ConfigurationObject('Option');
+
+        let trigs = new ConfigurationObject('Triggers');
+        for (let trigger of this.triggers) {
+            trigs.children.push(trigger.convertToConfig());
+        }
+        retVal.children.push(trigs);
+        retVal.children.push(this.action.convertToConfig());
+
+        return retVal;
     }
 
     _convertTriggers(persistence) {

@@ -1,6 +1,7 @@
 import {MultiPartTrigger} from '../triggers/multiPartTrigger';
 import {TextTriggerPersistenceObject} from './textTriggerPersistenceObject';
 import {PlayerTriggerPersistenceObject} from './playerTriggerPersistenceObject';
+import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
 
 export class MultiPartTriggerPersistenceObject {
     constructor() {
@@ -13,6 +14,23 @@ export class MultiPartTriggerPersistenceObject {
                 this._convert(child);
             }
         }
+    }
+
+    convertToConfig() {
+        let retVal = new ConfigurationObject('Trigger');
+        retVal.properties.set('type', 'MultiPart');
+
+        let params = new ConfigurationObject('Parameters');
+        let trigs = new ConfigurationObject('Triggers');
+
+        for (let trig of this.triggers) {
+            trigs.children.push(trig.convertToConfig());
+        }
+        
+        params.children.push(trigs);
+        retVal.children.push(params);
+
+        return retVal;
     }
 
     _convert(persistence) {

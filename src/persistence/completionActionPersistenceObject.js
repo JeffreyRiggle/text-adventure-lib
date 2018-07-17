@@ -1,4 +1,5 @@
 import {CompletionAction} from '../actions/completionAction';
+import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
 
 export class CompletionActionPersistenceObject {
     convertFromPersistence(persistence) {
@@ -7,6 +8,17 @@ export class CompletionActionPersistenceObject {
                 this._convert(child);
             }
         }
+    }
+
+    convertToConfig() {
+        let retVal = new ConfigurationObject('Action');
+        retVal.properties.set('type', 'Completion');
+
+        let params = new ConfigurationObject('Parameters');
+        params.children.push(new ConfigurationObject('CompletionData', this.completionData));
+        retVal.children.push(params);
+
+        return retVal;
     }
 
     _convert(persistence) {

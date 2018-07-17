@@ -3,6 +3,13 @@ import {CompletionActionPersistenceObject} from './completionActionPersistenceOb
 import {ModifyPlayerPersistenceObject} from './modifyPlayerPersistenceObject';
 import {ScriptedActionPersistenceObject} from './scriptedActionPersistenceObject';
 import {FinishActionPersistenceObject} from './finishActionPersistenceObject';
+import { SaveActionPersistenceObject } from './saveActionPersistenceObject';
+
+let persistenceData = '';
+
+const setPersistenceData = (data) => {
+    persistenceData = data;
+};
 
 const convertAction = (persistence) => {
     let action;
@@ -28,10 +35,15 @@ const convertAction = (persistence) => {
         action = new FinishActionPersistenceObject();
         action.convertFromPersistence(persistence);
     }
+    if (type === 'Save') {
+        action = new SaveActionPersistenceObject();
+        action.convertFromPersistence(persistence, persistenceData);
+    }
 
     return action;
 };
 
 export {
-    convertAction
+    convertAction,
+    setPersistenceData
 };

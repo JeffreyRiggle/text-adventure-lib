@@ -145,5 +145,33 @@ describe('TextTriggerPersistenceObject', function() {
                 });
             });
         });
+
+        describe('when object is converted to config', function() {
+            var config;
+
+            beforeEach(function() {
+                config = obj.convertToConfig();
+            });
+
+            it('should have the correct name', function() {
+                expect(config.name).toEqual('Trigger');
+            });
+
+            it('should have the correct type', function() {
+                expect(config.properties.get('type')).toEqual('Text');
+            });
+
+            it('should have parameters', function() {
+                expect(config.children.length).toBe(1);
+                expect(config.children[0].name).toEqual('Parameters');
+                expect(config.children[0].children.length).toBe(3);
+                expect(config.children[0].children[0].name).toEqual('Text');
+                expect(config.children[0].children[0].value).toEqual(text);
+                expect(config.children[0].children[1].name).toEqual('MatchType');
+                expect(config.children[0].children[1].value).toEqual(matchType);
+                expect(config.children[0].children[2].name).toEqual('CaseSensitive');
+                expect(config.children[0].children[2].value).toEqual('false');
+            });
+        });
     });
 });

@@ -94,5 +94,26 @@ describe('OptionPersistenceObject', function() {
                 expect(option.triggers.length).toBe(1);
             });
         });
+
+        describe('when object is converted to config', function() {
+            var config;
+    
+            beforeEach(function() {
+                config = obj.convertToConfig();
+            });
+    
+            it('should have the correct name', function() {
+                expect(config.name).toEqual('Option');
+            });
+    
+            it('should have parameters', function() {
+                expect(config.children.length).toBe(2);
+                expect(config.children[0].name).toEqual('Triggers');
+                expect(config.children[0].children.length).toBe(1);
+                expect(config.children[0].children[0].name).toEqual('Trigger');
+                expect(config.children[1].name).toEqual('Action');
+                expect(config.children[1].children.length).toBe(1);
+            });
+        });
     });
 });

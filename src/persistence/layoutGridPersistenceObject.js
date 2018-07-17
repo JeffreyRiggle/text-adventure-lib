@@ -16,10 +16,25 @@ export class LayoutGridPersistenceObject {
         }
     }
 
+    convertToConfig() {
+        let retVal = new ConfigurationObject('LayoutGrid');
+
+        retVal.properties.set('rows', this.rows);
+        retVal.properties.set('columns', this.columns);
+
+        let nodes = new ConfigurationObject('LayoutNodes');
+        for (let node of this.nodes) {
+            nodes.children.push(node.convertToConfig());
+        }
+        retVal.children.push(nodes);
+        
+        return retVal;
+    }
+
     _convertNodes(persistence) {
-        for (let child of children) {
+        for (let child of persistence.children) {
             let node = new LayoutNodePersistenceObject();
-            node.convertFromPersistence(persistence);
+            node.convertFromPersistence(child);
             this.nodes.push(node);
         }
     }

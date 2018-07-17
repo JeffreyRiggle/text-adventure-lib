@@ -22,6 +22,26 @@ export class LayoutNodePersistenceObject {
         }
     }
 
+    convertToConfig() {
+        let retVal = new ConfigurationObject('LayoutNode');
+
+        retVal.properties.push('row', this.row);
+        retVal.properties.push('column', this.column);
+        retVal.properties.push('columnSpan', this.columnSpan);
+        retVal.properties.push('rowSpan', this.rowSpan);
+
+        retVal.children.push(new ConfigurationObject('NodeID', this.id));
+        retVal.children.push(new ConfigurationObject('LayoutValue', this.value));
+
+        let props = new ConfigurationObject('AssociatedProperties');
+        this.properties.forEach((value, key) => {
+            props.push(new ConfigurationObject(key, value));
+        });
+        retVal.children.push(props);
+
+        return retVal;
+    }
+
     _convertAssociatedProperties(persistence) {
         for (let child of persistence.children) {
             this.properties.set(child.name, child.value);

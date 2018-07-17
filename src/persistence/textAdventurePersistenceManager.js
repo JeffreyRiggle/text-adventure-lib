@@ -1,10 +1,16 @@
-import { load } from '../../node_modules/persist-lib/dist/main.js';
+import { load, convertConfigJSONToXML } from '../../node_modules/persist-lib/dist/main';
 import { TextAdventurePersistenceObject } from './textAdventurePersistenceObject';
+import { save } from '../core/fileManager';
+import { setPersistenceData } from './convertAction';
 
 export class TextAdventurePersistenceManager {
-    constructor(data) {
+    constructor(data, overridePersistence = true) {
         this.data = data;
         this.textAdventure = new TextAdventurePersistenceObject();
+
+        if (overridePersistence) {
+            setPersistenceData(data);
+        }
     }
 
     load() {
@@ -12,7 +18,9 @@ export class TextAdventurePersistenceManager {
         this.textAdventure.convertFromPersistence(persist);
     }
 
-    save() {
-
+    save(fileName) {
+        let ser = new XMLSerializer();
+        let data = ser.serializeToString(convertConfigJSONToXML(this.textAdventure.convertToConfig()));
+        save(data, fileName);
     }
 }

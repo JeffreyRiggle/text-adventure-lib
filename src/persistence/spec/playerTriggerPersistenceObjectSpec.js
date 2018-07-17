@@ -108,5 +108,39 @@ describe('PlayerTriggerPersistenceObject', function() {
                 expect(trigger.shouldFire(data)).toBe(true);
             });
         });
+
+        describe('when object is converted to config', function() {
+            var config;
+
+            beforeEach(function() {
+                config = obj.convertToConfig();
+            });
+
+            it('should have the correct name', function() {
+                expect(config.name).toEqual('Trigger');
+            });
+
+            it('should have the correct type', function() {
+                expect(config.properties.get('type')).toEqual('Player');
+            });
+
+            it('should have parameters', function() {
+                expect(config.children.length).toBe(1);
+                expect(config.children[0].name).toEqual('Parameters');
+                expect(config.children[0].children.length).toBe(6);
+                expect(config.children[0].children[0].name).toEqual('PlayerName');
+                expect(config.children[0].children[0].value).toEqual(playerName);
+                expect(config.children[0].children[1].name).toEqual('ModificationObject');
+                expect(config.children[0].children[1].value).toEqual(modificationObject);
+                expect(config.children[0].children[2].name).toEqual('ID');
+                expect(config.children[0].children[2].value).toEqual(id);
+                expect(config.children[0].children[3].name).toEqual('Condition');
+                expect(config.children[0].children[3].value).toEqual(condition);
+                expect(config.children[0].children[4].name).toEqual('DataMember');
+                expect(config.children[0].children[4].value).toEqual(datamember);
+                expect(config.children[0].children[5].name).toEqual('ComparisionData');
+                expect(config.children[0].children[5].value).toEqual(comparisonData);
+            });
+        });
     });
 });

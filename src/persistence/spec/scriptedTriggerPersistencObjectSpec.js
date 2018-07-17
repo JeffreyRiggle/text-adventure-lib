@@ -44,5 +44,29 @@ describe('ScriptedTriggerPersistenceObject', function() {
                 expect(trigger.shouldFire({})).toBe(true);
             });
         });
+
+        describe('when object is converted to config', function() {
+            var config;
+
+            beforeEach(function() {
+                config = obj.convertToConfig();
+            });
+
+            it('should have the correct name', function() {
+                expect(config.name).toEqual('Trigger');
+            });
+
+            it('should have the correct type', function() {
+                expect(config.properties.get('type')).toEqual('Script');
+            });
+
+            it('should have parameters', function() {
+                expect(config.children.length).toBe(1);
+                expect(config.children[0].name).toEqual('Parameters');
+                expect(config.children[0].children.length).toBe(1);
+                expect(config.children[0].children[0].name).toEqual('Script');
+                expect(config.children[0].children[0].value).toEqual(encodedScript);
+            });
+        });
     });
 });

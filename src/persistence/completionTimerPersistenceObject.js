@@ -1,5 +1,6 @@
 import {CompletionAction} from '../actions/completionAction';
 import {TimedAction} from '../timers/timedAction';
+import {ConfigurationObject} from '../../node_modules/persist-lib/dist/main';
 
 export class CompletionTimerPersistenceObject {
     convertFromPersistence(persistence) {
@@ -11,6 +12,16 @@ export class CompletionTimerPersistenceObject {
                 this.duration = Number(child.value);
             }
         }
+    }
+
+    convertToConfig() {
+        let retVal = new ConfigurationObject('Timer');
+        retVal.properties.set('type', 'Completion');
+
+        retVal.children.push(new ConfigurationObject('CompletionData', this.completionData));
+        retVal.children.push(new ConfigurationObject('Duration', String(this.duration)));
+
+        return retVal;
     }
 
     convertToTimer() {

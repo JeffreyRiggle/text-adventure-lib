@@ -70,32 +70,38 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 67);
+/******/ 	return __webpack_require__(__webpack_require__.s = 71);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(68);
-} else {
-  module.exports = __webpack_require__(69);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+!function(e,t){if(true)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var n=t();for(var o in n)("object"==typeof exports?exports:e)[o]=n[o]}}("undefined"!=typeof self?self:this,function(){return function(e){var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}return n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:o})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=1)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();t.ConfigurationObject=function(){function e(t,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.name=t,this.value=n,this.children=[],this.properties=new Map}return o(e,[{key:"load",value:function(e){var t=this;e.childNodes.forEach(function(e,n,o){1===e.nodeType&&t._loadChild(e),3===e.nodeType&&(t.value=e.textContent)}),this._loadAttributes(e)}},{key:"_loadChild",value:function(t){var n=new e(t.nodeName);n.load(t),this.children.push(n)}},{key:"_loadAttributes",value:function(e){for(var t=0;t<e.attributes.length;t++){var n=e.attributes[t];this.properties.set(n.name,n.value)}}}]),e}()},function(e,t,n){"use strict";var o=n(2),r=n(0);e.exports={load:o.load,convertConfigJSONToXML:o.convertConfigJSONToXML,ConfigurationObject:r.ConfigurationObject}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.convertConfigJSONToXML=t.load=void 0;var o=n(0);t.load=function(e,t){if(t.toLowerCase().includes("json"))return n=e,void JSON.parse(n);var n;if(t.toLowerCase().includes("xml"))return function(e){var t=(new DOMParser).parseFromString(e,"text/xml"),n=new o.ConfigurationObject(t.documentElement.tagName);return t.documentElement.childNodes.forEach(function(e,t,r){var i=new o.ConfigurationObject(e.tagName);i.load(e),n.children.push(i)}),n}(e);throw"Invalid data type"},t.convertConfigJSONToXML=function(e){var t="<"+e.name+"></"+e.name+">",n=(new DOMParser).parseFromString(t,"text/xml"),o=n.documentElement;return e.value&&(o.innerHTML=e.value),e.properties.forEach(function(e,t){o.setAttribute(t,e)}),e.children.forEach(function(e){!function e(t,n,o){var r=t.createElement(o.name);o.value&&(r.innerHTML=o.value),o.properties.forEach(function(e,t){r.setAttribute(t,e)}),n.appendChild(r),o.children.forEach(function(n){e(t,r,n)})}(n,o,e)}),n}}])});
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-!function(e,t){if(true)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)("object"==typeof exports?exports:e)[r]=n[r]}}("undefined"!=typeof self?self:this,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var i=t[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=4)}([function(e,t){function n(){this._events=this._events||{},this._maxListeners=this._maxListeners||void 0}function r(e){return"function"==typeof e}function i(e){return"object"==typeof e&&null!==e}function o(e){return void 0===e}e.exports=n,n.EventEmitter=n,n.prototype._events=void 0,n.prototype._maxListeners=void 0,n.defaultMaxListeners=10,n.prototype.setMaxListeners=function(e){if("number"!=typeof e||e<0||isNaN(e))throw TypeError("n must be a positive number");return this._maxListeners=e,this},n.prototype.emit=function(e){var t,n,s,u,a,c;if(this._events||(this._events={}),"error"===e&&(!this._events.error||i(this._events.error)&&!this._events.error.length)){if((t=arguments[1])instanceof Error)throw t;var f=new Error('Uncaught, unspecified "error" event. ('+t+")");throw f.context=t,f}if(o(n=this._events[e]))return!1;if(r(n))switch(arguments.length){case 1:n.call(this);break;case 2:n.call(this,arguments[1]);break;case 3:n.call(this,arguments[1],arguments[2]);break;default:u=Array.prototype.slice.call(arguments,1),n.apply(this,u)}else if(i(n))for(u=Array.prototype.slice.call(arguments,1),s=(c=n.slice()).length,a=0;a<s;a++)c[a].apply(this,u);return!0},n.prototype.addListener=function(e,t){var s;if(!r(t))throw TypeError("listener must be a function");return this._events||(this._events={}),this._events.newListener&&this.emit("newListener",e,r(t.listener)?t.listener:t),this._events[e]?i(this._events[e])?this._events[e].push(t):this._events[e]=[this._events[e],t]:this._events[e]=t,i(this._events[e])&&!this._events[e].warned&&(s=o(this._maxListeners)?n.defaultMaxListeners:this._maxListeners)&&s>0&&this._events[e].length>s&&(this._events[e].warned=!0,console.error("(node) warning: possible EventEmitter memory leak detected. %d listeners added. Use emitter.setMaxListeners() to increase limit.",this._events[e].length),"function"==typeof console.trace&&console.trace()),this},n.prototype.on=n.prototype.addListener,n.prototype.once=function(e,t){if(!r(t))throw TypeError("listener must be a function");var n=!1;function i(){this.removeListener(e,i),n||(n=!0,t.apply(this,arguments))}return i.listener=t,this.on(e,i),this},n.prototype.removeListener=function(e,t){var n,o,s,u;if(!r(t))throw TypeError("listener must be a function");if(!this._events||!this._events[e])return this;if(s=(n=this._events[e]).length,o=-1,n===t||r(n.listener)&&n.listener===t)delete this._events[e],this._events.removeListener&&this.emit("removeListener",e,t);else if(i(n)){for(u=s;u-- >0;)if(n[u]===t||n[u].listener&&n[u].listener===t){o=u;break}if(o<0)return this;1===n.length?(n.length=0,delete this._events[e]):n.splice(o,1),this._events.removeListener&&this.emit("removeListener",e,t)}return this},n.prototype.removeAllListeners=function(e){var t,n;if(!this._events)return this;if(!this._events.removeListener)return 0===arguments.length?this._events={}:this._events[e]&&delete this._events[e],this;if(0===arguments.length){for(t in this._events)"removeListener"!==t&&this.removeAllListeners(t);return this.removeAllListeners("removeListener"),this._events={},this}if(r(n=this._events[e]))this.removeListener(e,n);else if(n)for(;n.length;)this.removeListener(e,n[n.length-1]);return delete this._events[e],this},n.prototype.listeners=function(e){return this._events&&this._events[e]?r(this._events[e])?[this._events[e]]:this._events[e].slice():[]},n.prototype.listenerCount=function(e){if(this._events){var t=this._events[e];if(r(t))return 1;if(t)return t.length}return 0},n.listenerCount=function(e,t){return e.listenerCount(t)}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);var o=function(e){function t(e,n,r){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var i=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return i.name=e,i.description=n,i._value=r,i}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"changedEvent",get:function(){return"onChanged"}},{key:"value",get:function(){return this._value},set:function(e){this._value=e,this.emit(this.changedEvent,this._value)}}]),t}();t.default=o},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Equipment=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);t.Equipment=function(e){function t(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var e=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.equiped=new Map,e}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"equip",value:function(e,t){var n={bodypart:e,item:t};this.equiped.has(e)?(this.equiped.set(e,t),this.emit(this.changedEvent,{added:[],changed:[n],removed:[]})):(this.equiped.set(e,t),this.emit(this.changedEvent,{added:[n],changed:[],removed:[]}))}},{key:"unequip",value:function(e){var t=this.equiped.get(e);if(t){var n={item:t,bodypart:e};return this.equiped.delete(e),this.emit(this.changedEvent,{added:[],changed:[],removed:[n]}),t}}},{key:"getEquip",value:function(e){return this.equiped.get(e)}},{key:"changedEvent",get:function(){return"onChanged"}}]),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Inventory=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);t.Inventory=function(e){function t(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var e=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.itemMap=new Map,e}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"addItem",value:function(e,t){this.itemMap.set(e,t),this.emit(this.changedEvent,{added:[e],changed:[],removed:[]})}},{key:"removeItem",value:function(e){this.itemMap.delete(e)&&this.emit(this.changedEvent,{added:[],changed:[],removed:[e]})}},{key:"getItemAmount",value:function(e){return this.itemMap.get(e)}},{key:"setItemAmount",value:function(e,t){this.itemMap.has(e)&&this.itemMap.set(e,t)}},{key:"clearItems",value:function(){var e=this.itemMap.keys();this.itemMap.clear(),this.emit(this.changedEvent,{added:[],changed:[],removed:e})}},{key:"changedEvent",get:function(){return"onChanged"}},{key:"items",get:function(){return this.itemMap.keys()}}]),t}()},function(e,t,n){"use strict";var r=n(5),i=n(6),o=n(7),s=n(2),u=n(3),a=n(8),c=n(9),f=n(10);e.exports={Attribute:r.Attribute,BodyPart:i.BodyPart,Characteristic:o.Characteristic,Equipment:s.Equipment,Inventory:u.Inventory,Item:a.Item,Player:c.Player,Property:f.Property}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Attribute=void 0;var r,i=n(1),o=(r=i)&&r.__esModule?r:{default:r};t.Attribute=function(e){function t(e,n,r){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e,n,r))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.BodyPart=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);t.BodyPart=function(e){function t(e,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var r=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return r.name=e,r.description=n,r.characteristics=[],r}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"addCharacteristic",value:function(e){this.characteristics.push(e),this.emit(this.changedEvent,this)}},{key:"removeCharacteristic",value:function(e){var t=this.characteristics.indexOf(e);-1!==t&&(this.characteristics.splice(t,1),this.emit(this.changedEvent,this))}},{key:"clearCharacteristic",value:function(){this.characteristics=[],this.emit(this.changedEvent,this)}},{key:"changedEvent",get:function(){return"onChanged"}}]),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Characteristic=void 0;var r,i=n(1),o=(r=i)&&r.__esModule?r:{default:r};t.Characteristic=function(e){function t(e,n,r){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e,n,r))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Item=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);t.Item=function(e){function t(e,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var r=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return r.properties=[],r.name=e,r.description=n,r}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"addProperty",value:function(e){this.properties.push(e),this.emit(this.changedEvent,this)}},{key:"removeProperty",value:function(e){var t=this.properties.indexOf(e);-1!==t&&(this.properties.splice(t,1),this.emit(this.changedEvent,this))}},{key:"clearProperties",value:function(){this.properties=[],this.emit(this.changedEvent,this)}},{key:"changedEvent",get:function(){return"onChanged"}}]),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Player=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),o=n(2),s=n(0);t.Player=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return n.name=e,n.inventory=new i.Inventory,n.equipment=new o.Equipment,n.bodyParts=[],n.characteristics=[],n.attributes=[],n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.EventEmitter),r(t,[{key:"addBodyPart",value:function(e){this.bodyParts.push(e)}},{key:"removeBodyPart",value:function(e){var t=this.bodyParts.indexOf(e);-1!==t&&this.bodyParts.splice(t,1)}},{key:"clearBodyParts",value:function(){this.bodyParts=[]}},{key:"addCharacteristic",value:function(e){this.characteristics.push(e)}},{key:"removeCharacteristic",value:function(e){var t=this.characteristics.indexOf(e);-1!==t&&this.characteristics.splice(t,1)}},{key:"clearCharacteristics",value:function(){this.characteristics=[]}},{key:"addAttribute",value:function(e){this.attributes.push(e)}},{key:"removeAttribute",value:function(e){var t=this.attributes.indexOf(e);-1!==t&&this.attributes.splice(t,1)}},{key:"clearAttributes",value:function(){this.attributes=[]}}]),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Property=void 0;var r,i=n(1),o=(r=i)&&r.__esModule?r:{default:r};t.Property=function(e){function t(e,n,r){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e,n,r))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default),t}()}])});
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(72);
+} else {
+  module.exports = __webpack_require__(73);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){if(true)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)("object"==typeof exports?exports:e)[r]=n[r]}}("undefined"!=typeof self?self:this,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var i=t[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=4)}([function(e,t){function n(){this._events=this._events||{},this._maxListeners=this._maxListeners||void 0}function r(e){return"function"==typeof e}function i(e){return"object"==typeof e&&null!==e}function o(e){return void 0===e}e.exports=n,n.EventEmitter=n,n.prototype._events=void 0,n.prototype._maxListeners=void 0,n.defaultMaxListeners=10,n.prototype.setMaxListeners=function(e){if("number"!=typeof e||e<0||isNaN(e))throw TypeError("n must be a positive number");return this._maxListeners=e,this},n.prototype.emit=function(e){var t,n,s,u,a,c;if(this._events||(this._events={}),"error"===e&&(!this._events.error||i(this._events.error)&&!this._events.error.length)){if((t=arguments[1])instanceof Error)throw t;var f=new Error('Uncaught, unspecified "error" event. ('+t+")");throw f.context=t,f}if(o(n=this._events[e]))return!1;if(r(n))switch(arguments.length){case 1:n.call(this);break;case 2:n.call(this,arguments[1]);break;case 3:n.call(this,arguments[1],arguments[2]);break;default:u=Array.prototype.slice.call(arguments,1),n.apply(this,u)}else if(i(n))for(u=Array.prototype.slice.call(arguments,1),s=(c=n.slice()).length,a=0;a<s;a++)c[a].apply(this,u);return!0},n.prototype.addListener=function(e,t){var s;if(!r(t))throw TypeError("listener must be a function");return this._events||(this._events={}),this._events.newListener&&this.emit("newListener",e,r(t.listener)?t.listener:t),this._events[e]?i(this._events[e])?this._events[e].push(t):this._events[e]=[this._events[e],t]:this._events[e]=t,i(this._events[e])&&!this._events[e].warned&&(s=o(this._maxListeners)?n.defaultMaxListeners:this._maxListeners)&&s>0&&this._events[e].length>s&&(this._events[e].warned=!0,console.error("(node) warning: possible EventEmitter memory leak detected. %d listeners added. Use emitter.setMaxListeners() to increase limit.",this._events[e].length),"function"==typeof console.trace&&console.trace()),this},n.prototype.on=n.prototype.addListener,n.prototype.once=function(e,t){if(!r(t))throw TypeError("listener must be a function");var n=!1;function i(){this.removeListener(e,i),n||(n=!0,t.apply(this,arguments))}return i.listener=t,this.on(e,i),this},n.prototype.removeListener=function(e,t){var n,o,s,u;if(!r(t))throw TypeError("listener must be a function");if(!this._events||!this._events[e])return this;if(s=(n=this._events[e]).length,o=-1,n===t||r(n.listener)&&n.listener===t)delete this._events[e],this._events.removeListener&&this.emit("removeListener",e,t);else if(i(n)){for(u=s;u-- >0;)if(n[u]===t||n[u].listener&&n[u].listener===t){o=u;break}if(o<0)return this;1===n.length?(n.length=0,delete this._events[e]):n.splice(o,1),this._events.removeListener&&this.emit("removeListener",e,t)}return this},n.prototype.removeAllListeners=function(e){var t,n;if(!this._events)return this;if(!this._events.removeListener)return 0===arguments.length?this._events={}:this._events[e]&&delete this._events[e],this;if(0===arguments.length){for(t in this._events)"removeListener"!==t&&this.removeAllListeners(t);return this.removeAllListeners("removeListener"),this._events={},this}if(r(n=this._events[e]))this.removeListener(e,n);else if(n)for(;n.length;)this.removeListener(e,n[n.length-1]);return delete this._events[e],this},n.prototype.listeners=function(e){return this._events&&this._events[e]?r(this._events[e])?[this._events[e]]:this._events[e].slice():[]},n.prototype.listenerCount=function(e){if(this._events){var t=this._events[e];if(r(t))return 1;if(t)return t.length}return 0},n.listenerCount=function(e,t){return e.listenerCount(t)}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);var o=function(e){function t(e,n,r){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var i=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return i.name=e,i.description=n,i._value=r,i}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"changedEvent",get:function(){return"onChanged"}},{key:"value",get:function(){return this._value},set:function(e){this._value=e,this.emit(this.changedEvent,this._value)}}]),t}();t.default=o},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Equipment=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);t.Equipment=function(e){function t(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var e=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.equiped=new Map,e}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"equip",value:function(e,t){var n={bodypart:e,item:t};this.equiped.has(e)?(this.equiped.set(e,t),this.emit(this.changedEvent,{added:[],changed:[n],removed:[]})):(this.equiped.set(e,t),this.emit(this.changedEvent,{added:[n],changed:[],removed:[]}))}},{key:"unequip",value:function(e){var t=this.equiped.get(e);if(t){var n={item:t,bodypart:e};return this.equiped.delete(e),this.emit(this.changedEvent,{added:[],changed:[],removed:[n]}),t}}},{key:"getEquip",value:function(e){return this.equiped.get(e)}},{key:"changedEvent",get:function(){return"onChanged"}}]),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Inventory=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);t.Inventory=function(e){function t(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var e=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.itemMap=new Map,e}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"addItem",value:function(e,t){this.itemMap.set(e,t),this.emit(this.changedEvent,{added:[e],changed:[],removed:[]})}},{key:"removeItem",value:function(e){this.itemMap.delete(e)&&this.emit(this.changedEvent,{added:[],changed:[],removed:[e]})}},{key:"getItemAmount",value:function(e){return this.itemMap.get(e)}},{key:"setItemAmount",value:function(e,t){this.itemMap.has(e)&&this.itemMap.set(e,t)}},{key:"clearItems",value:function(){var e=this.itemMap.keys();this.itemMap.clear(),this.emit(this.changedEvent,{added:[],changed:[],removed:e})}},{key:"changedEvent",get:function(){return"onChanged"}},{key:"items",get:function(){return this.itemMap.keys()}}]),t}()},function(e,t,n){"use strict";var r=n(5),i=n(6),o=n(7),s=n(2),u=n(3),a=n(8),c=n(9),f=n(10);e.exports={Attribute:r.Attribute,BodyPart:i.BodyPart,Characteristic:o.Characteristic,Equipment:s.Equipment,Inventory:u.Inventory,Item:a.Item,Player:c.Player,Property:f.Property}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Attribute=void 0;var r,i=n(1),o=(r=i)&&r.__esModule?r:{default:r};t.Attribute=function(e){function t(e,n,r){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e,n,r))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.BodyPart=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);t.BodyPart=function(e){function t(e,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var r=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return r.name=e,r.description=n,r.characteristics=[],r}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"addCharacteristic",value:function(e){this.characteristics.push(e),this.emit(this.changedEvent,this)}},{key:"removeCharacteristic",value:function(e){var t=this.characteristics.indexOf(e);-1!==t&&(this.characteristics.splice(t,1),this.emit(this.changedEvent,this))}},{key:"clearCharacteristic",value:function(){this.characteristics=[],this.emit(this.changedEvent,this)}},{key:"changedEvent",get:function(){return"onChanged"}}]),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Characteristic=void 0;var r,i=n(1),o=(r=i)&&r.__esModule?r:{default:r};t.Characteristic=function(e){function t(e,n,r){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e,n,r))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Item=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);t.Item=function(e){function t(e,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var r=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return r.properties=[],r.name=e,r.description=n,r}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"addProperty",value:function(e){this.properties.push(e),this.emit(this.changedEvent,this)}},{key:"removeProperty",value:function(e){var t=this.properties.indexOf(e);-1!==t&&(this.properties.splice(t,1),this.emit(this.changedEvent,this))}},{key:"clearProperties",value:function(){this.properties=[],this.emit(this.changedEvent,this)}},{key:"changedEvent",get:function(){return"onChanged"}}]),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Player=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),o=n(2),s=n(0);t.Player=function(e){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var n=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return n.name=e,n.inventory=new i.Inventory,n.equipment=new o.Equipment,n.bodyParts=[],n.characteristics=[],n.attributes=[],n}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,s.EventEmitter),r(t,[{key:"addBodyPart",value:function(e){this.bodyParts.push(e)}},{key:"removeBodyPart",value:function(e){var t=this.bodyParts.indexOf(e);-1!==t&&this.bodyParts.splice(t,1)}},{key:"clearBodyParts",value:function(){this.bodyParts=[]}},{key:"addCharacteristic",value:function(e){this.characteristics.push(e)}},{key:"removeCharacteristic",value:function(e){var t=this.characteristics.indexOf(e);-1!==t&&this.characteristics.splice(t,1)}},{key:"clearCharacteristics",value:function(){this.characteristics=[]}},{key:"addAttribute",value:function(e){this.attributes.push(e)}},{key:"removeAttribute",value:function(e){var t=this.attributes.indexOf(e);-1!==t&&this.attributes.splice(t,1)}},{key:"clearAttributes",value:function(){this.attributes=[]}}]),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Property=void 0;var r,i=n(1),o=(r=i)&&r.__esModule?r:{default:r};t.Property=function(e){function t(e,n,r){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e,n,r))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,o.default),t}()}])});
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -285,66 +291,6 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
-
-var validateFormat = function validateFormat(format) {};
-
-if (process.env.NODE_ENV !== 'production') {
-  validateFormat = function validateFormat(format) {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-  };
-}
-
-function invariant(condition, format, a, b, c, d, e, f) {
-  validateFormat(format);
-
-  if (!condition) {
-    var error;
-    if (format === undefined) {
-      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-    } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(format.replace(/%s/g, function () {
-        return args[argIndex++];
-      }));
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // we don't care about invariant's own frame
-    throw error;
-  }
-}
-
-module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -400,7 +346,7 @@ exports.TextView = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -554,6 +500,66 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var validateFormat = function validateFormat(format) {};
+
+if (process.env.NODE_ENV !== 'production') {
+  validateFormat = function validateFormat(format) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  };
+}
+
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+module.exports = invariant;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
 var emptyObject = {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -561,16 +567,16 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = emptyObject;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -583,9 +589,9 @@ exports.ContentView = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-__webpack_require__(8);
+__webpack_require__(9);
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -633,7 +639,216 @@ var ContentView = exports.ContentView = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 10 */
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.BodyPartPersistenceObject = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _main = __webpack_require__(2);
+
+var _characteristicPersistenceObject = __webpack_require__(12);
+
+var _main2 = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var NAME = 'Name',
+    DESCRIPTION = 'Description',
+    CHARACTERISTICS = 'Characteristics';
+
+var BodyPartPersistenceObject = exports.BodyPartPersistenceObject = function () {
+    function BodyPartPersistenceObject(bodyPart) {
+        _classCallCheck(this, BodyPartPersistenceObject);
+
+        this.characteristics = [];
+
+        if (bodyPart) {
+            convertToPersistence(bodyPart);
+        }
+    }
+
+    _createClass(BodyPartPersistenceObject, [{
+        key: 'convertFromPersistence',
+        value: function convertFromPersistence(persistence) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var child = _step.value;
+
+                    if (child.name === NAME) {
+                        this.name = child.value;
+                    }
+                    if (child.name === DESCRIPTION) {
+                        this.description = child.value;
+                    }
+                    if (child.name === CHARACTERISTICS) {
+                        this._convertCharacteristics(child);
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToPersistence',
+        value: function convertToPersistence(bodyPart) {
+            this.name = bodyPart.name;
+            this.description = bodyPart.description;
+
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = bodyPart.characteristics[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var chr = _step2.value;
+
+                    this.characteristics.push(new _characteristicPersistenceObject.CharacteristicPersistenceObject(chr));
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main2.ConfigurationObject('BodyPart');
+
+            retVal.children.push(new _main2.ConfigurationObject(NAME, this.name));
+            retVal.children.push(new _main2.ConfigurationObject(DESCRIPTION, this.description));
+
+            var chrs = new _main2.ConfigurationObject(CHARACTERISTICS);
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+                for (var _iterator3 = this.characteristics[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var chr = _step3.value;
+
+                    chrs.children.push(chr.convertToConfig());
+                }
+            } catch (err) {
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
+                    }
+                } finally {
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
+                    }
+                }
+            }
+
+            retVal.children.push(chrs);
+
+            return retVal;
+        }
+    }, {
+        key: '_convertCharacteristics',
+        value: function _convertCharacteristics(persistence) {
+            var _iteratorNormalCompletion4 = true;
+            var _didIteratorError4 = false;
+            var _iteratorError4 = undefined;
+
+            try {
+                for (var _iterator4 = persistence.children[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var child = _step4.value;
+
+                    var chr = new _characteristicPersistenceObject.CharacteristicPersistenceObject();
+                    chr.convertFromPersistence(child);
+                    this.characteristics.push(chr);
+                }
+            } catch (err) {
+                _didIteratorError4 = true;
+                _iteratorError4 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                        _iterator4.return();
+                    }
+                } finally {
+                    if (_didIteratorError4) {
+                        throw _iteratorError4;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToBodyPart',
+        value: function convertToBodyPart() {
+            var bp = new _main.BodyPart(this.name, this.description);
+
+            var _iteratorNormalCompletion5 = true;
+            var _didIteratorError5 = false;
+            var _iteratorError5 = undefined;
+
+            try {
+                for (var _iterator5 = this.characteristics[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                    var chr = _step5.value;
+
+                    bp.addCharacteristic(chr.convertToCharacteristic());
+                }
+            } catch (err) {
+                _didIteratorError5 = true;
+                _iteratorError5 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                        _iterator5.return();
+                    }
+                } finally {
+                    if (_didIteratorError5) {
+                        throw _iteratorError5;
+                    }
+                }
+            }
+
+            return bp;
+        }
+    }]);
+
+    return BodyPartPersistenceObject;
+}();
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -646,9 +861,9 @@ exports.CharacteristicPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _namedPersistenceObject = __webpack_require__(18);
+var _namedPersistenceObject = __webpack_require__(19);
 
-var _main = __webpack_require__(1);
+var _main = __webpack_require__(2);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -659,10 +874,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var CharacteristicPersistenceObject = exports.CharacteristicPersistenceObject = function (_NamedPersistenceObje) {
     _inherits(CharacteristicPersistenceObject, _NamedPersistenceObje);
 
-    function CharacteristicPersistenceObject() {
+    function CharacteristicPersistenceObject(characteristic) {
         _classCallCheck(this, CharacteristicPersistenceObject);
 
-        return _possibleConstructorReturn(this, (CharacteristicPersistenceObject.__proto__ || Object.getPrototypeOf(CharacteristicPersistenceObject)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (CharacteristicPersistenceObject.__proto__ || Object.getPrototypeOf(CharacteristicPersistenceObject)).call(this, 'Characteristic'));
+
+        if (characteristic) {
+            _this.convertToPersistence(characteristic);
+        }
+        return _this;
     }
 
     _createClass(CharacteristicPersistenceObject, [{
@@ -676,7 +896,7 @@ var CharacteristicPersistenceObject = exports.CharacteristicPersistenceObject = 
 }(_namedPersistenceObject.NamedPersistenceObject);
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -689,9 +909,11 @@ exports.ItemPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _main = __webpack_require__(1);
+var _main = __webpack_require__(2);
 
 var _propertyPersistenceObject = __webpack_require__(20);
+
+var _main2 = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -701,10 +923,14 @@ var NAME = 'Name',
     AMOUNT = 'Amount';
 
 var ItemPersistenceObject = exports.ItemPersistenceObject = function () {
-    function ItemPersistenceObject() {
+    function ItemPersistenceObject(item) {
         _classCallCheck(this, ItemPersistenceObject);
 
         this.properties = [];
+
+        if (item) {
+            this.convertToPersistence(item);
+        }
     }
 
     _createClass(ItemPersistenceObject, [{
@@ -746,19 +972,20 @@ var ItemPersistenceObject = exports.ItemPersistenceObject = function () {
             this.amount = persistence.properties.get(AMOUNT);
         }
     }, {
-        key: '_convertProperties',
-        value: function _convertProperties(persistence) {
+        key: 'convertToPersistence',
+        value: function convertToPersistence(item) {
+            this.name = item.name;
+            this.description = item.description;
+
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
+                for (var _iterator2 = item.properties[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var prop = _step2.value;
 
-                    var prop = new _propertyPersistenceObject.PropertyPersistenceObject();
-                    prop.convertFromPersistence(child);
-                    this.properties.push(prop);
+                    this.properties.push(new _propertyPersistenceObject.PropertyPersistenceObject(prop));
                 }
             } catch (err) {
                 _didIteratorError2 = true;
@@ -776,10 +1003,14 @@ var ItemPersistenceObject = exports.ItemPersistenceObject = function () {
             }
         }
     }, {
-        key: 'convertToItem',
-        value: function convertToItem() {
-            var item = new _main.Item(this.name, this.description);
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main2.ConfigurationObject('Item');
 
+            retVal.children.push(new _main2.ConfigurationObject(NAME, this.name));
+            retVal.children.push(new _main2.ConfigurationObject(DESCRIPTION, this.description));
+
+            var props = new _main2.ConfigurationObject(PROPERTIES);
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
             var _iteratorError3 = undefined;
@@ -788,7 +1019,7 @@ var ItemPersistenceObject = exports.ItemPersistenceObject = function () {
                 for (var _iterator3 = this.properties[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
                     var prop = _step3.value;
 
-                    item.addProperty(prop.convertToProperty());
+                    props.children.push(prop.convertToConfig());
                 }
             } catch (err) {
                 _didIteratorError3 = true;
@@ -805,6 +1036,70 @@ var ItemPersistenceObject = exports.ItemPersistenceObject = function () {
                 }
             }
 
+            retVal.children.push(props);
+
+            return retVal;
+        }
+    }, {
+        key: '_convertProperties',
+        value: function _convertProperties(persistence) {
+            var _iteratorNormalCompletion4 = true;
+            var _didIteratorError4 = false;
+            var _iteratorError4 = undefined;
+
+            try {
+                for (var _iterator4 = persistence.children[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var child = _step4.value;
+
+                    var prop = new _propertyPersistenceObject.PropertyPersistenceObject();
+                    prop.convertFromPersistence(child);
+                    this.properties.push(prop);
+                }
+            } catch (err) {
+                _didIteratorError4 = true;
+                _iteratorError4 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                        _iterator4.return();
+                    }
+                } finally {
+                    if (_didIteratorError4) {
+                        throw _iteratorError4;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToItem',
+        value: function convertToItem() {
+            var item = new _main.Item(this.name, this.description);
+
+            var _iteratorNormalCompletion5 = true;
+            var _didIteratorError5 = false;
+            var _iteratorError5 = undefined;
+
+            try {
+                for (var _iterator5 = this.properties[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                    var prop = _step5.value;
+
+                    item.addProperty(prop.convertToProperty());
+                }
+            } catch (err) {
+                _didIteratorError5 = true;
+                _iteratorError5 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                        _iterator5.return();
+                    }
+                } finally {
+                    if (_didIteratorError5) {
+                        throw _iteratorError5;
+                    }
+                }
+            }
+
             return item;
         }
     }]);
@@ -813,76 +1108,7 @@ var ItemPersistenceObject = exports.ItemPersistenceObject = function () {
 }();
 
 /***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-var emptyFunction = __webpack_require__(4);
-
-/**
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
-
-var warning = emptyFunction;
-
-if (process.env.NODE_ENV !== 'production') {
-  var printWarning = function printWarning(format) {
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    var argIndex = 0;
-    var message = 'Warning: ' + format.replace(/%s/g, function () {
-      return args[argIndex++];
-    });
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-
-  warning = function warning(condition, format) {
-    if (format === undefined) {
-      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-    }
-
-    if (format.indexOf('Failed Composite propType: ') === 0) {
-      return; // Ignore CompositeComponent proptype check.
-    }
-
-    if (!condition) {
-      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-        args[_key2 - 2] = arguments[_key2];
-      }
-
-      printWarning.apply(undefined, [format].concat(args));
-    }
-  };
-}
-
-module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -1190,7 +1416,7 @@ function isUndefined(arg) {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1203,7 +1429,7 @@ exports.CompletionAction = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _events = __webpack_require__(13);
+var _events = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1239,7 +1465,7 @@ var CompletionAction = exports.CompletionAction = function (_EventEmitter) {
 }(_events.EventEmitter);
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1252,11 +1478,11 @@ exports.ButtonInput = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(8);
+__webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1308,7 +1534,7 @@ var ButtonInput = exports.ButtonInput = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1321,7 +1547,7 @@ exports.TextInput = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1399,7 +1625,7 @@ var TextInput = exports.TextInput = function (_React$Component) {
 }(_react2.default.Component);
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1412,9 +1638,9 @@ exports.AttributePersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _namedPersistenceObject = __webpack_require__(18);
+var _namedPersistenceObject = __webpack_require__(19);
 
-var _main = __webpack_require__(1);
+var _main = __webpack_require__(2);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1425,10 +1651,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var AttributePersistenceObject = exports.AttributePersistenceObject = function (_NamedPersistenceObje) {
     _inherits(AttributePersistenceObject, _NamedPersistenceObje);
 
-    function AttributePersistenceObject() {
+    function AttributePersistenceObject(attribute) {
         _classCallCheck(this, AttributePersistenceObject);
 
-        return _possibleConstructorReturn(this, (AttributePersistenceObject.__proto__ || Object.getPrototypeOf(AttributePersistenceObject)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (AttributePersistenceObject.__proto__ || Object.getPrototypeOf(AttributePersistenceObject)).call(this, 'Attribute'));
+
+        if (attribute) {
+            _this.convertToPersistence(attribute);
+        }
+        return _this;
     }
 
     _createClass(AttributePersistenceObject, [{
@@ -1442,7 +1673,7 @@ var AttributePersistenceObject = exports.AttributePersistenceObject = function (
 }(_namedPersistenceObject.NamedPersistenceObject);
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1451,8 +1682,11 @@ var AttributePersistenceObject = exports.AttributePersistenceObject = function (
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.NamedPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1461,8 +1695,10 @@ var NAME = 'Name',
     VALUE = 'Value';
 
 var NamedPersistenceObject = exports.NamedPersistenceObject = function () {
-    function NamedPersistenceObject() {
+    function NamedPersistenceObject(type) {
         _classCallCheck(this, NamedPersistenceObject);
+
+        this.type = type;
     }
 
     _createClass(NamedPersistenceObject, [{
@@ -1501,143 +1737,29 @@ var NamedPersistenceObject = exports.NamedPersistenceObject = function () {
                 }
             }
         }
+    }, {
+        key: 'convertToPersistence',
+        value: function convertToPersistence(namedObject) {
+            this.name = namedObject.name;
+            this.description = namedObject.description;
+            this.value = namedObject.value;
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('NamedObject');
+
+            retVal.properties.set('type', this.type);
+
+            retVal.children.push(new _main.ConfigurationObject(NAME, this.name));
+            retVal.children.push(new _main.ConfigurationObject(DESCRIPTION, this.description));
+            retVal.children.push(new _main.ConfigurationObject(VALUE, this.value));
+
+            return retVal;
+        }
     }]);
 
     return NamedPersistenceObject;
-}();
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.BodyPartPersistenceObject = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _main = __webpack_require__(1);
-
-var _characteristicPersistenceObject = __webpack_require__(10);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var NAME = 'Name',
-    DESCRIPTION = 'Description',
-    CHARACTERISTICS = 'Characteristics';
-
-var BodyPartPersistenceObject = exports.BodyPartPersistenceObject = function () {
-    function BodyPartPersistenceObject() {
-        _classCallCheck(this, BodyPartPersistenceObject);
-
-        this.characteristics = [];
-    }
-
-    _createClass(BodyPartPersistenceObject, [{
-        key: 'convertFromPersistence',
-        value: function convertFromPersistence(persistence) {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var child = _step.value;
-
-                    if (child.name === NAME) {
-                        this.name = child.value;
-                    }
-                    if (child.name === DESCRIPTION) {
-                        this.description = child.value;
-                    }
-                    if (child.name === CHARACTERISTICS) {
-                        this._convertCharacteristics(child);
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        }
-    }, {
-        key: '_convertCharacteristics',
-        value: function _convertCharacteristics(persistence) {
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
-
-                    var chr = new _characteristicPersistenceObject.CharacteristicPersistenceObject();
-                    chr.convertFromPersistence(child);
-                    this.characteristics.push(chr);
-                }
-            } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
-                    }
-                } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
-                    }
-                }
-            }
-        }
-    }, {
-        key: 'convertToBodyPart',
-        value: function convertToBodyPart() {
-            var bp = new _main.BodyPart(this.name, this.description);
-
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
-
-            try {
-                for (var _iterator3 = this.characteristics[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var chr = _step3.value;
-
-                    bp.addCharacteristic(chr.convertToCharacteristic());
-                }
-            } catch (err) {
-                _didIteratorError3 = true;
-                _iteratorError3 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                        _iterator3.return();
-                    }
-                } finally {
-                    if (_didIteratorError3) {
-                        throw _iteratorError3;
-                    }
-                }
-            }
-
-            return bp;
-        }
-    }]);
-
-    return BodyPartPersistenceObject;
 }();
 
 /***/ }),
@@ -1654,9 +1776,9 @@ exports.PropertyPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _namedPersistenceObject = __webpack_require__(18);
+var _namedPersistenceObject = __webpack_require__(19);
 
-var _main = __webpack_require__(1);
+var _main = __webpack_require__(2);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1667,10 +1789,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var PropertyPersistenceObject = exports.PropertyPersistenceObject = function (_NamedPersistenceObje) {
     _inherits(PropertyPersistenceObject, _NamedPersistenceObje);
 
-    function PropertyPersistenceObject() {
+    function PropertyPersistenceObject(property) {
         _classCallCheck(this, PropertyPersistenceObject);
 
-        return _possibleConstructorReturn(this, (PropertyPersistenceObject.__proto__ || Object.getPrototypeOf(PropertyPersistenceObject)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (PropertyPersistenceObject.__proto__ || Object.getPrototypeOf(PropertyPersistenceObject)).call(this, 'Property'));
+
+        if (property) {
+            _this.convertToPersistence(property);
+        }
+        return _this;
     }
 
     _createClass(PropertyPersistenceObject, [{
@@ -1693,11 +1820,469 @@ var PropertyPersistenceObject = exports.PropertyPersistenceObject = function (_N
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.PlayerPersistenceObject = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _main = __webpack_require__(2);
+
+var _attributePersistenceObject = __webpack_require__(18);
+
+var _characteristicPersistenceObject = __webpack_require__(12);
+
+var _bodyPartPersistenceObject = __webpack_require__(11);
+
+var _inventoryPersistenceObject = __webpack_require__(52);
+
+var _equipmentPersistenceObject = __webpack_require__(51);
+
+var _main2 = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var NAME = 'Name',
+    ATTRIBUTES = 'Attributes',
+    CHARACTERISTICS = 'Characteristics',
+    BODYPARTS = 'BodyParts',
+    INVENTORY = 'Inventory',
+    EQUIPMENT = 'Equipment';
+
+var PlayerPersistenceObject = exports.PlayerPersistenceObject = function () {
+    function PlayerPersistenceObject(player) {
+        _classCallCheck(this, PlayerPersistenceObject);
+
+        this.attributes = [];
+        this.characteristics = [];
+        this.bodyParts = [];
+        this.inventory = new _inventoryPersistenceObject.InventoryPersistenceObject();
+        this.equipment = new _equipmentPersistenceObject.EquipmentPersistenceObject();
+
+        if (player) {
+            this.convertToPersistence(player);
+        }
+    }
+
+    _createClass(PlayerPersistenceObject, [{
+        key: 'convertFromPersistence',
+        value: function convertFromPersistence(persistence) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var child = _step.value;
+
+                    if (child.name === NAME) {
+                        this.playerName = child.value;
+                    }
+                    if (child.name === ATTRIBUTES) {
+                        this._convertAttributes(child);
+                    }
+                    if (child.name === CHARACTERISTICS) {
+                        this._convertCharacteristics(child);
+                    }
+                    if (child.name === BODYPARTS) {
+                        this._convertBodyParts(child);
+                    }
+                    if (child.name === INVENTORY) {
+                        this.inventory.convertFromPersistence(child);
+                    }
+                    if (child.name === EQUIPMENT) {
+                        this.equipment.convertFromPersistence(child);
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToPersistence',
+        value: function convertToPersistence(player) {
+            this.playerName = player.name;
+
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = player.attributes[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var att = _step2.value;
+
+                    this.attributes.push(new _attributePersistenceObject.AttributePersistenceObject(att));
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+                for (var _iterator3 = player.characteristics[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var chr = _step3.value;
+
+                    this.characteristics.push(new _characteristicPersistenceObject.CharacteristicPersistenceObject(chr));
+                }
+            } catch (err) {
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
+                    }
+                } finally {
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
+                    }
+                }
+            }
+
+            var _iteratorNormalCompletion4 = true;
+            var _didIteratorError4 = false;
+            var _iteratorError4 = undefined;
+
+            try {
+                for (var _iterator4 = player.bodyParts[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var bp = _step4.value;
+
+                    this.bodyParts.push(new _bodyPartPersistenceObject.BodyPartPersistenceObject(bp));
+                }
+            } catch (err) {
+                _didIteratorError4 = true;
+                _iteratorError4 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                        _iterator4.return();
+                    }
+                } finally {
+                    if (_didIteratorError4) {
+                        throw _iteratorError4;
+                    }
+                }
+            }
+
+            this.inventory.convertToPersistence(player.inventory);
+            this.equipment.convertToPersistence(player.equipment);
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main2.ConfigurationObject('Player');
+
+            retVal.children.push(new _main2.ConfigurationObject(NAME, this.playerName));
+
+            var attConfig = new _main2.ConfigurationObject(ATTRIBUTES);
+            var _iteratorNormalCompletion5 = true;
+            var _didIteratorError5 = false;
+            var _iteratorError5 = undefined;
+
+            try {
+                for (var _iterator5 = this.attributes[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                    var att = _step5.value;
+
+                    attConfig.children.push(att.convertToConfig());
+                }
+            } catch (err) {
+                _didIteratorError5 = true;
+                _iteratorError5 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                        _iterator5.return();
+                    }
+                } finally {
+                    if (_didIteratorError5) {
+                        throw _iteratorError5;
+                    }
+                }
+            }
+
+            retVal.children.push(attConfig);
+
+            var chrConfig = new _main2.ConfigurationObject(CHARACTERISTICS);
+            var _iteratorNormalCompletion6 = true;
+            var _didIteratorError6 = false;
+            var _iteratorError6 = undefined;
+
+            try {
+                for (var _iterator6 = this.characteristics[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                    var chr = _step6.value;
+
+                    chrConfig.children.push(chr.convertToConfig());
+                }
+            } catch (err) {
+                _didIteratorError6 = true;
+                _iteratorError6 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion6 && _iterator6.return) {
+                        _iterator6.return();
+                    }
+                } finally {
+                    if (_didIteratorError6) {
+                        throw _iteratorError6;
+                    }
+                }
+            }
+
+            retVal.children.push(chrConfig);
+
+            var bpConfig = new _main2.ConfigurationObject(BODYPARTS);
+            var _iteratorNormalCompletion7 = true;
+            var _didIteratorError7 = false;
+            var _iteratorError7 = undefined;
+
+            try {
+                for (var _iterator7 = this.bodyParts[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                    var bp = _step7.value;
+
+                    bpConfig.children.push(bp.convertToConfig());
+                }
+            } catch (err) {
+                _didIteratorError7 = true;
+                _iteratorError7 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
+                        _iterator7.return();
+                    }
+                } finally {
+                    if (_didIteratorError7) {
+                        throw _iteratorError7;
+                    }
+                }
+            }
+
+            retVal.children.push(bpConfig);
+
+            retVal.children.push(this.inventory.convertToConfig());
+            retVal.children.push(this.equipment.convertToConfig());
+
+            return retVal;
+        }
+    }, {
+        key: '_convertAttributes',
+        value: function _convertAttributes(persistence) {
+            var _iteratorNormalCompletion8 = true;
+            var _didIteratorError8 = false;
+            var _iteratorError8 = undefined;
+
+            try {
+                for (var _iterator8 = persistence.children[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                    var child = _step8.value;
+
+                    var att = new _attributePersistenceObject.AttributePersistenceObject();
+                    att.convertFromPersistence(child);
+                    this.attributes.push(att);
+                }
+            } catch (err) {
+                _didIteratorError8 = true;
+                _iteratorError8 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion8 && _iterator8.return) {
+                        _iterator8.return();
+                    }
+                } finally {
+                    if (_didIteratorError8) {
+                        throw _iteratorError8;
+                    }
+                }
+            }
+        }
+    }, {
+        key: '_convertCharacteristics',
+        value: function _convertCharacteristics(persistence) {
+            var _iteratorNormalCompletion9 = true;
+            var _didIteratorError9 = false;
+            var _iteratorError9 = undefined;
+
+            try {
+                for (var _iterator9 = persistence.children[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+                    var child = _step9.value;
+
+                    var chr = new _characteristicPersistenceObject.CharacteristicPersistenceObject();
+                    chr.convertFromPersistence(child);
+                    this.characteristics.push(chr);
+                }
+            } catch (err) {
+                _didIteratorError9 = true;
+                _iteratorError9 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion9 && _iterator9.return) {
+                        _iterator9.return();
+                    }
+                } finally {
+                    if (_didIteratorError9) {
+                        throw _iteratorError9;
+                    }
+                }
+            }
+        }
+    }, {
+        key: '_convertBodyParts',
+        value: function _convertBodyParts(persistence) {
+            var _iteratorNormalCompletion10 = true;
+            var _didIteratorError10 = false;
+            var _iteratorError10 = undefined;
+
+            try {
+                for (var _iterator10 = persistence.children[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+                    var child = _step10.value;
+
+                    var bp = new _bodyPartPersistenceObject.BodyPartPersistenceObject();
+                    bp.convertFromPersistence(child);
+                    this.bodyParts.push(bp);
+                }
+            } catch (err) {
+                _didIteratorError10 = true;
+                _iteratorError10 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion10 && _iterator10.return) {
+                        _iterator10.return();
+                    }
+                } finally {
+                    if (_didIteratorError10) {
+                        throw _iteratorError10;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToPlayer',
+        value: function convertToPlayer() {
+            var player = new _main.Player(this.playerName);
+
+            var _iteratorNormalCompletion11 = true;
+            var _didIteratorError11 = false;
+            var _iteratorError11 = undefined;
+
+            try {
+                for (var _iterator11 = this.attributes[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+                    var att = _step11.value;
+
+                    player.addAttribute(att.convertToAttribute());
+                }
+            } catch (err) {
+                _didIteratorError11 = true;
+                _iteratorError11 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion11 && _iterator11.return) {
+                        _iterator11.return();
+                    }
+                } finally {
+                    if (_didIteratorError11) {
+                        throw _iteratorError11;
+                    }
+                }
+            }
+
+            var _iteratorNormalCompletion12 = true;
+            var _didIteratorError12 = false;
+            var _iteratorError12 = undefined;
+
+            try {
+                for (var _iterator12 = this.characteristics[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+                    var chr = _step12.value;
+
+                    player.addCharacteristic(chr.convertToCharacteristic());
+                }
+            } catch (err) {
+                _didIteratorError12 = true;
+                _iteratorError12 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion12 && _iterator12.return) {
+                        _iterator12.return();
+                    }
+                } finally {
+                    if (_didIteratorError12) {
+                        throw _iteratorError12;
+                    }
+                }
+            }
+
+            var _iteratorNormalCompletion13 = true;
+            var _didIteratorError13 = false;
+            var _iteratorError13 = undefined;
+
+            try {
+                for (var _iterator13 = this.bodyParts[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+                    var bp = _step13.value;
+
+                    player.addBodyPart(bp.convertToBodyPart());
+                }
+            } catch (err) {
+                _didIteratorError13 = true;
+                _iteratorError13 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion13 && _iterator13.return) {
+                        _iterator13.return();
+                    }
+                } finally {
+                    if (_didIteratorError13) {
+                        throw _iteratorError13;
+                    }
+                }
+            }
+
+            player.inventory = this.inventory.convertToInventory();
+            player.equipment = this.equipment.convertToEquipment();
+
+            return player;
+        }
+    }]);
+
+    return PlayerPersistenceObject;
+}();
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.TextTriggerPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _textTrigger = __webpack_require__(42);
+var _textTrigger = __webpack_require__(44);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1735,6 +2320,20 @@ var TextTriggerPersistenceObject = exports.TextTriggerPersistenceObject = functi
                     }
                 }
             }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Trigger');
+            retVal.properties.set('type', 'Text');
+
+            var params = new _main.ConfigurationObject('Parameters');
+            params.children.push(new _main.ConfigurationObject('Text', this.text));
+            params.children.push(new _main.ConfigurationObject('MatchType', this.matchType));
+            params.children.push(new _main.ConfigurationObject('CaseSensitive', String(this.caseSensitive)));
+            retVal.children.push(params);
+
+            return retVal;
         }
     }, {
         key: '_convert',
@@ -1806,7 +2405,7 @@ var TextTriggerPersistenceObject = exports.TextTriggerPersistenceObject = functi
 }();
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1819,7 +2418,9 @@ exports.PlayerTriggerPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _playerTrigger = __webpack_require__(39);
+var _playerTrigger = __webpack_require__(41);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1857,6 +2458,34 @@ var PlayerTriggerPersistenceObject = exports.PlayerTriggerPersistenceObject = fu
                     }
                 }
             }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Trigger');
+            retVal.properties.set('type', 'Player');
+
+            var params = new _main.ConfigurationObject('Parameters');
+            params.children.push(new _main.ConfigurationObject('PlayerName', this.playerName));
+            if (this.modificationObject) {
+                params.children.push(new _main.ConfigurationObject('ModificationObject', this.modificationObject));
+            }
+            if (this.id) {
+                params.children.push(new _main.ConfigurationObject('ID', this.id.join(',')));
+            }
+            if (this.condition) {
+                params.children.push(new _main.ConfigurationObject('Condition', this.condition));
+            }
+            if (this.dataMember) {
+                params.children.push(new _main.ConfigurationObject('DataMember', this.dataMember));
+            }
+            if (this.originalComparisonData) {
+                params.children.push(new _main.ConfigurationObject('ComparisionData', this.originalComparisonData));
+            }
+
+            retVal.children.push(params);
+
+            return retVal;
         }
     }, {
         key: '_convert',
@@ -1906,14 +2535,15 @@ var PlayerTriggerPersistenceObject = exports.PlayerTriggerPersistenceObject = fu
     }, {
         key: '_convertComparisonData',
         value: function _convertComparisonData(persistence) {
+            this.originalComparisonData = persistence.value;
             var valueType = persistence.properties.get('ValueType');
 
             if (valueType === 'bool') {
-                this.comparisonData = persistence.value.toLowerCase() === 'true';
+                this.comparisonData = this.originalComparisonData.toLowerCase() === 'true';
             } else if (valueType === 'int' || valueType === 'float' || valueType === 'double') {
-                this.comparisonData = Number(persistence.value);
+                this.comparisonData = Number(this.originalComparisonData);
             } else {
-                this.comparisonData = persistence.value;
+                this.comparisonData = this.originalComparisonData;
             }
         }
     }, {
@@ -1935,7 +2565,7 @@ var PlayerTriggerPersistenceObject = exports.PlayerTriggerPersistenceObject = fu
 }();
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1948,7 +2578,7 @@ exports.TextAdventureGameState = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _main = __webpack_require__(24);
+var _main = __webpack_require__(25);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2307,13 +2937,13 @@ var TextAdventureGameState = exports.TextAdventureGameState = function (_GameSta
 }(_main.GameState);
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(e,t){if(true)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)("object"==typeof exports?exports:e)[r]=n[r]}}("undefined"!=typeof self?self:this,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var i=t[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=1)}([function(e,t){function n(){this._events=this._events||{},this._maxListeners=this._maxListeners||void 0}function r(e){return"function"==typeof e}function i(e){return"object"==typeof e&&null!==e}function s(e){return void 0===e}e.exports=n,n.EventEmitter=n,n.prototype._events=void 0,n.prototype._maxListeners=void 0,n.defaultMaxListeners=10,n.prototype.setMaxListeners=function(e){if("number"!=typeof e||e<0||isNaN(e))throw TypeError("n must be a positive number");return this._maxListeners=e,this},n.prototype.emit=function(e){var t,n,o,a,u,h;if(this._events||(this._events={}),"error"===e&&(!this._events.error||i(this._events.error)&&!this._events.error.length)){if((t=arguments[1])instanceof Error)throw t;var c=new Error('Uncaught, unspecified "error" event. ('+t+")");throw c.context=t,c}if(s(n=this._events[e]))return!1;if(r(n))switch(arguments.length){case 1:n.call(this);break;case 2:n.call(this,arguments[1]);break;case 3:n.call(this,arguments[1],arguments[2]);break;default:a=Array.prototype.slice.call(arguments,1),n.apply(this,a)}else if(i(n))for(a=Array.prototype.slice.call(arguments,1),o=(h=n.slice()).length,u=0;u<o;u++)h[u].apply(this,a);return!0},n.prototype.addListener=function(e,t){var o;if(!r(t))throw TypeError("listener must be a function");return this._events||(this._events={}),this._events.newListener&&this.emit("newListener",e,r(t.listener)?t.listener:t),this._events[e]?i(this._events[e])?this._events[e].push(t):this._events[e]=[this._events[e],t]:this._events[e]=t,i(this._events[e])&&!this._events[e].warned&&(o=s(this._maxListeners)?n.defaultMaxListeners:this._maxListeners)&&o>0&&this._events[e].length>o&&(this._events[e].warned=!0,console.error("(node) warning: possible EventEmitter memory leak detected. %d listeners added. Use emitter.setMaxListeners() to increase limit.",this._events[e].length),"function"==typeof console.trace&&console.trace()),this},n.prototype.on=n.prototype.addListener,n.prototype.once=function(e,t){if(!r(t))throw TypeError("listener must be a function");var n=!1;function i(){this.removeListener(e,i),n||(n=!0,t.apply(this,arguments))}return i.listener=t,this.on(e,i),this},n.prototype.removeListener=function(e,t){var n,s,o,a;if(!r(t))throw TypeError("listener must be a function");if(!this._events||!this._events[e])return this;if(o=(n=this._events[e]).length,s=-1,n===t||r(n.listener)&&n.listener===t)delete this._events[e],this._events.removeListener&&this.emit("removeListener",e,t);else if(i(n)){for(a=o;a-- >0;)if(n[a]===t||n[a].listener&&n[a].listener===t){s=a;break}if(s<0)return this;1===n.length?(n.length=0,delete this._events[e]):n.splice(s,1),this._events.removeListener&&this.emit("removeListener",e,t)}return this},n.prototype.removeAllListeners=function(e){var t,n;if(!this._events)return this;if(!this._events.removeListener)return 0===arguments.length?this._events={}:this._events[e]&&delete this._events[e],this;if(0===arguments.length){for(t in this._events)"removeListener"!==t&&this.removeAllListeners(t);return this.removeAllListeners("removeListener"),this._events={},this}if(r(n=this._events[e]))this.removeListener(e,n);else if(n)for(;n.length;)this.removeListener(e,n[n.length-1]);return delete this._events[e],this},n.prototype.listeners=function(e){return this._events&&this._events[e]?r(this._events[e])?[this._events[e]]:this._events[e].slice():[]},n.prototype.listenerCount=function(e){if(this._events){var t=this._events[e];if(r(t))return 1;if(t)return t.length}return 0},n.listenerCount=function(e,t){return e.listenerCount(t)}},function(e,t,n){"use strict";var r=n(2),i=n(3);e.exports={GameState:r.GameState,GameStateManager:i.GameStateManager}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.GameState=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);t.GameState=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"run",value:function(){}},{key:"stateCompleted",value:function(e){this.emit(this.completedEvent,e)}},{key:"finish",value:function(){this.emit(this.finishedEvent)}},{key:"finishedEvent",get:function(){return"finished"}},{key:"completedEvent",get:function(){return"completed"}}]),t}()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.GameStateManager=void 0;var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(0);t.GameStateManager=function(e){function t(e,n,r){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t);var i=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return i._gamestatemap=new Map,i._runtimeData=r,i.started=!1,i.onFinished=i.finish.bind(i),i.onCompleted=i.completed.bind(i),i._initialize(e,n),i}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}(t,i.EventEmitter),r(t,[{key:"_initialize",value:function(e,t){this._gamestatemap.set(e,t),this.currentGameState=t}},{key:"completed",value:function(e){this.lastKey=e,this.currentGameState=this._gamestatemap.get(e)}},{key:"addGameState",value:function(e,t){this._gamestatemap.set(e,t)}},{key:"removeGameState",value:function(e){this._gamestatemap.delete(e)}},{key:"clearGameStates",value:function(){this._gamestatemap.clear(),this.started&&this._gamestatemap.set(this.lastKey,this.currentGameState)}},{key:"start",value:function(){this.currentGameState.run(this._runtimeData),this.started=!0}},{key:"finish",value:function(){this.emit(this.finishedEvent)}},{key:"finishedEvent",get:function(){return"finished"}},{key:"currentGameState",get:function(){return this._currentGameState},set:function(e){this._currentGameState&&(this._currentGameState.removeListener(this._currentGameState.completedEvent,this.onCompleted),this._currentGameState.removeListener(this._currentGameState.finishedEvent,this.onFinished)),this._currentGameState=e,this._currentGameState&&(this._currentGameState.on(this._currentGameState.completedEvent,this.onCompleted),this._currentGameState.on(this._currentGameState.finishedEvent,this.onFinished)),this.started&&this.currentGameState.run(this._runtimeData)}},{key:"gameStateMap",get:function(){return this._gamestatemap}}]),t}()}])});
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2328,9 +2958,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _main = __webpack_require__(24);
+var _main = __webpack_require__(25);
 
-var _layoutRenderer = __webpack_require__(26);
+var _layoutRenderer = __webpack_require__(27);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2384,7 +3014,7 @@ var TextAdventureGameStateManager = exports.TextAdventureGameStateManager = func
 }(_main.GameStateManager);
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2395,11 +3025,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.renderLayout = renderLayout;
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(71);
+var _reactDom = __webpack_require__(75);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -2410,7 +3040,76 @@ function renderLayout(layout, root) {
 }
 
 /***/ }),
-/* 27 */
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+var emptyFunction = __webpack_require__(4);
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var warning = emptyFunction;
+
+if (process.env.NODE_ENV !== 'production') {
+  var printWarning = function printWarning(format) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    var argIndex = 0;
+    var message = 'Warning: ' + format.replace(/%s/g, function () {
+      return args[argIndex++];
+    });
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  warning = function warning(condition, format) {
+    if (format === undefined) {
+      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+
+    if (format.indexOf('Failed Composite propType: ') === 0) {
+      return; // Ignore CompositeComponent proptype check.
+    }
+
+    if (!condition) {
+      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+        args[_key2 - 2] = arguments[_key2];
+      }
+
+      printWarning.apply(undefined, [format].concat(args));
+    }
+  };
+}
+
+module.exports = warning;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ }),
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2423,11 +3122,24 @@ function renderLayout(layout, root) {
 
 
 
+var printWarning = function() {};
+
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(3);
-  var warning = __webpack_require__(12);
-  var ReactPropTypesSecret = __webpack_require__(70);
+  var ReactPropTypesSecret = __webpack_require__(74);
   var loggedTypeFailures = {};
+
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
 }
 
 /**
@@ -2452,12 +3164,29 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         try {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
-          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, typeof typeSpecs[typeSpecName]);
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
           error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
         } catch (ex) {
           error = ex;
         }
-        warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
+        if (error && !(error instanceof Error)) {
+          printWarning(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          )
+
+        }
         if (error instanceof Error && !(error.message in loggedTypeFailures)) {
           // Only monitor this failure once because there tends to be a lot of the
           // same error.
@@ -2465,7 +3194,9 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
           var stack = getStack ? getStack() : '';
 
-          warning(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
+          printWarning(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
         }
       }
     }
@@ -2474,10 +3205,10 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 module.exports = checkPropTypes;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2516,7 +3247,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2558,7 +3289,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2629,7 +3360,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2644,7 +3375,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(73);
+var isTextNode = __webpack_require__(77);
 
 /*eslint-disable no-bitwise */
 
@@ -2672,7 +3403,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3052,7 +3783,7 @@ var PlayerMacroManager = exports.PlayerMacroManager = function () {
 }();
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3065,7 +3796,7 @@ exports.AppendTextAction = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _events = __webpack_require__(13);
+var _events = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3101,7 +3832,7 @@ var AppendTextAction = exports.AppendTextAction = function (_EventEmitter) {
 }(_events.EventEmitter);
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3114,7 +3845,7 @@ exports.FinishAction = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _events = __webpack_require__(13);
+var _events = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3147,7 +3878,7 @@ var FinishAction = exports.FinishAction = function (_EventEmitter) {
 }(_events.EventEmitter);
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3394,7 +4125,7 @@ var ModifyPlayerAction = exports.ModifyPlayerAction = function () {
 }();
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3426,7 +4157,7 @@ var ScriptedAction = exports.ScriptedAction = function () {
 }();
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3486,7 +4217,7 @@ var Option = exports.Option = function () {
 }();
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3534,7 +4265,7 @@ var MultiPartTrigger = exports.MultiPartTrigger = function () {
 }();
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3547,11 +4278,11 @@ exports.PlayerTrigger = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _underscore = __webpack_require__(40);
+var _underscore = __webpack_require__(42);
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-__webpack_require__(1);
+__webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3772,7 +4503,7 @@ var PlayerTrigger = exports.PlayerTrigger = function () {
 }();
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.9.1
@@ -5469,10 +6200,10 @@ var PlayerTrigger = exports.PlayerTrigger = function () {
   }
 }());
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(80), __webpack_require__(81)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(84), __webpack_require__(85)(module)))
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5504,7 +6235,7 @@ var ScriptedTrigger = exports.ScriptedTrigger = function () {
 }();
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5536,7 +6267,7 @@ var TextTrigger = exports.TextTrigger = function () {
 }();
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5580,7 +6311,7 @@ var TimedAction = exports.TimedAction = function () {
 }();
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5593,11 +6324,11 @@ exports.Layout = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _layoutRenderer = __webpack_require__(26);
+var _layoutRenderer = __webpack_require__(27);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5658,7 +6389,7 @@ var Layout = exports.Layout = function () {
 }();
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5671,13 +6402,13 @@ exports.TextAndContentWithButtonInput = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _buttonInput = __webpack_require__(15);
+var _buttonInput = __webpack_require__(16);
 
 var _textView = __webpack_require__(5);
 
-var _contentView = __webpack_require__(9);
+var _contentView = __webpack_require__(10);
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -5727,7 +6458,7 @@ var TextAndContentWithButtonInput = exports.TextAndContentWithButtonInput = func
 }(_react2.default.Component);
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5740,13 +6471,13 @@ exports.TextAndContentWithTextInput = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _textInput = __webpack_require__(16);
+var _textInput = __webpack_require__(17);
 
 var _textView = __webpack_require__(5);
 
-var _contentView = __webpack_require__(9);
+var _contentView = __webpack_require__(10);
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -5796,7 +6527,7 @@ var TextAndContentWithTextInput = exports.TextAndContentWithTextInput = function
 }(_react2.default.Component);
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5809,13 +6540,13 @@ exports.TextWithButtonInput = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _buttonInput = __webpack_require__(15);
+var _buttonInput = __webpack_require__(16);
 
 var _textView = __webpack_require__(5);
 
-__webpack_require__(8);
+__webpack_require__(9);
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -5860,7 +6591,7 @@ var TextWithButtonInput = exports.TextWithButtonInput = function (_React$Compone
 }(_react2.default.Component);
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5873,13 +6604,13 @@ exports.TextWithTextInput = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _textInput = __webpack_require__(16);
+var _textInput = __webpack_require__(17);
 
 var _textView = __webpack_require__(5);
 
-__webpack_require__(8);
+__webpack_require__(9);
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -5924,7 +6655,7 @@ var TextWithTextInput = exports.TextWithTextInput = function (_React$Component) 
 }(_react2.default.Component);
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5937,17 +6668,25 @@ exports.EquipmentPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _main = __webpack_require__(1);
+var _main = __webpack_require__(2);
 
-var _itemPersistenceObject = __webpack_require__(11);
+var _itemPersistenceObject = __webpack_require__(13);
+
+var _bodyPartPersistenceObject = __webpack_require__(11);
+
+var _main2 = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var EquipmentPersistenceObject = exports.EquipmentPersistenceObject = function () {
-    function EquipmentPersistenceObject() {
+    function EquipmentPersistenceObject(equip) {
         _classCallCheck(this, EquipmentPersistenceObject);
 
         this.equipment = new Map();
+
+        if (equip) {
+            this.convertToPersistence(equip);
+        }
     }
 
     _createClass(EquipmentPersistenceObject, [{
@@ -5979,6 +6718,31 @@ var EquipmentPersistenceObject = exports.EquipmentPersistenceObject = function (
             }
         }
     }, {
+        key: 'convertToPersistence',
+        value: function convertToPersistence(equip) {
+            var _this = this;
+
+            equip.equiped.forEach(function (value, key, map) {
+                _this.equipment.set(new _bodyPartPersistenceObject.BodyPartPersistenceObject(key), new _itemPersistenceObject.ItemPersistenceObject(value));
+            });
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main2.ConfigurationObject('Equipment');
+
+            this.equipment.forEach(function (value, key) {
+                var equip = new _main2.ConfigurationObject('Equiptable');
+
+                equip.children.push(value.convertToConfig());
+                equip.children.push(key.convertToConfig());
+
+                retVal.children.push(equip);
+            });
+
+            return retVal;
+        }
+    }, {
         key: '_convertEquip',
         value: function _convertEquip(persistence) {
             var items = [];
@@ -5992,13 +6756,13 @@ var EquipmentPersistenceObject = exports.EquipmentPersistenceObject = function (
                 for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
                     var child = _step2.value;
 
-                    if (child.name === ITEM) {
+                    if (child.name === 'Item') {
                         var item = new _itemPersistenceObject.ItemPersistenceObject();
                         item.convertFromPersistence(child);
                         items.push(item);
                     }
-                    if (child.name === BODYPART) {
-                        var bp = new BodyPartPersistenceObject();
+                    if (child.name === 'BodyPart') {
+                        var bp = new _bodyPartPersistenceObject.BodyPartPersistenceObject();
                         bp.convertFromPersistence(child);
                         bodyParts.push(bp);
                     }
@@ -6039,7 +6803,7 @@ var EquipmentPersistenceObject = exports.EquipmentPersistenceObject = function (
 }();
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6052,17 +6816,23 @@ exports.InventoryPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _main = __webpack_require__(1);
+var _main = __webpack_require__(2);
 
-var _itemPersistenceObject = __webpack_require__(11);
+var _itemPersistenceObject = __webpack_require__(13);
+
+var _main2 = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var InventoryPersistenceObject = exports.InventoryPersistenceObject = function () {
-    function InventoryPersistenceObject() {
+    function InventoryPersistenceObject(inventory) {
         _classCallCheck(this, InventoryPersistenceObject);
 
         this.items = [];
+
+        if (inventory) {
+            this.convertToPersistence(inventory);
+        }
     }
 
     _createClass(InventoryPersistenceObject, [{
@@ -6094,19 +6864,36 @@ var InventoryPersistenceObject = exports.InventoryPersistenceObject = function (
             }
         }
     }, {
-        key: '_convertItem',
-        value: function _convertItem(persistence) {
+        key: 'convertToPersistence',
+        value: function convertToPersistence(inventory) {
+            var _this = this;
+
+            inventory.itemMap.forEach(function (value, key, map) {
+                var item = new _itemPersistenceObject.ItemPersistenceObject(key);
+                item.amount = value;
+                _this.items.push(item);
+            });
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main2.ConfigurationObject('Inventory');
+
+            var itms = new _main2.ConfigurationObject('Items');
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
+                for (var _iterator2 = this.items[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var item = _step2.value;
 
-                    var item = new _itemPersistenceObject.ItemPersistenceObject();
-                    item.convertFromPersistence(child);
-                    this.items.push(item);
+                    var config = item.convertToConfig();
+                    if (item.amount) {
+                        config.properties.set('Amount', item.amount);
+                    }
+
+                    itms.children.push(config);
                 }
             } catch (err) {
                 _didIteratorError2 = true;
@@ -6119,6 +6906,40 @@ var InventoryPersistenceObject = exports.InventoryPersistenceObject = function (
                 } finally {
                     if (_didIteratorError2) {
                         throw _iteratorError2;
+                    }
+                }
+            }
+
+            retVal.children.push(itms);
+
+            return retVal;
+        }
+    }, {
+        key: '_convertItem',
+        value: function _convertItem(persistence) {
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+                for (var _iterator3 = persistence.children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var child = _step3.value;
+
+                    var item = new _itemPersistenceObject.ItemPersistenceObject();
+                    item.convertFromPersistence(child);
+                    this.items.push(item);
+                }
+            } catch (err) {
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
+                    }
+                } finally {
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
                     }
                 }
             }
@@ -6128,203 +6949,15 @@ var InventoryPersistenceObject = exports.InventoryPersistenceObject = function (
         value: function convertToInventory() {
             var inv = new _main.Inventory();
 
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
-
-            try {
-                for (var _iterator3 = this.items[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var item = _step3.value;
-
-                    inv.addCharacteristic(item.convertToItem(), item.amount);
-                }
-            } catch (err) {
-                _didIteratorError3 = true;
-                _iteratorError3 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                        _iterator3.return();
-                    }
-                } finally {
-                    if (_didIteratorError3) {
-                        throw _iteratorError3;
-                    }
-                }
-            }
-
-            return inv;
-        }
-    }]);
-
-    return InventoryPersistenceObject;
-}();
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.PlayerPersistenceObject = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _main = __webpack_require__(1);
-
-var _attributePersistenceObject = __webpack_require__(17);
-
-var _characteristicPersistenceObject = __webpack_require__(10);
-
-var _bodyPartPersistenceObject = __webpack_require__(19);
-
-var _inventoryPersistenceObject = __webpack_require__(50);
-
-var _equipmentPersistenceObject = __webpack_require__(49);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var NAME = 'Name',
-    ATTRIBUTES = 'Attributes',
-    CHARACTERISTICS = 'Characteristics',
-    BODYPARTS = 'BodyParts',
-    INVENTORY = 'Inventory',
-    EQUIPMENT = 'Equipment';
-
-var PlayerPersistenceObject = exports.PlayerPersistenceObject = function () {
-    function PlayerPersistenceObject() {
-        _classCallCheck(this, PlayerPersistenceObject);
-
-        this.attributes = [];
-        this.characteristics = [];
-        this.bodyParts = [];
-        this.inventory = new _inventoryPersistenceObject.InventoryPersistenceObject();
-        this.equipment = new _equipmentPersistenceObject.EquipmentPersistenceObject();
-    }
-
-    _createClass(PlayerPersistenceObject, [{
-        key: 'convertFromPersistence',
-        value: function convertFromPersistence(persistence) {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var child = _step.value;
-
-                    if (child.name === NAME) {
-                        this.playerName = child.value;
-                    }
-                    if (child.name === ATTRIBUTES) {
-                        this._convertAttributes(child);
-                    }
-                    if (child.name === CHARACTERISTICS) {
-                        this._convertCharacteristics(child);
-                    }
-                    if (child.name === BODYPARTS) {
-                        this._convertBodyParts(child);
-                    }
-                    if (child.name === INVENTORY) {
-                        this.inventory.convertFromPersistence(child);
-                    }
-                    if (child.name === EQUIPMENT) {
-                        this.equipment.convertFromPersistence(child);
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        }
-    }, {
-        key: '_convertAttributes',
-        value: function _convertAttributes(persistence) {
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
-
-                    var att = new _attributePersistenceObject.AttributePersistenceObject();
-                    att.convertFromPersistence(child);
-                    this.attributes.push(att);
-                }
-            } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
-                    }
-                } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
-                    }
-                }
-            }
-        }
-    }, {
-        key: '_convertCharacteristics',
-        value: function _convertCharacteristics(persistence) {
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
-
-            try {
-                for (var _iterator3 = persistence.children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var child = _step3.value;
-
-                    var chr = new CharacteristicsPersistenceObject();
-                    chr.convertFromPersistence(child);
-                    this.characteristics.push(chr);
-                }
-            } catch (err) {
-                _didIteratorError3 = true;
-                _iteratorError3 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                        _iterator3.return();
-                    }
-                } finally {
-                    if (_didIteratorError3) {
-                        throw _iteratorError3;
-                    }
-                }
-            }
-        }
-    }, {
-        key: '_convertBodyParts',
-        value: function _convertBodyParts(persistence) {
             var _iteratorNormalCompletion4 = true;
             var _didIteratorError4 = false;
             var _iteratorError4 = undefined;
 
             try {
-                for (var _iterator4 = persistence.children[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                    var child = _step4.value;
+                for (var _iterator4 = this.items[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var item = _step4.value;
 
-                    var bp = new _bodyPartPersistenceObject.BodyPartPersistenceObject();
-                    bp.convertFromPersistence(child);
-                    this.bodyParts.push(bp);
+                    inv.addItem(item.convertToItem(), item.amount);
                 }
             } catch (err) {
                 _didIteratorError4 = true;
@@ -6340,99 +6973,16 @@ var PlayerPersistenceObject = exports.PlayerPersistenceObject = function () {
                     }
                 }
             }
-        }
-    }, {
-        key: 'convertToPlayer',
-        value: function convertToPlayer() {
-            var player = new _main.Player(this.playerName);
 
-            var _iteratorNormalCompletion5 = true;
-            var _didIteratorError5 = false;
-            var _iteratorError5 = undefined;
-
-            try {
-                for (var _iterator5 = this.attributes[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                    var att = _step5.value;
-
-                    player.addAttribute(att.convertToAttribute());
-                }
-            } catch (err) {
-                _didIteratorError5 = true;
-                _iteratorError5 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
-                        _iterator5.return();
-                    }
-                } finally {
-                    if (_didIteratorError5) {
-                        throw _iteratorError5;
-                    }
-                }
-            }
-
-            var _iteratorNormalCompletion6 = true;
-            var _didIteratorError6 = false;
-            var _iteratorError6 = undefined;
-
-            try {
-                for (var _iterator6 = this.characteristics[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-                    var chr = _step6.value;
-
-                    player.addCharacteristic(chr.convertToCharacteristic());
-                }
-            } catch (err) {
-                _didIteratorError6 = true;
-                _iteratorError6 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion6 && _iterator6.return) {
-                        _iterator6.return();
-                    }
-                } finally {
-                    if (_didIteratorError6) {
-                        throw _iteratorError6;
-                    }
-                }
-            }
-
-            var _iteratorNormalCompletion7 = true;
-            var _didIteratorError7 = false;
-            var _iteratorError7 = undefined;
-
-            try {
-                for (var _iterator7 = this.bodyParts[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-                    var bp = _step7.value;
-
-                    player.addBodyPart(bp.convertToBodyPart());
-                }
-            } catch (err) {
-                _didIteratorError7 = true;
-                _iteratorError7 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
-                        _iterator7.return();
-                    }
-                } finally {
-                    if (_didIteratorError7) {
-                        throw _iteratorError7;
-                    }
-                }
-            }
-
-            player.inventory = this.inventory.convertToInventory();
-            player.equipment = this.equipment.convertToEquipment();
-
-            return player;
+            return inv;
         }
     }]);
 
-    return PlayerPersistenceObject;
+    return InventoryPersistenceObject;
 }();
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6445,7 +6995,9 @@ exports.AppendTextPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _appendTextAction = __webpack_require__(33);
+var _appendTextAction = __webpack_require__(35);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -6483,6 +7035,18 @@ var AppendTextPersistenceObject = exports.AppendTextPersistenceObject = function
                     }
                 }
             }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Action');
+            retVal.properties.set('type', 'AppendText');
+
+            var params = new _main.ConfigurationObject('Parameters');
+            params.children.push(new _main.ConfigurationObject('AppendText', this.appendText));
+            retVal.children.push(params);
+
+            return retVal;
         }
     }, {
         key: '_convert',
@@ -6525,7 +7089,7 @@ var AppendTextPersistenceObject = exports.AppendTextPersistenceObject = function
 }();
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6538,7 +7102,9 @@ exports.CompletionActionPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _completionAction = __webpack_require__(14);
+var _completionAction = __webpack_require__(15);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -6576,6 +7142,18 @@ var CompletionActionPersistenceObject = exports.CompletionActionPersistenceObjec
                     }
                 }
             }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Action');
+            retVal.properties.set('type', 'Completion');
+
+            var params = new _main.ConfigurationObject('Parameters');
+            params.children.push(new _main.ConfigurationObject('CompletionData', this.completionData));
+            retVal.children.push(params);
+
+            return retVal;
         }
     }, {
         key: '_convert',
@@ -6618,7 +7196,7 @@ var CompletionActionPersistenceObject = exports.CompletionActionPersistenceObjec
 }();
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6631,9 +7209,11 @@ exports.CompletionTimerPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _completionAction = __webpack_require__(14);
+var _completionAction = __webpack_require__(15);
 
-var _timedAction = __webpack_require__(43);
+var _timedAction = __webpack_require__(45);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -6676,6 +7256,17 @@ var CompletionTimerPersistenceObject = exports.CompletionTimerPersistenceObject 
             }
         }
     }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Timer');
+            retVal.properties.set('type', 'Completion');
+
+            retVal.children.push(new _main.ConfigurationObject('CompletionData', this.completionData));
+            retVal.children.push(new _main.ConfigurationObject('Duration', String(this.duration)));
+
+            return retVal;
+        }
+    }, {
         key: 'convertToTimer',
         value: function convertToTimer() {
             var action = new _completionAction.CompletionAction(this.completionData);
@@ -6687,7 +7278,7 @@ var CompletionTimerPersistenceObject = exports.CompletionTimerPersistenceObject 
 }();
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6700,7 +7291,9 @@ exports.FinishActionPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _finishAction = __webpack_require__(34);
+var _finishAction = __webpack_require__(36);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -6719,13 +7312,21 @@ var FinishActionPersistenceObject = exports.FinishActionPersistenceObject = func
         value: function convertToAction() {
             return new _finishAction.FinishAction();
         }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Action');
+            retVal.properties.set('type', 'Finish');
+
+            return retVal;
+        }
     }]);
 
     return FinishActionPersistenceObject;
 }();
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6738,17 +7339,19 @@ exports.GameStatePersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _optionPersistenceObject = __webpack_require__(57);
+var _optionPersistenceObject = __webpack_require__(58);
 
-var _layoutInfoPersistenceObject = __webpack_require__(61);
+var _layoutInfoPersistenceObject = __webpack_require__(70);
 
-var _convertTimer = __webpack_require__(84);
+var _convertTimer = __webpack_require__(90);
 
-var _textAdventureGameState = __webpack_require__(23);
+var _textAdventureGameState = __webpack_require__(24);
 
-var _convertLayout = __webpack_require__(85);
+var _convertLayout = __webpack_require__(91);
 
-var _playerMacroManager = __webpack_require__(32);
+var _playerMacroManager = __webpack_require__(34);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -6803,19 +7406,23 @@ var GameStatePersistenceObject = exports.GameStatePersistenceObject = function (
             }
         }
     }, {
-        key: '_convertOptions',
-        value: function _convertOptions(persistence) {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('GameState');
+
+            retVal.children.push(new _main.ConfigurationObject('StateId', this.stateId));
+            retVal.children.push(new _main.ConfigurationObject('TextLog', this.textLog));
+
+            var options = new _main.ConfigurationObject('Options');
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
+                for (var _iterator2 = this.options[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var opt = _step2.value;
 
-                    var option = new _optionPersistenceObject.OptionPersistenceObject();
-                    option.convertFromPersistence(child);
-                    this.options.push(option);
+                    options.children.push(opt.convertToConfig());
                 }
             } catch (err) {
                 _didIteratorError2 = true;
@@ -6831,19 +7438,21 @@ var GameStatePersistenceObject = exports.GameStatePersistenceObject = function (
                     }
                 }
             }
-        }
-    }, {
-        key: '_convertTimers',
-        value: function _convertTimers(persistence) {
+
+            if (options.children.length) {
+                retVal.children.push(options);
+            }
+
+            var timers = new _main.ConfigurationObject('Timers');
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
             var _iteratorError3 = undefined;
 
             try {
-                for (var _iterator3 = persistence.children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var child = _step3.value;
+                for (var _iterator3 = this.timers[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var timer = _step3.value;
 
-                    this.timers.push((0, _convertTimer.convertTimer)(child));
+                    timers.children.push(timer.convertToConfig());
                 }
             } catch (err) {
                 _didIteratorError3 = true;
@@ -6859,53 +7468,29 @@ var GameStatePersistenceObject = exports.GameStatePersistenceObject = function (
                     }
                 }
             }
+
+            if (timers.children.length) {
+                retVal.children.push(timers);
+            }
+
+            retVal.children.push(this.layout.convertToConfig());
+
+            return retVal;
         }
     }, {
-        key: '_convertLayoutInfo',
-        value: function _convertLayoutInfo(persistence) {
-            this.layout = new _layoutInfoPersistenceObject.LayoutInfoPersistenceObject();
-            this.layout.convertFromPersistence(persistence);
-        }
-    }, {
-        key: 'convertToGameState',
-        value: function convertToGameState() {
-            var options = [];
-            var buttons = [];
+        key: '_convertOptions',
+        value: function _convertOptions(persistence) {
             var _iteratorNormalCompletion4 = true;
             var _didIteratorError4 = false;
             var _iteratorError4 = undefined;
 
             try {
-                for (var _iterator4 = this.options[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                    var option = _step4.value;
-                    var _iteratorNormalCompletion6 = true;
-                    var _didIteratorError6 = false;
-                    var _iteratorError6 = undefined;
+                for (var _iterator4 = persistence.children[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var child = _step4.value;
 
-                    try {
-                        for (var _iterator6 = option.triggers[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-                            var trigger = _step6.value;
-
-                            if (trigger.text) {
-                                buttons.push(trigger.text);
-                            }
-                        }
-                    } catch (err) {
-                        _didIteratorError6 = true;
-                        _iteratorError6 = err;
-                    } finally {
-                        try {
-                            if (!_iteratorNormalCompletion6 && _iterator6.return) {
-                                _iterator6.return();
-                            }
-                        } finally {
-                            if (_didIteratorError6) {
-                                throw _iteratorError6;
-                            }
-                        }
-                    }
-
-                    options.push(option.convertToOption());
+                    var option = new _optionPersistenceObject.OptionPersistenceObject();
+                    option.convertFromPersistence(child);
+                    this.options.push(option);
                 }
             } catch (err) {
                 _didIteratorError4 = true;
@@ -6921,19 +7506,19 @@ var GameStatePersistenceObject = exports.GameStatePersistenceObject = function (
                     }
                 }
             }
-
-            var layout = (0, _convertLayout.convertLayout)(this.layout, this.textLog, buttons);
-
-            var timers = [];
+        }
+    }, {
+        key: '_convertTimers',
+        value: function _convertTimers(persistence) {
             var _iteratorNormalCompletion5 = true;
             var _didIteratorError5 = false;
             var _iteratorError5 = undefined;
 
             try {
-                for (var _iterator5 = this.timers[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                    var timer = _step5.value;
+                for (var _iterator5 = persistence.children[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                    var child = _step5.value;
 
-                    timers.push(timer.convertToTimer());
+                    this.timers.push((0, _convertTimer.convertTimer)(child));
                 }
             } catch (err) {
                 _didIteratorError5 = true;
@@ -6946,6 +7531,96 @@ var GameStatePersistenceObject = exports.GameStatePersistenceObject = function (
                 } finally {
                     if (_didIteratorError5) {
                         throw _iteratorError5;
+                    }
+                }
+            }
+        }
+    }, {
+        key: '_convertLayoutInfo',
+        value: function _convertLayoutInfo(persistence) {
+            this.layout = new _layoutInfoPersistenceObject.LayoutInfoPersistenceObject();
+            this.layout.convertFromPersistence(persistence);
+        }
+    }, {
+        key: 'convertToGameState',
+        value: function convertToGameState() {
+            var options = [];
+            var buttons = [];
+            var _iteratorNormalCompletion6 = true;
+            var _didIteratorError6 = false;
+            var _iteratorError6 = undefined;
+
+            try {
+                for (var _iterator6 = this.options[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                    var option = _step6.value;
+                    var _iteratorNormalCompletion8 = true;
+                    var _didIteratorError8 = false;
+                    var _iteratorError8 = undefined;
+
+                    try {
+                        for (var _iterator8 = option.triggers[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                            var trigger = _step8.value;
+
+                            if (trigger.text) {
+                                buttons.push(trigger.text);
+                            }
+                        }
+                    } catch (err) {
+                        _didIteratorError8 = true;
+                        _iteratorError8 = err;
+                    } finally {
+                        try {
+                            if (!_iteratorNormalCompletion8 && _iterator8.return) {
+                                _iterator8.return();
+                            }
+                        } finally {
+                            if (_didIteratorError8) {
+                                throw _iteratorError8;
+                            }
+                        }
+                    }
+
+                    options.push(option.convertToOption());
+                }
+            } catch (err) {
+                _didIteratorError6 = true;
+                _iteratorError6 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion6 && _iterator6.return) {
+                        _iterator6.return();
+                    }
+                } finally {
+                    if (_didIteratorError6) {
+                        throw _iteratorError6;
+                    }
+                }
+            }
+
+            var layout = (0, _convertLayout.convertLayout)(this.layout, this.textLog, buttons);
+
+            var timers = [];
+            var _iteratorNormalCompletion7 = true;
+            var _didIteratorError7 = false;
+            var _iteratorError7 = undefined;
+
+            try {
+                for (var _iterator7 = this.timers[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                    var timer = _step7.value;
+
+                    timers.push(timer.convertToTimer());
+                }
+            } catch (err) {
+                _didIteratorError7 = true;
+                _iteratorError7 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
+                        _iterator7.return();
+                    }
+                } finally {
+                    if (_didIteratorError7) {
+                        throw _iteratorError7;
                     }
                 }
             }
@@ -6966,7 +7641,7 @@ var GameStatePersistenceObject = exports.GameStatePersistenceObject = function (
 }();
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6979,11 +7654,13 @@ exports.OptionPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _convertTrigger = __webpack_require__(82);
+var _convertTrigger = __webpack_require__(86);
 
-var _convertAction2 = __webpack_require__(83);
+var _convertAction2 = __webpack_require__(61);
 
-var _option = __webpack_require__(37);
+var _option = __webpack_require__(39);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -7028,17 +7705,20 @@ var OptionPersistenceObject = exports.OptionPersistenceObject = function () {
             }
         }
     }, {
-        key: '_convertTriggers',
-        value: function _convertTriggers(persistence) {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Option');
+
+            var trigs = new _main.ConfigurationObject('Triggers');
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
+                for (var _iterator2 = this.triggers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var trigger = _step2.value;
 
-                    this.triggers.push((0, _convertTrigger.convertTrigger)(child));
+                    trigs.children.push(trigger.convertToConfig());
                 }
             } catch (err) {
                 _didIteratorError2 = true;
@@ -7054,26 +7734,24 @@ var OptionPersistenceObject = exports.OptionPersistenceObject = function () {
                     }
                 }
             }
-        }
-    }, {
-        key: '_convertAction',
-        value: function _convertAction(persistence) {
-            this.action = (0, _convertAction2.convertAction)(persistence);
-        }
-    }, {
-        key: 'convertToOption',
-        value: function convertToOption() {
-            var triggers = [];
 
+            retVal.children.push(trigs);
+            retVal.children.push(this.action.convertToConfig());
+
+            return retVal;
+        }
+    }, {
+        key: '_convertTriggers',
+        value: function _convertTriggers(persistence) {
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
             var _iteratorError3 = undefined;
 
             try {
-                for (var _iterator3 = this.triggers[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var trigger = _step3.value;
+                for (var _iterator3 = persistence.children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var child = _step3.value;
 
-                    triggers.push(trigger.convertToTrigger());
+                    this.triggers.push((0, _convertTrigger.convertTrigger)(child));
                 }
             } catch (err) {
                 _didIteratorError3 = true;
@@ -7089,6 +7767,41 @@ var OptionPersistenceObject = exports.OptionPersistenceObject = function () {
                     }
                 }
             }
+        }
+    }, {
+        key: '_convertAction',
+        value: function _convertAction(persistence) {
+            this.action = (0, _convertAction2.convertAction)(persistence);
+        }
+    }, {
+        key: 'convertToOption',
+        value: function convertToOption() {
+            var triggers = [];
+
+            var _iteratorNormalCompletion4 = true;
+            var _didIteratorError4 = false;
+            var _iteratorError4 = undefined;
+
+            try {
+                for (var _iterator4 = this.triggers[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var trigger = _step4.value;
+
+                    triggers.push(trigger.convertToTrigger());
+                }
+            } catch (err) {
+                _didIteratorError4 = true;
+                _iteratorError4 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                        _iterator4.return();
+                    }
+                } finally {
+                    if (_didIteratorError4) {
+                        throw _iteratorError4;
+                    }
+                }
+            }
 
             return new _option.Option(triggers, this.action.convertToAction());
         }
@@ -7098,7 +7811,7 @@ var OptionPersistenceObject = exports.OptionPersistenceObject = function () {
 }();
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7111,11 +7824,13 @@ exports.MultiPartTriggerPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _multiPartTrigger = __webpack_require__(38);
+var _multiPartTrigger = __webpack_require__(40);
 
-var _textTriggerPersistenceObject = __webpack_require__(21);
+var _textTriggerPersistenceObject = __webpack_require__(22);
 
-var _playerTriggerPersistenceObject = __webpack_require__(22);
+var _playerTriggerPersistenceObject = __webpack_require__(23);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -7157,19 +7872,23 @@ var MultiPartTriggerPersistenceObject = exports.MultiPartTriggerPersistenceObjec
             }
         }
     }, {
-        key: '_convert',
-        value: function _convert(persistence) {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Trigger');
+            retVal.properties.set('type', 'MultiPart');
+
+            var params = new _main.ConfigurationObject('Parameters');
+            var trigs = new _main.ConfigurationObject('Triggers');
+
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
+                for (var _iterator2 = this.triggers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var trig = _step2.value;
 
-                    if (child.name === 'Trigger') {
-                        this._convertTrigger(child);
-                    }
+                    trigs.children.push(trig.convertToConfig());
                 }
             } catch (err) {
                 _didIteratorError2 = true;
@@ -7182,6 +7901,41 @@ var MultiPartTriggerPersistenceObject = exports.MultiPartTriggerPersistenceObjec
                 } finally {
                     if (_didIteratorError2) {
                         throw _iteratorError2;
+                    }
+                }
+            }
+
+            params.children.push(trigs);
+            retVal.children.push(params);
+
+            return retVal;
+        }
+    }, {
+        key: '_convert',
+        value: function _convert(persistence) {
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+                for (var _iterator3 = persistence.children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var child = _step3.value;
+
+                    if (child.name === 'Trigger') {
+                        this._convertTrigger(child);
+                    }
+                }
+            } catch (err) {
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
+                    }
+                } finally {
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
                     }
                 }
             }
@@ -7212,27 +7966,27 @@ var MultiPartTriggerPersistenceObject = exports.MultiPartTriggerPersistenceObjec
         value: function convertToTrigger() {
             var triggers = [];
 
-            var _iteratorNormalCompletion3 = true;
-            var _didIteratorError3 = false;
-            var _iteratorError3 = undefined;
+            var _iteratorNormalCompletion4 = true;
+            var _didIteratorError4 = false;
+            var _iteratorError4 = undefined;
 
             try {
-                for (var _iterator3 = this.triggers[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                    var trigger = _step3.value;
+                for (var _iterator4 = this.triggers[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                    var trigger = _step4.value;
 
                     triggers.push(trigger.convertToTrigger());
                 }
             } catch (err) {
-                _didIteratorError3 = true;
-                _iteratorError3 = err;
+                _didIteratorError4 = true;
+                _iteratorError4 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                        _iterator3.return();
+                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                        _iterator4.return();
                     }
                 } finally {
-                    if (_didIteratorError3) {
-                        throw _iteratorError3;
+                    if (_didIteratorError4) {
+                        throw _iteratorError4;
                     }
                 }
             }
@@ -7245,7 +7999,179 @@ var MultiPartTriggerPersistenceObject = exports.MultiPartTriggerPersistenceObjec
 }();
 
 /***/ }),
-/* 59 */
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.ScriptedTriggerPersistenceObject = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _scriptedTrigger = __webpack_require__(43);
+
+var _main = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ScriptedTriggerPersistenceObject = exports.ScriptedTriggerPersistenceObject = function () {
+    function ScriptedTriggerPersistenceObject() {
+        _classCallCheck(this, ScriptedTriggerPersistenceObject);
+    }
+
+    _createClass(ScriptedTriggerPersistenceObject, [{
+        key: 'convertFromPersistence',
+        value: function convertFromPersistence(persistence) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var child = _step.value;
+
+                    if (child.name === 'Parameters') {
+                        this._convert(child);
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Trigger');
+            retVal.properties.set('type', 'Script');
+
+            var params = new _main.ConfigurationObject('Parameters');
+            params.children.push(new _main.ConfigurationObject('Script', btoa(this.script)));
+            retVal.children.push(params);
+
+            return retVal;
+        }
+    }, {
+        key: '_convert',
+        value: function _convert(persistence) {
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var child = _step2.value;
+
+                    if (child.name === 'Script') {
+                        this.script = atob(child.value);
+                    }
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToTrigger',
+        value: function convertToTrigger() {
+            return new _scriptedTrigger.ScriptedTrigger(this.script);
+        }
+    }]);
+
+    return ScriptedTriggerPersistenceObject;
+}();
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.setPersistenceData = exports.convertAction = undefined;
+
+var _appendTextPersistenceObject = __webpack_require__(53);
+
+var _completionActionPersistenceObject = __webpack_require__(54);
+
+var _modifyPlayerPersistenceObject = __webpack_require__(62);
+
+var _scriptedActionPersistenceObject = __webpack_require__(63);
+
+var _finishActionPersistenceObject = __webpack_require__(56);
+
+var _saveActionPersistenceObject = __webpack_require__(87);
+
+var persistenceData = '';
+
+var setPersistenceData = function setPersistenceData(data) {
+    persistenceData = data;
+};
+
+var convertAction = function convertAction(persistence) {
+    var action = void 0;
+    var type = persistence.properties.get('type');
+
+    if (type === 'AppendText') {
+        action = new _appendTextPersistenceObject.AppendTextPersistenceObject();
+        action.convertFromPersistence(persistence);
+    }
+    if (type === 'Completion') {
+        action = new _completionActionPersistenceObject.CompletionActionPersistenceObject();
+        action.convertFromPersistence(persistence);
+    }
+    if (type === 'ModifyPlayer') {
+        action = new _modifyPlayerPersistenceObject.ModifyPlayerPersistenceObject();
+        action.convertFromPersistence(persistence);
+    }
+    if (type === 'Script') {
+        action = new _scriptedActionPersistenceObject.ScriptedActionPersistenceObject();
+        action.convertFromPersistence(persistence);
+    }
+    if (type === 'Finish') {
+        action = new _finishActionPersistenceObject.FinishActionPersistenceObject();
+        action.convertFromPersistence(persistence);
+    }
+    if (type === 'Save') {
+        action = new _saveActionPersistenceObject.SaveActionPersistenceObject();
+        action.convertFromPersistence(persistence, persistenceData);
+    }
+
+    return action;
+};
+
+exports.convertAction = convertAction;
+exports.setPersistenceData = setPersistenceData;
+
+/***/ }),
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7258,21 +8184,23 @@ exports.ModifyPlayerPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _underscore = __webpack_require__(40);
+var _underscore = __webpack_require__(42);
 
 var _underscore2 = _interopRequireDefault(_underscore);
 
-var _bodyPartPersistenceObject = __webpack_require__(19);
+var _bodyPartPersistenceObject = __webpack_require__(11);
 
-var _itemPersistenceObject = __webpack_require__(11);
+var _itemPersistenceObject = __webpack_require__(13);
 
-var _attributePersistenceObject = __webpack_require__(17);
+var _attributePersistenceObject = __webpack_require__(18);
 
-var _characteristicPersistenceObject = __webpack_require__(10);
+var _characteristicPersistenceObject = __webpack_require__(12);
 
 var _propertyPersistenceObject = __webpack_require__(20);
 
-var _modifyPlayerAction = __webpack_require__(35);
+var _modifyPlayerAction = __webpack_require__(37);
+
+var _main = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7312,6 +8240,32 @@ var ModifyPlayerPersistenceObject = exports.ModifyPlayerPersistenceObject = func
                     }
                 }
             }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Action');
+            retVal.properties.set('type', 'ModifyPlayer');
+
+            var params = new _main.ConfigurationObject('Parameters');
+            params.children.push(new _main.ConfigurationObject('PlayerName', this.playerName));
+            if (this.modificationType) {
+                params.children.push(new _main.ConfigurationObject('ModificationType', this.modificationType));
+            }
+            if (this.modificationObject) {
+                params.children.push(new _main.ConfigurationObject('ModificationObject', this.modificationObject));
+            }
+            params.children.push(new _main.ConfigurationObject('Data', String(this.data)));
+            if (this.originalId) {
+                params.children.push(new _main.ConfigurationObject('ID', this.originalId));
+            }
+            if (this.changeType) {
+                params.children.push(new _main.ConfigurationObject('ChangeType', this.changeType));
+            }
+
+            retVal.children.push(params);
+
+            return retVal;
         }
     }, {
         key: '_convert',
@@ -7374,12 +8328,14 @@ var ModifyPlayerPersistenceObject = exports.ModifyPlayerPersistenceObject = func
     }, {
         key: '_convertId',
         value: function _convertId(persistence) {
+            this.originalId = persistence.value;
+
             var valueType = persistence.properties.get('ValueType');
 
             if (valueType === 'bool') {
-                this.id = persistence.value.toLowerCase() === 'true';
+                this.id = this.originalId.toLowerCase() === 'true';
             } else if (valueType === 'int' || valueType === 'float' || valueType === 'double') {
-                this.id = Number(persistence.value);
+                this.id = Number(this.originalId);
             } else {
                 this.id = this._attemptConversion(persistence);
             }
@@ -7473,7 +8429,7 @@ var ModifyPlayerPersistenceObject = exports.ModifyPlayerPersistenceObject = func
 }();
 
 /***/ }),
-/* 60 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7486,7 +8442,9 @@ exports.ScriptedActionPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _scriptedAction = __webpack_require__(36);
+var _scriptedAction = __webpack_require__(38);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -7524,6 +8482,18 @@ var ScriptedActionPersistenceObject = exports.ScriptedActionPersistenceObject = 
                     }
                 }
             }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Action');
+            retVal.properties.set('type', 'Script');
+
+            var params = new _main.ConfigurationObject('Parameters');
+            params.children.push(new _main.ConfigurationObject('Script', btoa(this.script)));
+            retVal.children.push(params);
+
+            return retVal;
         }
     }, {
         key: '_convert',
@@ -7566,256 +8536,6 @@ var ScriptedActionPersistenceObject = exports.ScriptedActionPersistenceObject = 
 }();
 
 /***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var LayoutInfoPersistenceObject = exports.LayoutInfoPersistenceObject = function () {
-    function LayoutInfoPersistenceObject() {
-        _classCallCheck(this, LayoutInfoPersistenceObject);
-    }
-
-    _createClass(LayoutInfoPersistenceObject, [{
-        key: 'convertFromPersistence',
-        value: function convertFromPersistence(persistence) {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var child = _step.value;
-
-                    if (child.name === 'LayoutContent') {
-                        this.layoutContent = child.value;
-                    }
-                    if (child.name === 'LayoutID') {
-                        this.layoutId = child.value;
-                    }
-                    if (child.name === 'LayoutType') {
-                        this.layoutType = child.value;
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        }
-    }]);
-
-    return LayoutInfoPersistenceObject;
-}();
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.LayoutGridPersistenceObject = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _layoutNodePersistenceObject = __webpack_require__(63);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var LayoutGridPersistenceObject = exports.LayoutGridPersistenceObject = function () {
-    function LayoutGridPersistenceObject() {
-        _classCallCheck(this, LayoutGridPersistenceObject);
-
-        this.nodes = [];
-    }
-
-    _createClass(LayoutGridPersistenceObject, [{
-        key: 'convertFromPersistence',
-        value: function convertFromPersistence(persistence) {
-            this.rows = persistence.properties.get('rows');
-            this.columns = persistence.properties.get('columns');
-
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var child = _step.value;
-
-                    if (child.name === 'LayoutNodes') {
-                        this._convertNodes(child);
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        }
-    }, {
-        key: '_convertNodes',
-        value: function _convertNodes(persistence) {
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-                for (var _iterator2 = children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
-
-                    var node = new _layoutNodePersistenceObject.LayoutNodePersistenceObject();
-                    node.convertFromPersistence(persistence);
-                    this.nodes.push(node);
-                }
-            } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
-                    }
-                } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
-                    }
-                }
-            }
-        }
-    }]);
-
-    return LayoutGridPersistenceObject;
-}();
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var LayoutNodePersistenceObject = exports.LayoutNodePersistenceObject = function () {
-    function LayoutNodePersistenceObject() {
-        _classCallCheck(this, LayoutNodePersistenceObject);
-
-        this.properties = new Map();
-    }
-
-    _createClass(LayoutNodePersistenceObject, [{
-        key: 'convertFromPersistence',
-        value: function convertFromPersistence(persistence) {
-            this.row = persistence.properties.get('row');
-            this.column = persistence.properties.get('column');
-            this.columnSpan = persistence.properties.get('columnSpan');
-            this.rowSpan = persistence.properties.get('rowSpan');
-
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var child = _step.value;
-
-                    if (child.name === 'NodeID') {
-                        this.id = child.value;
-                    }
-                    if (child.name === 'LayoutValue') {
-                        this.value = child.value;
-                    }
-                    if (child.name === 'AssociatedProperties') {
-                        this._convertAssociatedProperties(child);
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        }
-    }, {
-        key: '_convertAssociatedProperties',
-        value: function _convertAssociatedProperties(persistence) {
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
-
-                    this.properties.set(child.name, child.value);
-                }
-            } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
-                    }
-                } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
-                    }
-                }
-            }
-        }
-    }]);
-
-    return LayoutNodePersistenceObject;
-}();
-
-/***/ }),
 /* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7825,68 +8545,50 @@ var LayoutNodePersistenceObject = exports.LayoutNodePersistenceObject = function
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.LayoutPersistenceObject = undefined;
+exports.TextAdventurePersistenceManager = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _layoutGridPersistenceObject = __webpack_require__(62);
+var _main = __webpack_require__(0);
+
+var _textAdventurePersistenceObject = __webpack_require__(65);
+
+var _fileManager = __webpack_require__(89);
+
+var _convertAction = __webpack_require__(61);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var LayoutPersistenceObject = exports.LayoutPersistenceObject = function () {
-    function LayoutPersistenceObject() {
-        _classCallCheck(this, LayoutPersistenceObject);
+var TextAdventurePersistenceManager = exports.TextAdventurePersistenceManager = function () {
+    function TextAdventurePersistenceManager(data) {
+        var overridePersistence = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+        _classCallCheck(this, TextAdventurePersistenceManager);
+
+        this.data = data;
+        this.textAdventure = new _textAdventurePersistenceObject.TextAdventurePersistenceObject();
+
+        if (overridePersistence) {
+            (0, _convertAction.setPersistenceData)(data);
+        }
     }
 
-    _createClass(LayoutPersistenceObject, [{
-        key: 'convertFromPersistence',
-        value: function convertFromPersistence(persistence) {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var child = _step.value;
-
-                    if (child.name === 'LayoutType') {
-                        this.layoutType = child.value;
-                    }
-                    if (child.name === 'Content') {
-                        this.content = child.value;
-                    }
-                    if (child.name === 'LayoutGrid') {
-                        this._convertLayout(child);
-                    }
-                    if (child.name === 'LayoutID') {
-                        this.id = child.value;
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
+    _createClass(TextAdventurePersistenceManager, [{
+        key: 'load',
+        value: function load() {
+            var persist = (0, _main.load)(this.data, 'xml');
+            this.textAdventure.convertFromPersistence(persist);
         }
     }, {
-        key: '_convertLayout',
-        value: function _convertLayout(persistence) {
-            var layout = new _layoutGridPersistenceObject.LayoutGridPersistenceObject();
-            layout.convertFromPersistence(persistence);
-            this.layout = layout;
+        key: 'save',
+        value: function save(fileName) {
+            var ser = new XMLSerializer();
+            var data = ser.serializeToString((0, _main.convertConfigJSONToXML)(this.textAdventure.convertToConfig()));
+            (0, _fileManager.save)(data, fileName);
         }
     }]);
 
-    return LayoutPersistenceObject;
+    return TextAdventurePersistenceManager;
 }();
 
 /***/ }),
@@ -7903,15 +8605,17 @@ exports.TextAdventurePersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _playerPersistenceObject = __webpack_require__(51);
+var _playerPersistenceObject = __webpack_require__(21);
 
 var _transitionPersistenceObject = __webpack_require__(66);
 
-var _gameStatePersistenceObject = __webpack_require__(56);
+var _gameStatePersistenceObject = __webpack_require__(57);
 
-var _layoutPersistenceObject = __webpack_require__(64);
+var _layoutPersistenceObject = __webpack_require__(67);
 
-var _textAdventureGameStateManager = __webpack_require__(25);
+var _textAdventureGameStateManager = __webpack_require__(26);
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -7998,6 +8702,55 @@ var TextAdventurePersistenceObject = exports.TextAdventurePersistenceObject = fu
                     }
                 }
             }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('TextAdventure');
+
+            var inlinePlayers = !!this.playersLocation;
+            var inlineGameStates = !!this.gameStatesLocation;
+            var inlineLayouts = !!this.layoutsLocation;
+
+            retVal.properties.set('inlineplayers', inlinePlayers);
+            retVal.properties.set('inlinegamestate', inlineGameStates);
+            retVal.properties.set('inlineLayouts', inlineLayouts);
+
+            retVal.children.push(new _main.ConfigurationObject('Name', this.gameName));
+            retVal.children.push(new _main.ConfigurationObject('CurrentGameState', this.currentGameState));
+
+            if (this.transition) {
+                retVal.children.push(this.transition.convertToConfig());
+            }
+
+            if (inlinePlayers) {
+                var playersConfig = new _main.ConfigurationObject('Players');
+                this.players.forEach(function (player) {
+                    playersConfig.children.push(player.convertToConfig());
+                });
+            } else {
+                // TODO
+            }
+
+            if (inlineGameStates) {
+                var gameStateConfig = new _main.ConfigurationObject('GameStates');
+                this.gameStates.forEach(function (gameState) {
+                    gameStateConfig.children.push(gameState.convertToConfig());
+                });
+            } else {
+                // TODO
+            }
+
+            if (this.inlinelayout) {
+                var layoutConfig = new _main.ConfigurationObject('Layouts');
+                this.layouts.forEach(function (layout) {
+                    layoutConfig.children.push(layout.convertToConfig());
+                });
+            } else {
+                // TODO
+            }
+
+            return retVal;
         }
     }, {
         key: '_convertGameStates',
@@ -8213,8 +8966,11 @@ var TextAdventurePersistenceObject = exports.TextAdventurePersistenceObject = fu
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.TransitionPersistenceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _main = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -8256,6 +9012,16 @@ var TransitionPersistenceObject = exports.TransitionPersistenceObject = function
                 }
             }
         }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Transition');
+
+            retVal.children.push(new _main.ConfigurationObject('DisplayType', this.displayType));
+            retVal.children.push(new _main.ConfigurationObject('MediaLocation', this.mediaLocation));
+
+            return retVal;
+        }
     }]);
 
     return TransitionPersistenceObject;
@@ -8268,105 +9034,518 @@ var TransitionPersistenceObject = exports.TransitionPersistenceObject = function
 "use strict";
 
 
-var _textAdventureGameState = __webpack_require__(23);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.LayoutPersistenceObject = undefined;
 
-var _textAdventureGameStateManager = __webpack_require__(25);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _playerMacroManager = __webpack_require__(32);
+var _layoutGridPersistenceObject = __webpack_require__(68);
 
-var _appendTextAction = __webpack_require__(33);
+var _main = __webpack_require__(0);
 
-var _completionAction = __webpack_require__(14);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _finishAction = __webpack_require__(34);
+var LayoutPersistenceObject = exports.LayoutPersistenceObject = function () {
+    function LayoutPersistenceObject() {
+        _classCallCheck(this, LayoutPersistenceObject);
+    }
 
-var _modifyPlayerAction = __webpack_require__(35);
+    _createClass(LayoutPersistenceObject, [{
+        key: 'convertFromPersistence',
+        value: function convertFromPersistence(persistence) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
 
-var _scriptedAction = __webpack_require__(36);
+            try {
+                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var child = _step.value;
 
-var _option = __webpack_require__(37);
+                    if (child.name === 'LayoutType') {
+                        this.layoutType = child.value;
+                    }
+                    if (child.name === 'Content') {
+                        this.content = child.value;
+                    }
+                    if (child.name === 'LayoutGrid') {
+                        this._convertLayout(child);
+                    }
+                    if (child.name === 'LayoutID') {
+                        this.id = child.value;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('Layout');
 
-var _multiPartTrigger = __webpack_require__(38);
+            retVal.children.push(new _main.ConfigurationObject('LayoutType', this.layoutType));
+            if (this.content) {
+                retVal.children.push(new _main.ConfigurationObject('Content', this.content));
+            }
+            retVal.children.push(new _main.ConfigurationObject('LayoutID', this.id));
+            retVal.children.push(this.layout.convertToConfig());
 
-var _playerTrigger = __webpack_require__(39);
+            return retVal;
+        }
+    }, {
+        key: '_convertLayout',
+        value: function _convertLayout(persistence) {
+            var layout = new _layoutGridPersistenceObject.LayoutGridPersistenceObject();
+            layout.convertFromPersistence(persistence);
+            this.layout = layout;
+        }
+    }]);
 
-var _scriptedTrigger = __webpack_require__(41);
+    return LayoutPersistenceObject;
+}();
 
-var _textTrigger = __webpack_require__(42);
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
 
-var _timedAction = __webpack_require__(43);
+"use strict";
 
-var _layout = __webpack_require__(44);
 
-var _buttonInput = __webpack_require__(15);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.LayoutGridPersistenceObject = undefined;
 
-var _textInput = __webpack_require__(16);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _layoutNodePersistenceObject = __webpack_require__(69);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var LayoutGridPersistenceObject = exports.LayoutGridPersistenceObject = function () {
+    function LayoutGridPersistenceObject() {
+        _classCallCheck(this, LayoutGridPersistenceObject);
+
+        this.nodes = [];
+    }
+
+    _createClass(LayoutGridPersistenceObject, [{
+        key: 'convertFromPersistence',
+        value: function convertFromPersistence(persistence) {
+            this.rows = persistence.properties.get('rows');
+            this.columns = persistence.properties.get('columns');
+
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var child = _step.value;
+
+                    if (child.name === 'LayoutNodes') {
+                        this._convertNodes(child);
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new ConfigurationObject('LayoutGrid');
+
+            retVal.properties.set('rows', this.rows);
+            retVal.properties.set('columns', this.columns);
+
+            var nodes = new ConfigurationObject('LayoutNodes');
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = this.nodes[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var node = _step2.value;
+
+                    nodes.children.push(node.convertToConfig());
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+
+            retVal.children.push(nodes);
+
+            return retVal;
+        }
+    }, {
+        key: '_convertNodes',
+        value: function _convertNodes(persistence) {
+            var _iteratorNormalCompletion3 = true;
+            var _didIteratorError3 = false;
+            var _iteratorError3 = undefined;
+
+            try {
+                for (var _iterator3 = persistence.children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                    var child = _step3.value;
+
+                    var node = new _layoutNodePersistenceObject.LayoutNodePersistenceObject();
+                    node.convertFromPersistence(child);
+                    this.nodes.push(node);
+                }
+            } catch (err) {
+                _didIteratorError3 = true;
+                _iteratorError3 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                        _iterator3.return();
+                    }
+                } finally {
+                    if (_didIteratorError3) {
+                        throw _iteratorError3;
+                    }
+                }
+            }
+        }
+    }]);
+
+    return LayoutGridPersistenceObject;
+}();
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var LayoutNodePersistenceObject = exports.LayoutNodePersistenceObject = function () {
+    function LayoutNodePersistenceObject() {
+        _classCallCheck(this, LayoutNodePersistenceObject);
+
+        this.properties = new Map();
+    }
+
+    _createClass(LayoutNodePersistenceObject, [{
+        key: 'convertFromPersistence',
+        value: function convertFromPersistence(persistence) {
+            this.row = persistence.properties.get('row');
+            this.column = persistence.properties.get('column');
+            this.columnSpan = persistence.properties.get('columnSpan');
+            this.rowSpan = persistence.properties.get('rowSpan');
+
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var child = _step.value;
+
+                    if (child.name === 'NodeID') {
+                        this.id = child.value;
+                    }
+                    if (child.name === 'LayoutValue') {
+                        this.value = child.value;
+                    }
+                    if (child.name === 'AssociatedProperties') {
+                        this._convertAssociatedProperties(child);
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new ConfigurationObject('LayoutNode');
+
+            retVal.properties.push('row', this.row);
+            retVal.properties.push('column', this.column);
+            retVal.properties.push('columnSpan', this.columnSpan);
+            retVal.properties.push('rowSpan', this.rowSpan);
+
+            retVal.children.push(new ConfigurationObject('NodeID', this.id));
+            retVal.children.push(new ConfigurationObject('LayoutValue', this.value));
+
+            var props = new ConfigurationObject('AssociatedProperties');
+            this.properties.forEach(function (value, key) {
+                props.push(new ConfigurationObject(key, value));
+            });
+            retVal.children.push(props);
+
+            return retVal;
+        }
+    }, {
+        key: '_convertAssociatedProperties',
+        value: function _convertAssociatedProperties(persistence) {
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var child = _step2.value;
+
+                    this.properties.set(child.name, child.value);
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+        }
+    }]);
+
+    return LayoutNodePersistenceObject;
+}();
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.LayoutInfoPersistenceObject = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _main = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var LayoutInfoPersistenceObject = exports.LayoutInfoPersistenceObject = function () {
+    function LayoutInfoPersistenceObject() {
+        _classCallCheck(this, LayoutInfoPersistenceObject);
+    }
+
+    _createClass(LayoutInfoPersistenceObject, [{
+        key: 'convertFromPersistence',
+        value: function convertFromPersistence(persistence) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var child = _step.value;
+
+                    if (child.name === 'LayoutContent') {
+                        this.layoutContent = child.value;
+                    }
+                    if (child.name === 'LayoutID') {
+                        this.layoutId = child.value;
+                    }
+                    if (child.name === 'LayoutType') {
+                        this.layoutType = child.value;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'convertToConfig',
+        value: function convertToConfig() {
+            var retVal = new _main.ConfigurationObject('LayoutInfo');
+
+            retVal.children.push(new _main.ConfigurationObject('LayoutContent', this.layoutContent));
+            retVal.children.push(new _main.ConfigurationObject('LayoutID', this.layoutId));
+            retVal.children.push(new _main.ConfigurationObject('LayoutType', this.layoutType));
+
+            return retVal;
+        }
+    }]);
+
+    return LayoutInfoPersistenceObject;
+}();
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _textAdventureGameState = __webpack_require__(24);
+
+var _textAdventureGameStateManager = __webpack_require__(26);
+
+var _playerMacroManager = __webpack_require__(34);
+
+var _appendTextAction = __webpack_require__(35);
+
+var _completionAction = __webpack_require__(15);
+
+var _finishAction = __webpack_require__(36);
+
+var _modifyPlayerAction = __webpack_require__(37);
+
+var _scriptedAction = __webpack_require__(38);
+
+var _option = __webpack_require__(39);
+
+var _multiPartTrigger = __webpack_require__(40);
+
+var _playerTrigger = __webpack_require__(41);
+
+var _scriptedTrigger = __webpack_require__(43);
+
+var _textTrigger = __webpack_require__(44);
+
+var _timedAction = __webpack_require__(45);
+
+var _layout = __webpack_require__(46);
+
+var _buttonInput = __webpack_require__(16);
+
+var _textInput = __webpack_require__(17);
 
 var _textView = __webpack_require__(5);
 
-var _contentView = __webpack_require__(9);
+var _contentView = __webpack_require__(10);
 
-var _textAndContentWithButtonInput = __webpack_require__(45);
+var _textAndContentWithButtonInput = __webpack_require__(47);
 
-var _textAndContentWithTextInput = __webpack_require__(46);
+var _textAndContentWithTextInput = __webpack_require__(48);
 
-var _textWithButtonInput = __webpack_require__(47);
+var _textWithButtonInput = __webpack_require__(49);
 
-var _textWithTextInput = __webpack_require__(48);
+var _textWithTextInput = __webpack_require__(50);
 
-var _attributePersistenceObject = __webpack_require__(17);
+var _attributePersistenceObject = __webpack_require__(18);
 
-var _bodyPartPersistenceObject = __webpack_require__(19);
+var _bodyPartPersistenceObject = __webpack_require__(11);
 
-var _characteristicPersistenceObject = __webpack_require__(10);
+var _characteristicPersistenceObject = __webpack_require__(12);
 
-var _equipmentPersistenceObject = __webpack_require__(49);
+var _equipmentPersistenceObject = __webpack_require__(51);
 
-var _inventoryPersistenceObject = __webpack_require__(50);
+var _inventoryPersistenceObject = __webpack_require__(52);
 
-var _itemPersistenceObject = __webpack_require__(11);
+var _itemPersistenceObject = __webpack_require__(13);
 
-var _playerPersistenceObject = __webpack_require__(51);
+var _playerPersistenceObject = __webpack_require__(21);
 
 var _propertyPersistenceObject = __webpack_require__(20);
 
-var _appendTextPersistenceObject = __webpack_require__(52);
+var _appendTextPersistenceObject = __webpack_require__(53);
 
-var _completionActionPersistenceObject = __webpack_require__(53);
+var _completionActionPersistenceObject = __webpack_require__(54);
 
-var _completionTimerPersistenceObject = __webpack_require__(54);
+var _completionTimerPersistenceObject = __webpack_require__(55);
 
-var _finishActionPersistenceObject = __webpack_require__(55);
+var _finishActionPersistenceObject = __webpack_require__(56);
 
-var _gameStatePersistenceObject = __webpack_require__(56);
+var _gameStatePersistenceObject = __webpack_require__(57);
 
-var _layoutGridPersistenceObject = __webpack_require__(62);
+var _layoutGridPersistenceObject = __webpack_require__(68);
 
-var _layoutInfoPersistenceObject = __webpack_require__(61);
+var _layoutInfoPersistenceObject = __webpack_require__(70);
 
-var _layoutNodePersistenceObject = __webpack_require__(63);
+var _layoutNodePersistenceObject = __webpack_require__(69);
 
-var _layoutPersistenceObject = __webpack_require__(64);
+var _layoutPersistenceObject = __webpack_require__(67);
 
-var _modifyPlayerPersistenceObject = __webpack_require__(59);
+var _modifyPlayerPersistenceObject = __webpack_require__(62);
 
-var _multiPartTriggerPersistenceObject = __webpack_require__(58);
+var _multiPartTriggerPersistenceObject = __webpack_require__(59);
 
-var _optionPersistenceObject = __webpack_require__(57);
+var _optionPersistenceObject = __webpack_require__(58);
 
-var _playerTriggerPersistenceObject = __webpack_require__(22);
+var _playerTriggerPersistenceObject = __webpack_require__(23);
 
-var _scriptedActionPersistenceObject = __webpack_require__(60);
+var _scriptedActionPersistenceObject = __webpack_require__(63);
 
-var _scriptedTriggerPersistenceObject = __webpack_require__(86);
+var _scriptedTriggerPersistenceObject = __webpack_require__(60);
 
 var _textAdventurePersistenceObject = __webpack_require__(65);
 
-var _textTriggerPersistenceObject = __webpack_require__(21);
+var _textTriggerPersistenceObject = __webpack_require__(22);
 
 var _transitionPersistenceObject = __webpack_require__(66);
 
-var _textAdventurePersistenceManager = __webpack_require__(87);
+var _textAdventurePersistenceManager = __webpack_require__(64);
 
 module.exports = {
     TextAdventureGameState: _textAdventureGameState.TextAdventureGameState,
@@ -8422,7 +9601,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 68 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8435,7 +9614,7 @@ module.exports = {
  * LICENSE file in the root directory of this source tree.
  */
 
-var k=__webpack_require__(6),n=__webpack_require__(3),p=__webpack_require__(7),q=__webpack_require__(4),r="function"===typeof Symbol&&Symbol.for,t=r?Symbol.for("react.element"):60103,u=r?Symbol.for("react.portal"):60106,v=r?Symbol.for("react.fragment"):60107,w=r?Symbol.for("react.strict_mode"):60108,x=r?Symbol.for("react.profiler"):60114,y=r?Symbol.for("react.provider"):60109,z=r?Symbol.for("react.context"):60110,A=r?Symbol.for("react.async_mode"):60111,B=
+var k=__webpack_require__(6),n=__webpack_require__(7),p=__webpack_require__(8),q=__webpack_require__(4),r="function"===typeof Symbol&&Symbol.for,t=r?Symbol.for("react.element"):60103,u=r?Symbol.for("react.portal"):60106,v=r?Symbol.for("react.fragment"):60107,w=r?Symbol.for("react.strict_mode"):60108,x=r?Symbol.for("react.profiler"):60114,y=r?Symbol.for("react.provider"):60109,z=r?Symbol.for("react.context"):60110,A=r?Symbol.for("react.async_mode"):60111,B=
 r?Symbol.for("react.forward_ref"):60112;r&&Symbol.for("react.timeout");var C="function"===typeof Symbol&&Symbol.iterator;function D(a){for(var b=arguments.length-1,e="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=0;c<b;c++)e+="&args[]="+encodeURIComponent(arguments[c+1]);n(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",e)}
 var E={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function F(a,b,e){this.props=a;this.context=b;this.refs=p;this.updater=e||E}F.prototype.isReactComponent={};F.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?D("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};F.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function G(){}
 G.prototype=F.prototype;function H(a,b,e){this.props=a;this.context=b;this.refs=p;this.updater=e||E}var I=H.prototype=new G;I.constructor=H;k(I,F.prototype);I.isPureReactComponent=!0;var J={current:null},K=Object.prototype.hasOwnProperty,L={key:!0,ref:!0,__self:!0,__source:!0};
@@ -8451,7 +9630,7 @@ assign:k}},Y={default:X},Z=Y&&X||Y;module.exports=Z.default?Z.default:Z;
 
 
 /***/ }),
-/* 69 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8473,11 +9652,11 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var _assign = __webpack_require__(6);
-var invariant = __webpack_require__(3);
-var emptyObject = __webpack_require__(7);
-var warning = __webpack_require__(12);
+var invariant = __webpack_require__(7);
+var emptyObject = __webpack_require__(8);
+var warning = __webpack_require__(28);
 var emptyFunction = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(27);
+var checkPropTypes = __webpack_require__(29);
 
 // TODO: this is special because it gets imported during build.
 
@@ -9942,10 +11121,10 @@ module.exports = react;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 70 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9964,7 +11143,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 71 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10002,15 +11181,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(72);
+  module.exports = __webpack_require__(76);
 } else {
-  module.exports = __webpack_require__(75);
+  module.exports = __webpack_require__(79);
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 72 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10026,7 +11205,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(3),ba=__webpack_require__(0),m=__webpack_require__(28),p=__webpack_require__(6),v=__webpack_require__(4),da=__webpack_require__(29),ea=__webpack_require__(30),fa=__webpack_require__(31),ha=__webpack_require__(7);
+var aa=__webpack_require__(7),ba=__webpack_require__(1),m=__webpack_require__(30),p=__webpack_require__(6),v=__webpack_require__(4),da=__webpack_require__(31),ea=__webpack_require__(32),fa=__webpack_require__(33),ha=__webpack_require__(8);
 function A(a){for(var b=arguments.length-1,c="https://reactjs.org/docs/error-decoder.html?invariant="+a,d=0;d<b;d++)c+="&args[]="+encodeURIComponent(arguments[d+1]);aa(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}ba?void 0:A("227");
 function ia(a,b,c,d,e,f,g,h,k){this._hasCaughtError=!1;this._caughtError=null;var n=Array.prototype.slice.call(arguments,3);try{b.apply(c,n)}catch(r){this._caughtError=r,this._hasCaughtError=!0}}
 var B={_caughtError:null,_hasCaughtError:!1,_rethrowError:null,_hasRethrowError:!1,invokeGuardedCallback:function(a,b,c,d,e,f,g,h,k){ia.apply(B,arguments)},invokeGuardedCallbackAndCatchFirstError:function(a,b,c,d,e,f,g,h,k){B.invokeGuardedCallback.apply(this,arguments);if(B.hasCaughtError()){var n=B.clearCaughtError();B._hasRethrowError||(B._hasRethrowError=!0,B._rethrowError=n)}},rethrowCaughtError:function(){return ka.apply(B,arguments)},hasCaughtError:function(){return B._hasCaughtError},clearCaughtError:function(){if(B._hasCaughtError){var a=
@@ -10257,7 +11436,7 @@ var Ai={default:vi},Bi=Ai&&vi||Ai;module.exports=Bi.default?Bi.default:Bi;
 
 
 /***/ }),
-/* 73 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10272,7 +11451,7 @@ var Ai={default:vi},Bi=Ai&&vi||Ai;module.exports=Bi.default?Bi.default:Bi;
  * @typechecks
  */
 
-var isNode = __webpack_require__(74);
+var isNode = __webpack_require__(78);
 
 /**
  * @param {*} object The object to check.
@@ -10285,7 +11464,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 74 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10313,7 +11492,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 75 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10334,19 +11513,19 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var invariant = __webpack_require__(3);
-var React = __webpack_require__(0);
-var warning = __webpack_require__(12);
-var ExecutionEnvironment = __webpack_require__(28);
+var invariant = __webpack_require__(7);
+var React = __webpack_require__(1);
+var warning = __webpack_require__(28);
+var ExecutionEnvironment = __webpack_require__(30);
 var _assign = __webpack_require__(6);
 var emptyFunction = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(27);
-var getActiveElement = __webpack_require__(29);
-var shallowEqual = __webpack_require__(30);
-var containsNode = __webpack_require__(31);
-var emptyObject = __webpack_require__(7);
-var hyphenateStyleName = __webpack_require__(76);
-var camelizeStyleName = __webpack_require__(78);
+var checkPropTypes = __webpack_require__(29);
+var getActiveElement = __webpack_require__(31);
+var shallowEqual = __webpack_require__(32);
+var containsNode = __webpack_require__(33);
+var emptyObject = __webpack_require__(8);
+var hyphenateStyleName = __webpack_require__(80);
+var camelizeStyleName = __webpack_require__(82);
 
 // Relying on the `invariant()` implementation lets us
 // have preserve the format and params in the www builds.
@@ -27748,10 +28927,10 @@ module.exports = reactDom;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 76 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27766,7 +28945,7 @@ module.exports = reactDom;
 
 
 
-var hyphenate = __webpack_require__(77);
+var hyphenate = __webpack_require__(81);
 
 var msPattern = /^ms-/;
 
@@ -27793,7 +28972,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 77 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27829,7 +29008,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 78 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27844,7 +29023,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(79);
+var camelize = __webpack_require__(83);
 
 var msPattern = /^-ms-/;
 
@@ -27872,7 +29051,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 79 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27907,7 +29086,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 80 */
+/* 84 */
 /***/ (function(module, exports) {
 
 var g;
@@ -27934,7 +29113,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 81 */
+/* 85 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -27962,7 +29141,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 82 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27973,11 +29152,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.convertTrigger = undefined;
 
-var _textTriggerPersistenceObject = __webpack_require__(21);
+var _textTriggerPersistenceObject = __webpack_require__(22);
 
-var _playerTriggerPersistenceObject = __webpack_require__(22);
+var _playerTriggerPersistenceObject = __webpack_require__(23);
 
-var _multiPartTriggerPersistenceObject = __webpack_require__(58);
+var _multiPartTriggerPersistenceObject = __webpack_require__(59);
+
+var _scriptedTriggerPersistenceObject = __webpack_require__(60);
 
 var convertTrigger = function convertTrigger(persistence) {
     var trigger = void 0;
@@ -27991,6 +29172,10 @@ var convertTrigger = function convertTrigger(persistence) {
         trigger = new _playerTriggerPersistenceObject.PlayerTriggerPersistenceObject();
         trigger.convertFromPersistence(persistence);
     }
+    if (type === 'Script') {
+        trigger = new _scriptedTriggerPersistenceObject.ScriptedTriggerPersistenceObject();
+        trigger.convertFromPersistence(persistence);
+    }
     if (type === 'MultiPart') {
         trigger = new _multiPartTriggerPersistenceObject.MultiPartTriggerPersistenceObject();
         trigger.convertFromPersistence(persistence);
@@ -28002,7 +29187,7 @@ var convertTrigger = function convertTrigger(persistence) {
 exports.convertTrigger = convertTrigger;
 
 /***/ }),
-/* 83 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28011,50 +29196,170 @@ exports.convertTrigger = convertTrigger;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.convertAction = undefined;
+exports.SaveActionPersistenceObject = undefined;
 
-var _appendTextPersistenceObject = __webpack_require__(52);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _completionActionPersistenceObject = __webpack_require__(53);
+var _saveAction = __webpack_require__(88);
 
-var _modifyPlayerPersistenceObject = __webpack_require__(59);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var _scriptedActionPersistenceObject = __webpack_require__(60);
-
-var _finishActionPersistenceObject = __webpack_require__(55);
-
-var convertAction = function convertAction(persistence) {
-    var action = void 0;
-    var type = persistence.properties.get('type');
-
-    if (type === 'AppendText') {
-        action = new _appendTextPersistenceObject.AppendTextPersistenceObject();
-        action.convertFromPersistence(persistence);
-    }
-    if (type === 'Completion') {
-        action = new _completionActionPersistenceObject.CompletionActionPersistenceObject();
-        action.convertFromPersistence(persistence);
-    }
-    if (type === 'ModifyPlayer') {
-        action = new _modifyPlayerPersistenceObject.ModifyPlayerPersistenceObject();
-        action.convertFromPersistence(persistence);
-    }
-    if (type === 'Script') {
-        action = new _scriptedActionPersistenceObject.ScriptedActionPersistenceObject();
-        action.convertFromPersistence(persistence);
-    }
-    if (type === 'Finish') {
-        action = new _finishActionPersistenceObject.FinishActionPersistenceObject();
-        action.convertFromPersistence(persistence);
+var SaveActionPersistenceObject = exports.SaveActionPersistenceObject = function () {
+    function SaveActionPersistenceObject() {
+        _classCallCheck(this, SaveActionPersistenceObject);
     }
 
-    return action;
-};
+    _createClass(SaveActionPersistenceObject, [{
+        key: 'convertFromPersistence',
+        value: function convertFromPersistence(persistence, persistenceData) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
 
-exports.convertAction = convertAction;
+            try {
+                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var child = _step.value;
+
+                    if (child.name === 'SaveLocation') {
+                        this.saveLocation = child.value;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            this.persistenceData = persistenceData;
+        }
+    }, {
+        key: 'convertToAction',
+        value: function convertToAction() {
+            return new _saveAction.SaveAction(this.saveLocation, this.persistenceData);
+        }
+    }]);
+
+    return SaveActionPersistenceObject;
+}();
 
 /***/ }),
-/* 84 */
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.SaveAction = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _textAdventurePersistenceManager = __webpack_require__(64);
+
+var _playerPersistenceObject = __webpack_require__(21);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SaveAction = exports.SaveAction = function () {
+    function SaveAction(fileName, data) {
+        _classCallCheck(this, SaveAction);
+
+        this.fileName = fileName;
+        this.manager = new _textAdventurePersistenceManager.TextAdventurePersistenceManager(data, false);
+
+        this.manager.load();
+    }
+
+    _createClass(SaveAction, [{
+        key: 'execute',
+        value: function execute(params) {
+            this._updateManager(params);
+            this.manager.save(this.fileName);
+        }
+    }, {
+        key: '_updateManager',
+        value: function _updateManager(params) {
+            this.manager.textAdventure.players = [];
+
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = params.players[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var player = _step.value;
+
+                    this.manager.textAdventure.players.push(new _playerPersistenceObject.PlayerPersistenceObject(player));
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            this.manager.textAdventure.currentGameState = params.currentGameState;
+        }
+    }]);
+
+    return SaveAction;
+}();
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function save(data, fileName) {
+    var file = new Blob([data], { type: 'text/xml' });
+
+    if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(file, filename);
+        return;
+    }
+
+    var a = document.createElement("a");
+    var url = URL.createObjectURL(file);
+
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+
+    setTimeout(function () {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }, 0);
+}
+
+exports.save = save;
+
+/***/ }),
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28065,7 +29370,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.convertTimer = undefined;
 
-var _completionTimerPersistenceObject = __webpack_require__(54);
+var _completionTimerPersistenceObject = __webpack_require__(55);
 
 var convertTimer = function convertTimer(persistence) {
     var type = persistence.properties.get('type');
@@ -28083,7 +29388,7 @@ var convertTimer = function convertTimer(persistence) {
 exports.convertTimer = convertTimer;
 
 /***/ }),
-/* 85 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28094,19 +29399,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.convertLayout = undefined;
 
-var _layout = __webpack_require__(44);
+var _layout = __webpack_require__(46);
 
-var _textWithTextInput = __webpack_require__(48);
+var _textWithTextInput = __webpack_require__(50);
 
-var _textWithButtonInput = __webpack_require__(47);
+var _textWithButtonInput = __webpack_require__(49);
 
-var _contentView = __webpack_require__(9);
+var _contentView = __webpack_require__(10);
 
-var _textAndContentWithTextInput = __webpack_require__(46);
+var _textAndContentWithTextInput = __webpack_require__(48);
 
-var _textAndContentWithButtonInput = __webpack_require__(45);
+var _textAndContentWithButtonInput = __webpack_require__(47);
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28145,147 +29450,6 @@ var convertLayout = function convertLayout(layout, textLog, buttons) {
 };
 
 exports.convertLayout = convertLayout;
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.ScriptedTriggerPersistenceObject = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _scriptedTrigger = __webpack_require__(41);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ScriptedTriggerPersistenceObject = exports.ScriptedTriggerPersistenceObject = function () {
-    function ScriptedTriggerPersistenceObject() {
-        _classCallCheck(this, ScriptedTriggerPersistenceObject);
-    }
-
-    _createClass(ScriptedTriggerPersistenceObject, [{
-        key: 'convertFromPersistence',
-        value: function convertFromPersistence(persistence) {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = persistence.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var child = _step.value;
-
-                    if (child.name === 'Parameters') {
-                        this._convert(child);
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        }
-    }, {
-        key: '_convert',
-        value: function _convert(persistence) {
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-                for (var _iterator2 = persistence.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var child = _step2.value;
-
-                    if (child.name === 'Script') {
-                        this.script = atob(child.value);
-                    }
-                }
-            } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                        _iterator2.return();
-                    }
-                } finally {
-                    if (_didIteratorError2) {
-                        throw _iteratorError2;
-                    }
-                }
-            }
-        }
-    }, {
-        key: 'convertToTrigger',
-        value: function convertToTrigger() {
-            return new _scriptedTrigger.ScriptedTrigger(this.script);
-        }
-    }]);
-
-    return ScriptedTriggerPersistenceObject;
-}();
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.TextAdventurePersistenceManager = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _main = __webpack_require__(88);
-
-var _textAdventurePersistenceObject = __webpack_require__(65);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var TextAdventurePersistenceManager = exports.TextAdventurePersistenceManager = function () {
-    function TextAdventurePersistenceManager(data) {
-        _classCallCheck(this, TextAdventurePersistenceManager);
-
-        this.data = data;
-        this.textAdventure = new _textAdventurePersistenceObject.TextAdventurePersistenceObject();
-    }
-
-    _createClass(TextAdventurePersistenceManager, [{
-        key: 'load',
-        value: function load() {
-            var persist = (0, _main.load)(this.data, 'xml');
-            this.textAdventure.convertFromPersistence(persist);
-        }
-    }, {
-        key: 'save',
-        value: function save() {}
-    }]);
-
-    return TextAdventurePersistenceManager;
-}();
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-!function(e,t){if(true)module.exports=t();else if("function"==typeof define&&define.amd)define([],t);else{var n=t();for(var r in n)("object"==typeof exports?exports:e)[r]=n[r]}}("undefined"!=typeof self?self:this,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=1)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}();var o=function(){function e(t,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.name=t,this.value=n,this.children=[],this.properties=new Map}return r(e,[{key:"load",value:function(e){var t=this;e.childNodes.forEach(function(e,n,r){1===e.nodeType&&t._loadChild(e),3===e.nodeType&&(t.value=e.textContent)}),this._loadAttributes(e)}},{key:"_loadChild",value:function(t){var n=new e(t.nodeName);n.load(t),this.children.push(n)}},{key:"_loadAttributes",value:function(e){for(var t=0;t<e.attributes.length;t++){var n=e.attributes[t];this.properties.set(n.name,n.value)}}}]),e}();t.default=o},function(e,t,n){"use strict";var r=n(2),o=n(0);e.exports={load:r.load,ConfigurationObject:o.ConfigurationObject}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.load=void 0;var r,o=n(0),i=(r=o)&&r.__esModule?r:{default:r};t.load=function(e,t){if(t.toLowerCase().includes("json"))return n=e,void JSON.parse(n);var n;if(t.toLowerCase().includes("xml"))return function(e){var t=(new DOMParser).parseFromString(e,"text/xml"),n=new i.default(t.documentElement.tagName);return t.documentElement.childNodes.forEach(function(e,t,r){var o=new i.default(e.tagName);o.load(e),n.children.push(o)}),n}(e);throw"Invalid data type"}}])});
 
 /***/ })
 /******/ ]);

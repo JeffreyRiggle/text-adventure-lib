@@ -1,4 +1,5 @@
 import {PlayerTrigger} from '../triggers/playerTrigger';
+import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
 
 export class PlayerTriggerPersistenceObject {
     convertFromPersistence(persistence) {
@@ -7,6 +8,33 @@ export class PlayerTriggerPersistenceObject {
                 this._convert(child);
             }
         }
+    }
+
+    convertToConfig() {
+        let retVal = new ConfigurationObject('Trigger');
+        retVal.properties.set('type', 'Player');
+
+        let params = new ConfigurationObject('Parameters');
+        params.children.push(new ConfigurationObject('PlayerName', this.playerName));
+        if (this.modificationObject) {
+            params.children.push(new ConfigurationObject('ModificationObject', this.modificationObject));
+        }
+        if (this.id) {
+            params.children.push(new ConfigurationObject('ID', this.id.join(',')));
+        }
+        if (this.condition) {
+            params.children.push(new ConfigurationObject('Condition', this.condition));
+        }
+        if (this.dataMember) {
+            params.children.push(new ConfigurationObject('DataMember', this.dataMember));
+        }
+        if (this.originalComparisonData) {
+            params.children.push(new ConfigurationObject('ComparisionData', this.originalComparisonData));
+        }
+
+        retVal.children.push(params);
+
+        return retVal;
     }
 
     _convert(persistence) {
@@ -33,16 +61,17 @@ export class PlayerTriggerPersistenceObject {
     }
 
     _convertComparisonData(persistence) {
+        this.originalComparisonData = persistence.value;
         let valueType = persistence.properties.get('ValueType');
 
         if (valueType === 'bool') {
-            this.comparisonData = (persistence.value.toLowerCase() === 'true');
+            this.comparisonData = (this.originalComparisonData.toLowerCase() === 'true');
         }
         else if (valueType === 'int' || valueType === 'float' || valueType === 'double') {
-            this.comparisonData = Number(persistence.value);
+            this.comparisonData = Number(this.originalComparisonData);
         }
         else {
-            this.comparisonData = persistence.value;
+            this.comparisonData = this.originalComparisonData;
         }
     }
 

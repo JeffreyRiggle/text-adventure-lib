@@ -4,6 +4,7 @@ import { convertTimer } from './convertTimer';
 import { TextAdventureGameState } from '../core/textAdventureGameState';
 import { convertLayout } from './convertLayout.jsx';
 import { PlayerMacroManager } from '../macro/playerMacroManager';
+import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
 
 export class GameStatePersistenceObject {
     constructor() {
@@ -29,6 +30,33 @@ export class GameStatePersistenceObject {
                 this._convertLayoutInfo(child);
             }
         }
+    }
+
+    convertToConfig() {
+        let retVal = new ConfigurationObject('GameState');
+
+        retVal.children.push(new ConfigurationObject('StateId', this.stateId));
+        retVal.children.push(new ConfigurationObject('TextLog', this.textLog));
+
+        let options = new ConfigurationObject('Options');
+        for (let opt of this.options) {
+            options.children.push(opt.convertToConfig());
+        }
+        if (options.children.length) {
+            retVal.children.push(options);
+        }
+
+        let timers = new ConfigurationObject('Timers');
+        for (let timer of this.timers) {
+            timers.children.push(timer.convertToConfig());
+        }
+        if (timers.children.length) {
+            retVal.children.push(timers);
+        }
+
+        retVal.children.push(this.layout.convertToConfig());
+
+        return retVal;
     }
 
     _convertOptions(persistence) {

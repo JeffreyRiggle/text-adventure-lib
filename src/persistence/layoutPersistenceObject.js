@@ -1,4 +1,5 @@
 import {LayoutGridPersistenceObject} from './layoutGridPersistenceObject';
+import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
 
 export class LayoutPersistenceObject {
     convertFromPersistence(persistence) {
@@ -16,6 +17,19 @@ export class LayoutPersistenceObject {
                 this.id = child.value;
             }
         }
+    }
+
+    convertToConfig() {
+        let retVal = new ConfigurationObject('Layout');
+
+        retVal.children.push(new ConfigurationObject('LayoutType', this.layoutType));
+        if (this.content) {
+            retVal.children.push(new ConfigurationObject('Content', this.content));
+        }
+        retVal.children.push(new ConfigurationObject('LayoutID', this.id));
+        retVal.children.push(this.layout.convertToConfig());
+
+        return retVal;
     }
 
     _convertLayout(persistence) {
