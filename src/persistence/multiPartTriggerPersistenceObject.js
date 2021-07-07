@@ -1,7 +1,7 @@
 import {MultiPartTrigger} from '../triggers/multiPartTrigger';
 import {TextTriggerPersistenceObject} from './textTriggerPersistenceObject';
 import {PlayerTriggerPersistenceObject} from './playerTriggerPersistenceObject';
-import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
 
 export class MultiPartTriggerPersistenceObject {
     constructor() {

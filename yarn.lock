@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@jeffriggle/persist-lib@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@jeffriggle/persist-lib/-/persist-lib-1.0.3.tgz#380f80026ee3e661bb88eb1d3537977b17a8bf00"
+  integrity sha512-KV7w96La0bGr3StxZlQfQ+BNAwo/gXxB0JESRatUKHhSmVzv5SH82cG721fHzh++GMCVesApMFTAi1GrrOWNSA==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -4020,10 +4025,6 @@ pbkdf2@^3.0.3:
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
-
-"persist-lib@https://github.com/JeffreyRiggle/persist-lib":
-  version "1.0.0"
-  resolved "https://github.com/JeffreyRiggle/persist-lib#acc05fa4a31bc8aaa351ab9ecd95fbf3dd39bc4d"
 
 pify@^2.0.0:
   version "2.3.0"

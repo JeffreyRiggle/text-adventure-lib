@@ -4,7 +4,7 @@ import { convertTimer } from './convertTimer';
 import { TextAdventureGameState } from '../core/textAdventureGameState';
 import { convertLayout } from './convertLayout.jsx';
 import { PlayerMacroManager } from '../macro/playerMacroManager';
-import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
 
 export class GameStatePersistenceObject {
     constructor() {

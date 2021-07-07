@@ -11,7 +11,7 @@
   "dependencies": {
     "babel-preset-react": "^6.24.1",
     "gamestate-manager": "https://github.com/JeffreyRiggle/gamestate-manager",
-    "persist-lib": "https://github.com/JeffreyRiggle/persist-lib",
+    "@jeffriggle/persist-lib": "1.0.3",
     "player-lib": "https://github.com/JeffreyRiggle/player-lib",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

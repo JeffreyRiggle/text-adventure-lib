@@ -1,6 +1,6 @@
 import {CompletionAction} from '../actions/completionAction';
 import {TimedAction} from '../timers/timedAction';
-import {ConfigurationObject} from '../../node_modules/persist-lib/dist/main';
+import {ConfigurationObject} from '@jeffriggle/persist-lib/dist/main';
 
 export class CompletionTimerPersistenceObject {
     convertFromPersistence(persistence) {

@@ -1,7 +1,7 @@
 import { convertTrigger } from './convertTrigger';
 import { convertAction } from './convertAction';
 import { Option } from '../option/option';
-import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
 
 export class OptionPersistenceObject {
     constructor() {

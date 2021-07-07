@@ -1,6 +1,6 @@
 import {Inventory} from '../../../node_modules/player-lib/dist/main';
 import {ItemPersistenceObject} from './itemPersistenceObject';
-import { ConfigurationObject } from '../../../node_modules/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
 
 export class InventoryPersistenceObject {
     constructor(inventory) {

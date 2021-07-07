@@ -1,5 +1,5 @@
 import {ScriptedAction} from '../actions/scriptedAction';
-import { ConfigurationObject } from '../../node_modules/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
 
 export class ScriptedActionPersistenceObject {
     convertFromPersistence(persistence) {
