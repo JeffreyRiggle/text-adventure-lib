@@ -1,10 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './src/index.js',
+    mode: 'production',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: './[name].js',
@@ -14,26 +14,16 @@ module.exports = {
         rules: [
             {
                 test: /\.js$|.jsx$/,
-                exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'react']
+                    presets: ['@babel/preset-env', '@babel/preset-react']
                 }
             },
             {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader']
-                })
-            }
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
+            },
         ]
     },
-    plugins: [
-        new ExtractTextPlugin({
-            filename: 'styles.css',
-            disable: false,
-            allChunks: true
-        })
-    ]
+    plugins: [new MiniCssExtractPlugin()]
 }
