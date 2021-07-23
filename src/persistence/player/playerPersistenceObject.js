@@ -4,7 +4,7 @@ import {CharacteristicPersistenceObject} from './characteristicPersistenceObject
 import {BodyPartPersistenceObject} from './bodyPartPersistenceObject';
 import {InventoryPersistenceObject} from './inventoryPersistenceObject';
 import {EquipmentPersistenceObject} from './equipmentPersistenceObject';
-import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib';
 
 const NAME = 'Name',
  ATTRIBUTES = 'Attributes',

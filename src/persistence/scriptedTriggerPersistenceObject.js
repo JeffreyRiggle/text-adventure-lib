@@ -1,5 +1,5 @@
 import {ScriptedTrigger} from '../triggers/scriptedTrigger';
-import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib';
 
 export class ScriptedTriggerPersistenceObject {
     convertFromPersistence(persistence) {

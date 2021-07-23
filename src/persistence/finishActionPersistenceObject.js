@@ -1,5 +1,5 @@
 import {FinishAction} from '../actions/finishAction';
-import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib';
 
 export class FinishActionPersistenceObject {
     convertFromPersistence(persistence) {

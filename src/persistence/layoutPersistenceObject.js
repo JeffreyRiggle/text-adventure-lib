@@ -1,5 +1,5 @@
 import {LayoutGridPersistenceObject} from './layoutGridPersistenceObject';
-import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib';
 
 export class LayoutPersistenceObject {
     convertFromPersistence(persistence) {

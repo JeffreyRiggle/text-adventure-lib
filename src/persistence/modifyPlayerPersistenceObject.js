@@ -5,7 +5,7 @@ import {AttributePersistenceObject} from './player/attributePersistenceObject';
 import {CharacteristicPersistenceObject} from './player/characteristicPersistenceObject';
 import {PropertyPersistenceObject} from './player/propertyPersistenceObject';
 import {ModifyPlayerAction} from '../actions/modifyPlayerAction';
-import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib';
 
 export class ModifyPlayerPersistenceObject {
     convertFromPersistence(persistence) {

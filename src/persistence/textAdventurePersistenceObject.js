@@ -3,7 +3,7 @@ import { TransitionPersistenceObject } from './transitionPersistenceObject';
 import { GameStatePersistenceObject } from './gameStatePersistenceObject';
 import { LayoutPersistenceObject } from './layoutPersistenceObject';
 import { TextAdventureGameStateManager } from '../core/textAdventureGameStateManager';
-import { ConfigurationObject } from '@jeffriggle/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib';
 
 const INLINEPLAYERS = 'inlineplayers',
  INLINEGAMESTATE = 'inlinegamestate',
