@@ -1,4 +1,4 @@
-import {Inventory} from '../../../node_modules/player-lib/dist/main';
+import {Inventory} from '@jeffriggle/player-lib';
 import {ItemPersistenceObject} from './itemPersistenceObject';
 import { ConfigurationObject } from '@jeffriggle/persist-lib';
 

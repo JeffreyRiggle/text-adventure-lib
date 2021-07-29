@@ -1,4 +1,4 @@
-import {Player} from '../../../node_modules/player-lib/dist/main';
+import {Player} from '@jeffriggle/player-lib';
 import {AttributePersistenceObject} from './attributePersistenceObject';
 import {CharacteristicPersistenceObject} from './characteristicPersistenceObject';
 import {BodyPartPersistenceObject} from './bodyPartPersistenceObject';

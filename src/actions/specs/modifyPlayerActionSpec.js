@@ -1,5 +1,5 @@
 import { ModifyPlayerAction } from '../modifyPlayerAction';
-import { Player } from '../../../node_modules/player-lib/src/player';
+import { Player } from '@jeffriggle/player-lib';
 
 describe('ModifyPlayerAction', function() {
     var playerName, modData, action, params, player1, chr1, att1, bp, item, prop;

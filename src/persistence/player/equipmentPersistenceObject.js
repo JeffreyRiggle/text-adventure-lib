@@ -1,4 +1,4 @@
-import {Equipment} from '../../../node_modules/player-lib/dist/main';
+import {Equipment} from '@jeffriggle/player-lib';
 import {ItemPersistenceObject} from './itemPersistenceObject';
 import {BodyPartPersistenceObject} from './bodyPartPersistenceObject';
 import { ConfigurationObject } from '@jeffriggle/persist-lib';

@@ -12,7 +12,7 @@
     "babel-preset-react": "^6.24.1",
     "@jeffriggle/gamestate-manager": "1.0.1",
     "@jeffriggle/persist-lib": "1.0.8",
-    "player-lib": "https://github.com/JeffreyRiggle/player-lib",
+    "@jeffriggle/player-lib": "1.0.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "underscore": "^1.8.3"

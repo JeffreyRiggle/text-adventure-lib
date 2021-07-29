@@ -1,4 +1,4 @@
-import {Item} from '../../../node_modules/player-lib/dist/main';
+import {Item} from '@jeffriggle/player-lib';
 import {PropertyPersistenceObject} from './propertyPersistenceObject';
 import { ConfigurationObject } from '@jeffriggle/persist-lib';
 

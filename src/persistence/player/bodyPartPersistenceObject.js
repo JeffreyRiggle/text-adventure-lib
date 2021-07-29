@@ -1,4 +1,4 @@
-import {BodyPart} from '../../../node_modules/player-lib/dist/main';
+import {BodyPart} from '@jeffriggle/player-lib';
 import {CharacteristicPersistenceObject} from './characteristicPersistenceObject';
 import { ConfigurationObject } from '@jeffriggle/persist-lib';
 

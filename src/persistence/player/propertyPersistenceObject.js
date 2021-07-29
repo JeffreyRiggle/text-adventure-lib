@@ -1,5 +1,5 @@
 import {NamedPersistenceObject} from './namedPersistenceObject';
-import {Property} from '../../../node_modules/player-lib/dist/main';
+import {Property} from '@jeffriggle/player-lib';
 
 export class PropertyPersistenceObject extends NamedPersistenceObject {
     constructor(property) {
