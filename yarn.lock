@@ -925,6 +925,11 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.3.tgz#90420f9f9c6d3987f176a19a7d8e764271a2f55d"
   integrity sha512-Fxt+AfXgjMoin2maPIYzFZnQjAXjAL0PHscM5pRTtatFqB+vZxAM9tLp2Optnuw3QOQC40jTNeGYFOMvyf7v9g==
 
+"@jeffriggle/gamestate-manager@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@jeffriggle/gamestate-manager/-/gamestate-manager-1.0.1.tgz#dc600799a7fb1e022bb3782794ef8fc63cd53e34"
+  integrity sha512-/jCOiB+uH4uoje8ZvIbma/URb9EGCgpw0TkdsKixRqMreUREAZ65sBORtpPuREpr7ZbvndfnbmGztvOtqX3yEg==
+
 "@jeffriggle/persist-lib@1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@jeffriggle/persist-lib/-/persist-lib-1.0.8.tgz#9431c926f5d48c497cb1d4d1a092aa29b30779b9"
@@ -3368,10 +3373,6 @@ fsevents@~2.3.2:
 function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
-
-"gamestate-manager@https://github.com/JeffreyRiggle/gamestate-manager":
-  version "1.0.0"
-  resolved "https://github.com/JeffreyRiggle/gamestate-manager#998772453b6f7dd7f9c7c206a5e19513b6295593"
 
 gauge@~2.7.3:
   version "2.7.4"

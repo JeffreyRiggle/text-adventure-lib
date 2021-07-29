@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "babel-preset-react": "^6.24.1",
-    "gamestate-manager": "https://github.com/JeffreyRiggle/gamestate-manager",
+    "@jeffriggle/gamestate-manager": "1.0.1",
     "@jeffriggle/persist-lib": "1.0.8",
     "player-lib": "https://github.com/JeffreyRiggle/player-lib",
     "react": "^16.2.0",
