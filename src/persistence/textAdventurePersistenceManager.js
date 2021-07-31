@@ -1,4 +1,4 @@
-import { load, convertConfigJSONToXML } from '../../node_modules/persist-lib/dist/main';
+import { load, convertConfigJSONToXML } from '@jeffriggle/persist-lib';
 import { TextAdventurePersistenceObject } from './textAdventurePersistenceObject';
 import { save } from '../core/fileManager';
 import { setPersistenceData } from './convertAction';

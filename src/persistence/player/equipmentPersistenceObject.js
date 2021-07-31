@@ -1,7 +1,7 @@
-import {Equipment} from '../../../node_modules/player-lib/dist/main';
+import {Equipment} from '@jeffriggle/player-lib';
 import {ItemPersistenceObject} from './itemPersistenceObject';
 import {BodyPartPersistenceObject} from './bodyPartPersistenceObject';
-import { ConfigurationObject } from '../../../node_modules/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib';
  
 export class EquipmentPersistenceObject {
     constructor(equip) {

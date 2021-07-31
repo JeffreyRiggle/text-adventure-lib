@@ -1,10 +1,10 @@
-import {Player} from '../../../node_modules/player-lib/dist/main';
+import {Player} from '@jeffriggle/player-lib';
 import {AttributePersistenceObject} from './attributePersistenceObject';
 import {CharacteristicPersistenceObject} from './characteristicPersistenceObject';
 import {BodyPartPersistenceObject} from './bodyPartPersistenceObject';
 import {InventoryPersistenceObject} from './inventoryPersistenceObject';
 import {EquipmentPersistenceObject} from './equipmentPersistenceObject';
-import { ConfigurationObject } from '../../../node_modules/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib';
 
 const NAME = 'Name',
  ATTRIBUTES = 'Attributes',

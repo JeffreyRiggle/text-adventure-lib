@@ -1,6 +1,6 @@
-import {BodyPart} from '../../../node_modules/player-lib/dist/main';
+import {BodyPart} from '@jeffriggle/player-lib';
 import {CharacteristicPersistenceObject} from './characteristicPersistenceObject';
-import { ConfigurationObject } from '../../../node_modules/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib';
 
 const NAME = 'Name',
  DESCRIPTION = 'Description',

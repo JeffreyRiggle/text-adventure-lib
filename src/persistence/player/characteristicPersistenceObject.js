@@ -1,5 +1,5 @@
 import {NamedPersistenceObject} from './namedPersistenceObject';
-import {Characteristic} from '../../../node_modules/player-lib/dist/main';
+import {Characteristic} from '@jeffriggle/player-lib';
 
 export class CharacteristicPersistenceObject extends NamedPersistenceObject {
     constructor(characteristic) {

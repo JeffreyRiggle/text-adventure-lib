@@ -1,6 +1,6 @@
-import {Item} from '../../../node_modules/player-lib/dist/main';
+import {Item} from '@jeffriggle/player-lib';
 import {PropertyPersistenceObject} from './propertyPersistenceObject';
-import { ConfigurationObject } from '../../../node_modules/persist-lib/dist/main';
+import { ConfigurationObject } from '@jeffriggle/persist-lib';
 
 const NAME = 'Name',
  DESCRIPTION = 'Description',

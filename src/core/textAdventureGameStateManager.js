@@ -1,4 +1,4 @@
-import { GameStateManager } from '../../node_modules/gamestate-manager/dist/main';
+import { GameStateManager } from '@jeffriggle/gamestate-manager';
 import { renderLayout } from '../layout/layoutRenderer.jsx';
 
 export class TextAdventureGameStateManager extends GameStateManager {
