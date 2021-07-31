@@ -1,5 +1,5 @@
 {
-  "name": "text-adventure-lib",
+  "name": "@jeffriggle/text-adventure-lib",
   "version": "1.0.0",
   "repository": "https://github.com/JeffreyRiggle/text-adventure-lib",
   "author": "JeffreyRiggle <JeffreyRiggle@gmail.com>",
