@@ -2,3 +2,4 @@
 /testapp/
 webpack.test.config.js
 /testdist/
+/dist/
