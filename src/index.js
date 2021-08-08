@@ -49,7 +49,7 @@ import { TextTriggerPersistenceObject } from './persistence/textTriggerPersisten
 import { TransitionPersistenceObject } from './persistence/transitionPersistenceObject';
 import { TextAdventurePersistenceManager } from './persistence/textAdventurePersistenceManager';
 
-module.exports = {
+export {
     TextAdventureGameState,
     TextAdventureGameStateManager,
     PlayerMacroManager,
